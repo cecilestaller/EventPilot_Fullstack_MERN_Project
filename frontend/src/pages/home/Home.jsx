@@ -24,13 +24,13 @@ const Home = () => {
                 </div>
             </header>
             <div className="UpcomingTitleContainer">
-                <p>Anstehende Events</p>
-                <label >Alle zeigen<img src={SeeAllArrow} alt="seeAllIcon" /></label>
+                <p className="titleOfConponent">Anstehende Events</p>
+                <label className="seeAllTextAndIcon" >Alle zeigen<img src={SeeAllArrow} alt="seeAllIcon" /></label>
             </div>
             <UpcomingEvents/>
             <div className="NearbyTitleContainer">
-                <p>In deiner Nähe</p>
-                <label >Alle zeigen<img src={SeeAllArrow} alt="seeAllIcon" /></label>
+                <p className="titleOfConponent">In deiner Nähe</p>
+                <label className="seeAllTextAndIcon" >Alle zeigen<img src={SeeAllArrow} alt="seeAllIcon" /></label>
             </div>
             <NearbyEvents/>
             <RandomEvent/>
