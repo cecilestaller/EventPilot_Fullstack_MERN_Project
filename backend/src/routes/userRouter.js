@@ -1,5 +1,7 @@
 import express from "express";
-// import UserController
+import { UserController } from "../controller/index.js";
 // import makeJwtAuth
 
-export const userRouter = express.Router(); // geht weiter mit: .post("/signup", UserController.postSignupUserCtrl).post("/login", UserController.postLoginUserCtrl) etc...
+export const userRouter = express
+    .Router()
+    .post("/signup", UserController.postSignUpUserCtrl);

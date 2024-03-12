@@ -3,6 +3,6 @@
 
 import User from "./User.js";
 import Event from "./Event.js";
-import Review from "./Review.js";
+// import Review from "./Review.js";
 
-export { User, Event, Review };
+export { User, Event };

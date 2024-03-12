@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieSession from "cookie-session";
+import { userRouter } from "./routes/userRouter.js";
 
 dotenv.config();
 
@@ -45,6 +46,8 @@ app.use(express.json()); // body-parser
 app.get("/", (req, res) => res.send("it works")); // Health-Check
 
 app.use("/download", express.static("data/images")); // download assets via static middleware (MULTER)
+
+app.use("/api/v1/user", userRouter);
 
 // ---------------
 // Declaration of serverListenPort-function which will be called in the DB-connection setup:
