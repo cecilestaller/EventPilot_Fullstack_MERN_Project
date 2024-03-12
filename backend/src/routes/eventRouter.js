@@ -3,5 +3,7 @@ import { doJwtAuth } from "../middleware/doJwtAuth.js";
 import { EventController } from "../controller/index.js";
 
 export const eventRouter = express
-    .Router()
-    .post("/", doJwtAuth, EventController.postNewEventCtrl);
+  .Router()
+  .get("/", EventController.getAllEventsCtrl)
+  // .get("/", doJwtAuth, EventController.getAllEventsCtrl)
+  .post("/", doJwtAuth, EventController.postNewEventCtrl);

@@ -36,7 +36,6 @@ export const postLogoutUserCtrl = catchAsync(
     }
 
     await UserService.logoutUser(refreshToken);
-    // req.session.destroy(); // optional: destroy the session to make sure the user is logged out
 
     res
       .status(200)
@@ -44,6 +43,7 @@ export const postLogoutUserCtrl = catchAsync(
   },
   { message: "Could not logout user" }
 );
+
 // ====== REFRESHTOKEN =======
 export const postRefreshtokenCtrl = catchAsync(
   async (req, res) => {
