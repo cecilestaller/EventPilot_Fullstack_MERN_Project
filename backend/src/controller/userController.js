@@ -24,3 +24,14 @@ export const postLoginUserCtrl = catchAsync(
   },
   { message: "Could not login user" }
 );
+
+// ====== REFRESHTOKEN =======
+export const postRefreshtokenCtrl = catchAsync(
+  async (req, res) => {
+    if (req.verifiedUserClaims.type !== "refresh") throw new Error ("Type is not refresh Token")
+    const authenticatedUserId = req.verifiedUserClaims.sub
+    const result = await UserService.refreshToken(authenticatedUserId)
+    res.status(200).json({ success: true, result })
+  },
+  { message: "Could not create Tokens"}
+);
