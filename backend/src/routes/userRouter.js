@@ -4,7 +4,8 @@ import { doJwtAuth } from "../middleware/doJwtAuth.js";
 // import doJwtAuth
 
 export const userRouter = express
-    .Router()
-    .post("/signup", UserController.postSignUpUserCtrl)
-    .post("/login", UserController.postLoginUserCtrl)
-    .post("/refreshtoken", doJwtAuth, UserController.postRefreshtokenCtrl);
+  .Router()
+  .post("/signup", UserController.postSignUpUserCtrl)
+  .post("/login", UserController.postLoginUserCtrl)
+  .post("/logout", UserController.postLogoutUserCtrl)
+  .post("/refreshtoken", doJwtAuth, UserController.postRefreshtokenCtrl);
