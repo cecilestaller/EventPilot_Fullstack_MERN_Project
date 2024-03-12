@@ -1,5 +1,7 @@
 import express from "express";
-// import makeJwtAuth
-// import EventController
+import { doJwtAuth } from "../middleware/doJwtAuth.js";
+import { EventController } from "../controller/index.js";
 
-export const eventRouter = express.Router();
+export const eventRouter = express
+    .Router()
+    .post("/", doJwtAuth, EventController.postNewEventCtrl);

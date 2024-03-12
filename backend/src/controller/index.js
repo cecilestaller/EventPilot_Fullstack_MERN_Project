@@ -5,6 +5,8 @@ import { postLoginUserCtrl } from "./userController.js";
 import { postRefreshtokenCtrl } from "./userController.js";
 import { postLogoutUserCtrl } from "./userController.js";
 
+import { postNewEventCtrl } from "./eventController.js";
+
 export const UserController = {
   postSignUpUserCtrl,
   postLoginUserCtrl,
@@ -12,7 +14,9 @@ export const UserController = {
   postLogoutUserCtrl,
 };
 
-export const EventController = {};
+export const EventController = {
+  postNewEventCtrl,
+};
 
 export const ReviewController = {};
 

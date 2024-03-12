@@ -1,6 +1,6 @@
 import express from "express";
 import { UserController } from "../controller/index.js";
-import { doJwtAuth } from "../middleware/doJWTAuth.js";
+import { doJwtAuth } from "../middleware/doJwtAuth.js";
 // import doJwtAuth
 
 export const userRouter = express

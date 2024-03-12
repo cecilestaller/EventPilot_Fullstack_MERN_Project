@@ -11,7 +11,7 @@ const eventSchema = new mongoose.Schema(
             city: { type: String, required: true },
             zip: { type: String },
             street: { type: String },
-            provice: { type: String, required: true },
+            province: { type: String, required: true },
             locationInfo: { type: String },
         },
         category: {
