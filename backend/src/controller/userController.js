@@ -25,7 +25,6 @@ export const postLoginUserCtrl = catchAsync(
   { message: "Could not login user" }
 );
 
-<<<<<<< HEAD
 // ====== LOGOUT ======
 export const postLogoutUserCtrl = catchAsync(
   async (req, res) => {
@@ -45,15 +44,14 @@ export const postLogoutUserCtrl = catchAsync(
   },
   { message: "Could not logout user" }
 );
-=======
 // ====== REFRESHTOKEN =======
 export const postRefreshtokenCtrl = catchAsync(
   async (req, res) => {
-    if (req.verifiedUserClaims.type !== "refresh") throw new Error ("Type is not refresh Token")
-    const authenticatedUserId = req.verifiedUserClaims.sub
-    const result = await UserService.refreshToken(authenticatedUserId)
-    res.status(200).json({ success: true, result })
+    if (req.verifiedUserClaims.type !== "refresh")
+      throw new Error("Type is not refresh Token");
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const result = await UserService.refreshToken(authenticatedUserId);
+    res.status(200).json({ success: true, result });
   },
-  { message: "Could not create Tokens"}
+  { message: "Could not create Tokens" }
 );
->>>>>>> main
