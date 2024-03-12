@@ -1,9 +1,11 @@
 // CONTROLLER-LAYER import/ exports
 // import Ctrl Functions
 import { postSignUpUserCtrl } from "./userController.js";
+import { postLoginUserCtrl } from "./userController.js";
 
 export const UserController = {
-    postSignUpUserCtrl,
+  postSignUpUserCtrl,
+  postLoginUserCtrl,
 };
 
 export const EventController = {};
