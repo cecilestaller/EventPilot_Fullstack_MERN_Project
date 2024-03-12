@@ -1,8 +1,8 @@
 // * SERVICE-LAYER import/ export
-// import service Functions
+import { signUpUser } from "./signUpUser.js";
 
 export const UserService = {
-    // export service Functions
+    signUpUser,
 };
 
 export const EventService = {};
