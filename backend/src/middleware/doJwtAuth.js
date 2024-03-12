@@ -2,9 +2,10 @@ import jwt from "jsonwebtoken";
 
 export async function doJwtAuth(req, res, next) {
     const _invalidAuthResponse = (message) =>
-    res
-        .status(401)
-        .json({ success: false, message: message || "Invalid authentication" });
+        res.status(401).json({
+            success: false,
+            message: message || "Invalid authentication",
+        });
     try {
         const tokenString = extractTokenFromRequest();
         const tokenPayload = jwt.verify(tokenString, process.env.JWT_SECRET);
