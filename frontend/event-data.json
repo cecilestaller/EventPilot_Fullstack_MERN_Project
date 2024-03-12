@@ -1,0 +1,2108 @@
+[
+  {
+    "title": "Summer Music Festival",
+    "date": "2024-07-15T18:30:00",
+    "address": {
+      "city": "Berlin",
+      "country": "Deutschland",
+      "street": "Alexanderplatz 1",
+      "province": "Berlin",
+      "locationInfo": "Open Air Stage"
+    },
+    "category": "music",
+    "description": "Genießen Sie einen sommerlichen Abend voller Musik verschiedener Genres. Dieses Festival vereint Künstler aus der ganzen Welt. Tanzen Sie unter freiem Himmel und erleben Sie unvergessliche musikalische Momente.",
+    "maxGuests": 5000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Football Championship",
+    "date": "2024-06-10T20:00:00",
+    "address": {
+      "city": "München",
+      "country": "Deutschland",
+      "street": "Allianz Arena",
+      "province": "Bayern",
+      "locationInfo": ""
+    },
+    "category": "sports",
+    "description": "Erleben Sie die Spannung und Intensität des Fußballspiels bei der nationalen Meisterschaft. Die besten Teams kämpfen um Ruhm und Ehre. Seien Sie live dabei und unterstützen Sie Ihr Lieblingsteam.",
+    "maxGuests": 30000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Art Exhibition: Modern Perspectives",
+    "date": "2024-05-05T14:00:00",
+    "address": {
+      "city": "Düsseldorf",
+      "country": "Deutschland",
+      "street": "Königsallee 123",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Art Gallery"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die faszinierende Welt moderner Kunst. Diese Ausstellung präsentiert Werke von aufstrebenden Künstlern sowie etablierten Meistern. Lassen Sie sich von den verschiedenen Perspektiven inspirieren.",
+    "maxGuests": 800,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Wine Tasting: Vintages and Varietals",
+    "date": "2024-04-20T19:00:00",
+    "address": {
+      "city": "Stuttgart",
+      "country": "Deutschland",
+      "street": "Schlossplatz 2",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Royal Winery"
+    },
+    "category": "food",
+    "description": "Entdecken Sie die Vielfalt der Weine bei dieser exklusiven Verkostung. Verwöhnen Sie Ihren Gaumen mit erlesenen Tropfen und erfahren Sie mehr über die Kunst der Weinherstellung.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Culinary Night Market",
+    "date": "2024-08-08T17:30:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "Fishmarkt 5",
+      "province": "Hamburg",
+      "locationInfo": "Waterfront Market"
+    },
+    "category": "food",
+    "description": "Erleben Sie einen kulinarischen Abendmarkt mit einer Vielzahl von köstlichen Speisen aus aller Welt. Genießen Sie exotische Aromen und entdecken Sie neue Geschmackserlebnisse.",
+    "maxGuests": 1200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Jazz in the Park",
+    "date": "2024-07-05T19:45:00",
+    "address": {
+      "city": "Frankfurt",
+      "country": "Deutschland",
+      "street": "Palmengarten 7",
+      "province": "Hessen",
+      "locationInfo": "Botanical Garden"
+    },
+    "category": "music",
+    "description": "Verbringen Sie einen entspannten Abend im Grünen und lauschen Sie den Klängen des Jazz. Die idyllische Kulisse des Botanischen Gartens bietet den perfekten Rahmen für dieses musikalische Erlebnis.",
+    "maxGuests": 600,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "International Soccer Tournament",
+    "date": "2024-06-25T16:00:00",
+    "address": {
+      "city": "Dortmund",
+      "country": "Deutschland",
+      "street": "Signal Iduna Park",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": ""
+    },
+    "category": "sports",
+    "description": "Erleben Sie internationale Fußballteams im Wettstreit um den Turniersieg. Spannende Duelle und mitreißende Tore warten auf Sie. Seien Sie dabei und feuern Sie Ihr Team an.",
+    "maxGuests": 25000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Contemporary Art Workshop",
+    "date": "2024-05-15T15:30:00",
+    "address": {
+      "city": "Leipzig",
+      "country": "Deutschland",
+      "street": "Karl-Liebknecht-Straße 8",
+      "province": "Sachsen",
+      "locationInfo": "Art Studio"
+    },
+    "category": "art",
+    "description": "Nehmen Sie an einem interaktiven Kunstworkshop teil und entdecken Sie Ihre kreative Seite. Künstlerische Anleitungen und die Möglichkeit, eigene Meisterwerke zu schaffen, erwarten Sie.",
+    "maxGuests": 30,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Summer Movie Nights",
+    "date": "2024-08-20T20:15:00",
+    "address": {
+      "city": "Hannover",
+      "country": "Deutschland",
+      "street": "Maschsee Ufer 1",
+      "province": "Niedersachsen",
+      "locationInfo": "Open Air Cinema"
+    },
+    "category": "art",
+    "description": "Genießen Sie laue Sommerabende mit unseren Open-Air-Filmnächten. Von Klassikern bis zu aktuellen Blockbustern ist für jeden Filmgeschmack etwas dabei. Bringen Sie Ihre Decken mit und erleben Sie Kino unter freiem Himmel.",
+    "maxGuests": 800,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bavarian Beer Festival",
+    "date": "2024-08-01T17:00:00",
+    "address": {
+      "city": "Nürnberg",
+      "country": "Deutschland",
+      "street": "Volksfestplatz 12",
+      "province": "Bayern",
+      "locationInfo": "Beer Gardens"
+    },
+    "category": "food",
+    "description": "Tauchen Sie ein in die bayerische Bierkultur mit unserem Bierfestival. Probieren Sie verschiedene lokale Brauereien, begleitet von traditioneller Musik und herzhaften Schmankerln.",
+    "maxGuests": 1500,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Rock Music Night",
+    "date": "2024-07-12T21:00:00",
+    "address": {
+      "city": "Stuttgart",
+      "country": "Deutschland",
+      "street": "Schlossplatz 5",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Rock Club"
+    },
+    "category": "music",
+    "description": "Feiern Sie eine Nacht voller Rockmusik mit erstklassigen Bands und energiegeladenen Performances. Die perfekte Gelegenheit, um zu tanzen und das Rock'n'Roll-Lebensgefühl zu erleben.",
+    "maxGuests": 1200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Digital Art Exhibition",
+    "date": "2024-06-08T16:30:00",
+    "address": {
+      "city": "Karlsruhe",
+      "country": "Deutschland",
+      "street": "ZKM Museum Platz 9",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Media Arts Center"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die Welt der digitalen Kunst. Diese Ausstellung präsentiert innovative Werke von Künstlern, die mit neuen Medien experimentieren. Erleben Sie die Zukunft der Kunst!",
+    "maxGuests": 400,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Street Food Festival",
+    "date": "2024-07-28T18:00:00",
+    "address": {
+      "city": "Essen",
+      "country": "Deutschland",
+      "street": "Kennedyplatz 8",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Food Trucks Area"
+    },
+    "category": "food",
+    "description": "Entdecken Sie die Vielfalt der Straßenküche bei unserem Food Festival. Genießen Sie exotische Aromen und kulinarische Köstlichkeiten aus aller Welt. Ein Fest für alle Foodies!",
+    "maxGuests": 1200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Basketball Showdown",
+    "date": "2024-06-18T19:15:00",
+    "address": {
+      "city": "Cologne",
+      "country": "Deutschland",
+      "street": "LANXESS Arena",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": ""
+    },
+    "category": "sports",
+    "description": "Erleben Sie atemberaubende Dunks und spannende Basketball-Action. Die besten Teams treten gegeneinander an, um in diesem Showdown den Sieger zu küren. Seien Sie dabei und feuern Sie Ihr Team an!",
+    "maxGuests": 18000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Opera Night: Classics Revived",
+    "date": "2024-05-12T20:00:00",
+    "address": {
+      "city": "Munich",
+      "country": "Deutschland",
+      "street": "Nationaltheaterplatz 2",
+      "province": "Bayern",
+      "locationInfo": "National Theatre"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine Nacht voller klassischer Opernarien und zeitgenössischer Interpretationen. Die prachtvolle Kulisse des Nationaltheaters bietet den idealen Rahmen für dieses musikalische Erlebnis.",
+    "maxGuests": 800,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Yoga in the Park",
+    "date": "2024-08-10T09:00:00",
+    "address": {
+      "city": "Dresden",
+      "country": "Deutschland",
+      "street": "Großer Garten",
+      "province": "Sachsen",
+      "locationInfo": "Open Air Yoga Space"
+    },
+    "category": "sports",
+    "description": "Starten Sie Ihren Tag mit einer entspannten Yoga-Session im Grünen. Erfahrene Yogalehrer führen Sie durch harmonische Übungen, um Körper und Geist zu stärken. Bringen Sie Ihre Matte mit und genießen Sie die Natur!",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Comedy Night in Köln",
+    "date": "2024-07-02T19:30:00",
+    "address": {
+      "city": "Köln",
+      "country": "Deutschland",
+      "street": "Hohenzollernring 25",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Laugh Lounge"
+    },
+    "category": "art",
+    "description": "Lachen Sie sich in Köln schlapp bei einer Nacht voller Comedy. Lokale und internationale Comedians sorgen für beste Unterhaltung. Freuen Sie sich auf einen Abend voller Humor und guter Laune.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Düsseldorf Fashion Show",
+    "date": "2024-06-15T20:00:00",
+    "address": {
+      "city": "Düsseldorf",
+      "country": "Deutschland",
+      "street": "Königsallee 77",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Fashion Hall"
+    },
+    "category": "art",
+    "description": "Erleben Sie die neuesten Trends bei unserer exklusiven Modenschau in Düsseldorf. Lokale Designer präsentieren ihre Kollektionen in einer glamourösen Umgebung. Ein Muss für Fashion-Enthusiasten!",
+    "maxGuests": 500,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Ruhrpott Food Truck Festival",
+    "date": "2024-08-05T17:00:00",
+    "address": {
+      "city": "Essen",
+      "country": "Deutschland",
+      "street": "Zeche Zollverein Platz 1",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Industrial Area"
+    },
+    "category": "food",
+    "description": "Entdecken Sie kulinarische Köstlichkeiten aus Food Trucks im Ruhrpott. Genießen Sie eine Vielfalt an Speisen, von regionalen Schmankerln bis zu internationalen Leckerbissen. Ein Fest für den Gaumen!",
+    "maxGuests": 800,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Cologne Art Fair",
+    "date": "2024-07-20T15:00:00",
+    "address": {
+      "city": "Köln",
+      "country": "Deutschland",
+      "street": "Messeplatz 1",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Cologne Exhibition Center"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die Welt der zeitgenössischen Kunst bei der Kunstmesse in Köln. Künstler aus aller Welt präsentieren ihre Werke in verschiedenen Stilrichtungen. Kunstliebhaber sind herzlich eingeladen!",
+    "maxGuests": 600,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Essen Beer Garden Night",
+    "date": "2024-06-12T18:30:00",
+    "address": {
+      "city": "Essen",
+      "country": "Deutschland",
+      "street": "Grugapark 1",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Botanical Beer Garden"
+    },
+    "category": "food",
+    "description": "Genießen Sie eine entspannte Biergarten-Nacht im Grünen. Lokale Brauereien präsentieren ihre besten Biere, begleitet von Live-Musik und kulinarischen Leckerbissen. Ein perfekter Sommerabend erwartet Sie!",
+    "maxGuests": 400,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Düsseldorf Marathon",
+    "date": "2024-05-28T09:00:00",
+    "address": {
+      "city": "Düsseldorf",
+      "country": "Deutschland",
+      "street": "Rheinuferpromenade",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": ""
+    },
+    "category": "sports",
+    "description": "Laufen Sie mit beim Düsseldorf Marathon und erleben Sie die einzigartige Atmosphäre entlang der Rheinuferpromenade. Egal ob Profi oder Hobbyläufer, jeder ist willkommen!",
+    "maxGuests": 10000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Düsseldorf Jazz Festival",
+    "date": "2024-08-18T19:45:00",
+    "address": {
+      "city": "Düsseldorf",
+      "country": "Deutschland",
+      "street": "Burgplatz 1",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Jazz Stage"
+    },
+    "category": "music",
+    "description": "Lassen Sie sich von den Klängen des Jazz verzaubern beim Düsseldorf Jazz Festival. Nationale und internationale Jazzkünstler bieten ein abwechslungsreiches Programm für Musikliebhaber.",
+    "maxGuests": 700,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Dortmund Culinary Tour",
+    "date": "2024-07-10T17:30:00",
+    "address": {
+      "city": "Dortmund",
+      "country": "Deutschland",
+      "street": "Westenhellweg 102",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "City Center"
+    },
+    "category": "food",
+    "description": "Erleben Sie eine kulinarische Tour durch Dortmunds gastronomische Szene. Probieren Sie lokale Spezialitäten und entdecken Sie versteckte kulinarische Geheimtipps. Ein Fest für Genießer!",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bochum Film Festival",
+    "date": "2024-06-25T18:00:00",
+    "address": {
+      "city": "Bochum",
+      "country": "Deutschland",
+      "street": "Kortumstraße 147",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Cinestar Bochum"
+    },
+    "category": "art",
+    "description": "Entdecken Sie aufstrebende Talente und beeindruckende Filme beim Bochum Film Festival. Ein abwechslungsreiches Programm erwartet Sie in einer einzigartigen Kinokulisse.",
+    "maxGuests": 350,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Oktoberfest Opening Ceremony",
+    "date": "2024-09-21T12:00:00",
+    "address": {
+      "city": "München",
+      "country": "Deutschland",
+      "street": "Theresienwiese",
+      "province": "Bayern",
+      "locationInfo": "Festzelt Schottenhamel"
+    },
+    "category": "food",
+    "description": "Feiern Sie die Eröffnung des Oktoberfests in München mit der traditionellen Zeremonie im Festzelt Schottenhamel. Genießen Sie bayerische Spezialitäten, Livemusik und die einzigartige Atmosphäre.",
+    "maxGuests": 5000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Nuremberg Castle Concert",
+    "date": "2024-08-08T19:00:00",
+    "address": {
+      "city": "Nürnberg",
+      "country": "Deutschland",
+      "street": "Burg 17",
+      "province": "Bayern",
+      "locationInfo": "Castle Courtyard"
+    },
+    "category": "music",
+    "description": "Erleben Sie ein außergewöhnliches Konzert im historischen Burghof von Nürnberg. Die Kombination aus klassischer Musik und der Kulisse des Nürnberger Schlosses verspricht ein unvergessliches Erlebnis.",
+    "maxGuests": 800,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bavarian Folk  music Festival",
+    "date": "2024-07-15T17:30:00",
+    "address": {
+      "city": "Passau",
+      "country": "Deutschland",
+      "street": "Innstraße 22",
+      "province": "Bayern",
+      "locationInfo": "Riverside Square"
+    },
+    "category": "music",
+    "description": "Tauchen Sie ein in die bayerische Tradition mit einem Folkloretanzfestival in Passau. Erleben Sie farbenfrohe Trachten, mitreißende Musik und traditionelle Tänze direkt am Flussufer.",
+    "maxGuests": 600,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Augsburg Beer & Bratwurst Festival",
+    "date": "2024-06-30T18:00:00",
+    "address": {
+      "city": "Augsburg",
+      "country": "Deutschland",
+      "street": "Rathausplatz 1",
+      "province": "Bayern",
+      "locationInfo": "Market Square"
+    },
+    "category": "food",
+    "description": "Genießen Sie die bayerische Gemütlichkeit beim Bier- und Bratwurstfestival in Augsburg. Lokale Brauereien präsentieren ihre besten Biere, begleitet von köstlichen Bratwurstspezialitäten.",
+    "maxGuests": 1000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Alpine Hiking Expedition",
+    "date": "2024-07-05T09:30:00",
+    "address": {
+      "city": "Garmisch-Partenkirchen",
+      "country": "Deutschland",
+      "street": "Hauptstraße 1",
+      "province": "Bayern",
+      "locationInfo": "Alps Base Camp"
+    },
+    "category": "sports",
+    "description": "Erleben Sie die atemberaubende Schönheit der bayerischen Alpen bei einer alpinen Wandertour ab Garmisch-Partenkirchen. Entdecken Sie malerische Landschaften und genießen Sie die frische Bergluft.",
+    "maxGuests": 50,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Regensburg Jazz Cruise",
+    "date": "2024-08-18T19:45:00",
+    "address": {
+      "city": "Regensburg",
+      "country": "Deutschland",
+      "street": "Schiffahrt-Donau-Straße 24",
+      "province": "Bayern",
+      "locationInfo": "Danube River"
+    },
+    "category": "music",
+    "description": "Genießen Sie Jazzmusik auf der Donau während einer entspannten Abendkreuzfahrt in Regensburg. Lassen Sie sich von den Klängen der Live-Jazzband und der malerischen Flusslandschaft verzaubern.",
+    "maxGuests": 120,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bavarian Opera Gala",
+    "date": "2024-07-12T20:00:00",
+    "address": {
+      "city": "München",
+      "country": "Deutschland",
+      "street": "Max-Joseph-Platz 2",
+      "province": "Bayern",
+      "locationInfo": "Bavarian State Opera"
+    },
+    "category": "music",
+    "description": "Erleben Sie eine glamouröse Operngala in der Bayerischen Staatsoper in München. Tauchen Sie ein in die Welt der Oper mit herausragenden Gesangsleistungen und opulenter Inszenierung.",
+    "maxGuests": 700,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bamberg Beer Tasting",
+    "date": "2024-06-20T17:30:00",
+    "address": {
+      "city": "Bamberg",
+      "country": "Deutschland",
+      "street": "Obere Königstraße 7",
+      "province": "Bayern",
+      "locationInfo": "Brewery Cellar"
+    },
+    "category": "food",
+    "description": "Entdecken Sie die Vielfalt der Biersorten bei einer Verkostung in einer traditionellen Brauerei in Bamberg. Erfahren Sie mehr über die Kunst des Bierbrauens und probieren Sie lokale Spezialitäten.",
+    "maxGuests": 80,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Nuremberg Castle Film Night",
+    "date": "2024-08-10T21:00:00",
+    "address": {
+      "city": "Nürnberg",
+      "country": "Deutschland",
+      "street": "Burg 17",
+      "province": "Bayern",
+      "locationInfo": "Castle Courtyard"
+    },
+    "category": "art",
+    "description": "Genießen Sie einen magischen Abend im Burghof von Nürnberg mit einer Filmvorführung im Schatten des Nürnberger Schlosses. Ein unvergessliches Erlebnis für Filmfans.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Augsburg Classical Concert",
+    "date": "2024-07-28T19:30:00",
+    "address": {
+      "city": "Augsburg",
+      "country": "Deutschland",
+      "street": "Maximilianstraße 8",
+      "province": "Bayern",
+      "locationInfo": "Augsburg Cathedral"
+    },
+    "category": "music",
+    "description": "Erleben Sie ein klassisches Konzert in der beeindruckenden Kulisse des Augsburger Doms. Die feierliche Atmosphäre und erstklassige Musik versprechen einen Abend voller kultureller Höhepunkte.",
+    "maxGuests": 400,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Berlin Fashion Week",
+    "date": "2024-07-15T14:00:00",
+    "address": {
+      "city": "Berlin",
+      "country": "Deutschland",
+      "street": "Strasse des 17. Juni",
+      "province": "Berlin",
+      "locationInfo": "Fashion Week Venue"
+    },
+    "category": "art",
+    "description": "Erleben Sie die neuesten Modetrends bei der Berlin Fashion Week. Lokale und internationale Designer präsentieren ihre Kollektionen in einer aufregenden und kreativen Atmosphäre.",
+    "maxGuests": 600,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hamburg Harbor Jazz Cruise",
+    "date": "2024-08-10T18:45:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "St. Pauli Landungsbrücken",
+      "province": "Hamburg",
+      "locationInfo": "Jazz Boat"
+    },
+    "category": "music",
+    "description": "Genießen Sie Jazzmusik auf einer malerischen Hafenrundfahrt durch den Hamburger Hafen. Lassen Sie sich von den Klängen der Live-Jazzband und der einzigartigen Hafenkulisse verzaubern.",
+    "maxGuests": 120,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Berlin Street Food Festival",
+    "date": "2024-06-25T17:00:00",
+    "address": {
+      "city": "Berlin",
+      "country": "Deutschland",
+      "street": "Markthalle Neun",
+      "province": "Berlin",
+      "locationInfo": "Street Food Area"
+    },
+    "category": "food",
+    "description": "Entdecken Sie die kulinarische Vielfalt Berlins beim Street Food Festival in der Markthalle Neun. Probieren Sie internationale Spezialitäten und lokale Leckerbissen.",
+    "maxGuests": 800,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hamburg Film Festival",
+    "date": "2024-07-05T20:30:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "Abaton Kino",
+      "province": "Hamburg",
+      "locationInfo": ""
+    },
+    "category": "art",
+    "description": "Genießen Sie Independent-Filme und innovative Kinoproduktionen beim Hamburg Film Festival im Abaton Kino. Tauchen Sie ein in die Welt des Films und entdecken Sie neue Perspektiven.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hamburg Opera Night",
+    "date": "2024-07-20T19:30:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "Opernplatz 1",
+      "province": "Hamburg",
+      "locationInfo": "State Opera Hamburg"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine glamouröse Opernnacht in der Staatsoper Hamburg. Erleben Sie hochkarätige Aufführungen und die prachtvolle Atmosphäre des Opernhauses.",
+    "maxGuests": 700,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Berlin Art Gallery Opening",
+    "date": "2024-06-12T16:00:00",
+    "address": {
+      "city": "Berlin",
+      "country": "Deutschland",
+      "street": "Auguststraße 50",
+      "province": "Berlin",
+      "locationInfo": "Contemporary Art Gallery"
+    },
+    "category": "art",
+    "description": "Besuchen Sie die Eröffnung der zeitgenössischen Kunstgalerie in Berlin. Entdecken Sie beeindruckende Kunstwerke und treffen Sie aufstrebende Künstler.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hamburg Wine Tasting",
+    "date": "2024-08-05T18:30:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "Elbphilharmonie Plaza",
+      "province": "Hamburg",
+      "locationInfo": "Wine Bar"
+    },
+    "category": "food",
+    "description": "Genießen Sie eine exklusive Weinverkostung mit Blick auf die Elbe. Probieren Sie erlesene Weine und erfahren Sie mehr über die Kunst der Weinherstellung.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Berlin Music Festival",
+    "date": "2024-07-28T15:00:00",
+    "address": {
+      "city": "Berlin",
+      "country": "Deutschland",
+      "street": "Olympiastadion Berlin",
+      "province": "Berlin",
+      "locationInfo": ""
+    },
+    "category": "music",
+    "description": "Erleben Sie ein eindrucksvolles Musikfestival im Olympiastadion Berlin. Internationale Künstler verschiedener Genres sorgen für ein unvergessliches Konzerterlebnis.",
+    "maxGuests": 15000,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hamburg Culinary Cruise",
+    "date": "2024-06-20T19:00:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "Landungsbrücken",
+      "province": "Hamburg",
+      "locationInfo": "Cruise Ship"
+    },
+    "category": "food",
+    "description": "Genießen Sie eine kulinarische Kreuzfahrt durch den Hamburger Hafen. Exquisite Gerichte und ein atemberaubender Sonnenuntergang erwarten Sie an Bord.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Erfurt Literature Festival",
+    "date": "2024-07-10T17:30:00",
+    "address": {
+      "city": "Erfurt",
+      "country": "Deutschland",
+      "street": "Domplatz 1",
+      "province": "Thüringen",
+      "locationInfo": "Stadtbibliothek Erfurt"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die Welt der Literatur beim Erfurter Literaturfestival. Autoren lesen aus ihren Werken, es gibt Diskussionen und die Möglichkeit zum Austausch mit Literaturinteressierten.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Magdeburg Riverfront Jazz Night",
+    "date": "2024-08-05T19:00:00",
+    "address": {
+      "city": "Magdeburg",
+      "country": "Deutschland",
+      "street": "Elbauenpark",
+      "province": "Sachsen-Anhalt",
+      "locationInfo": "Open Air Stage"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine entspannte Jazznacht am Ufer der Elbe in Magdeburg. Lokale und internationale Jazzbands sorgen für eine musikalische Atmosphäre unter freiem Himmel.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Dresden Historical Walking Tour",
+    "date": "2024-06-15T14:30:00",
+    "address": {
+      "city": "Dresden",
+      "country": "Deutschland",
+      "street": "Theaterplatz 1",
+      "province": "Sachsen",
+      "locationInfo": "Historical City Center"
+    },
+    "category": "art",
+    "description": "Entdecken Sie die faszinierende Geschichte von Dresden bei einer historischen Stadtführung. Besuchen Sie bedeutende Sehenswürdigkeiten und erfahren Sie mehr über die Vergangenheit der Stadt.",
+    "maxGuests": 50,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Weimar Classical Music Concert",
+    "date": "2024-07-20T20:00:00",
+    "address": {
+      "city": "Weimar",
+      "country": "Deutschland",
+      "street": "Goetheplatz 2",
+      "province": "Thüringen",
+      "locationInfo": "Weimarhalle"
+    },
+    "category": "music",
+    "description": "Genießen Sie ein klassisches Konzert in der kulturellen Stadt Weimar. Die Weimarhalle bietet eine erstklassige Kulisse für dieses musikalische Erlebnis.",
+    "maxGuests": 400,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Leipzig Book Fair",
+    "date": "2024-06-30T09:00:00",
+    "address": {
+      "city": "Leipzig",
+      "country": "Deutschland",
+      "street": "Messe-Allee 1",
+      "province": "Sachsen",
+      "locationInfo": "Leipzig Messe"
+    },
+    "category": "art",
+    "description": "Besuchen Sie die Leipziger Buchmesse und entdecken Sie die Vielfalt der Literatur. Autoren, Verlage und Literaturfans treffen sich zu Lesungen, Diskussionen und Buchpräsentationen.",
+    "maxGuests": 500,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Halle Food and Wine Festival",
+    "date": "2024-08-18T17:00:00",
+    "address": {
+      "city": "Halle",
+      "country": "Deutschland",
+      "street": "Marktplatz 1",
+      "province": "Sachsen-Anhalt",
+      "locationInfo": "Market Square"
+    },
+    "category": "food",
+    "description": "Erleben Sie kulinarische Genüsse beim Food and Wine Festival auf dem Marktplatz von Halle. Probieren Sie lokale Spezialitäten und erlesene Weine aus der Region.",
+    "maxGuests": 600,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Chemnitz Film Night",
+    "date": "2024-07-05T21:00:00",
+    "address": {
+      "city": "Chemnitz",
+      "country": "Deutschland",
+      "street": "Theaterstraße 3",
+      "province": "Sachsen",
+      "locationInfo": "Opernhaus Chemnitz"
+    },
+    "category": "art",
+    "description": "Genießen Sie eine Filmnacht im Opernhaus von Chemnitz. Entspannen Sie sich in elegantem Ambiente und erleben Sie Filmhighlights auf der großen Leinwand.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Dessau Bauhaus Exhibition",
+    "date": "2024-07-28T14:00:00",
+    "address": {
+      "city": "Dessau",
+      "country": "Deutschland",
+      "street": "Gropiusallee 38",
+      "province": "Sachsen-Anhalt",
+      "locationInfo": "Bauhaus Museum Dessau"
+    },
+    "category": "art",
+    "description": "Entdecken Sie die Welt des Bauhauses bei einer Ausstellung im Bauhaus Museum Dessau. Tauchen Sie ein in die innovative Kunst- und Designbewegung der Moderne.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Zwickau Classical Car Show",
+    "date": "2024-06-20T12:00:00",
+    "address": {
+      "city": "Zwickau",
+      "country": "Deutschland",
+      "street": "Audi Ring 1",
+      "province": "Sachsen",
+      "locationInfo": "August Horch Museum"
+    },
+    "category": "art",
+    "description": "Erleben Sie die Faszination klassischer Autos bei einer Ausstellung im August Horch Museum in Zwickau. Bewundern Sie historische Fahrzeuge und erfahren Sie mehr über die Geschichte der Mobilität.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Schlossfestspiele am Merseburger Dom",
+    "date": "2024-08-25T18:00:00",
+    "address": {
+      "city": "Merseburg",
+      "country": "Deutschland",
+      "street": "Domplatz 9",
+      "province": "Sachsen-Anhalt",
+      "locationInfo": "Merseburger Dom"
+    },
+    "category": "food",
+    "description": "Tauchen Sie ein in die Welt der Kultur bei den Schlossfestspielen am Merseburger Dom. Genießen Sie klassische Musik, Theateraufführungen und ein festliches Ambiente vor der beeindruckenden Kulisse des Merseburger Doms.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Donaueschingen Classical Music Festival",
+    "date": "2024-07-18T19:30:00",
+    "address": {
+      "city": "Donaueschingen",
+      "country": "Deutschland",
+      "street": "Schlosspark 1",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Schloss Donaueschingen"
+    },
+    "category": "music",
+    "description": "Erleben Sie ein beeindruckendes Klassikmusikfestival im Schlosspark von Donaueschingen. Internationale Künstler präsentieren Meisterwerke der klassischen Musik vor der historischen Kulisse des Schlosses.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Leverkusen Jazz Night",
+    "date": "2024-08-12T20:00:00",
+    "address": {
+      "city": "Leverkusen",
+      "country": "Deutschland",
+      "street": "Friedrich-Ebert-Platz 1",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Forum Leverkusen"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine mitreißende Jazznacht im Forum Leverkusen. Lokale und internationale Jazzkünstler bieten ein abwechslungsreiches Programm für alle Jazzliebhaber.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Wuppertal  music Festival",
+    "date": "2024-07-30T18:30:00",
+    "address": {
+      "city": "Wuppertal",
+      "country": "Deutschland",
+      "street": "Schwebebahnstraße 1",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Historische Stadthalle Wuppertal"
+    },
+    "category": "music",
+    "description": "Erleben Sie die Faszination des Tanzes beim Wuppertaler Tanzfestival. Verschiedene Tanzstile und beeindruckende Choreographien begeistern das Publikum in der Historischen Stadthalle.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Mönchengladbach Beer and BBQ Festival",
+    "date": "2024-08-05T17:00:00",
+    "address": {
+      "city": "Mönchengladbach",
+      "country": "Deutschland",
+      "street": "Hindenburgstraße 5",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Kaiser-Friedrich-Halle"
+    },
+    "category": "food",
+    "description": "Genießen Sie eine vielfältige Auswahl an Bieren und köstlichem BBQ auf dem Beer and BBQ Festival in der Kaiser-Friedrich-Halle. Ein Fest für Bier- und Grillliebhaber.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Schwäbisch-Hall Open-Air Theater",
+    "date": "2024-07-22T20:15:00",
+    "address": {
+      "city": "Schwäbisch-Hall",
+      "country": "Deutschland",
+      "street": "Lange Straße 49",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Freilichtspiele Schwäbisch-Hall"
+    },
+    "category": "art",
+    "description": "Erleben Sie Theaterkunst unter freiem Himmel bei den Freilichtspielen Schwäbisch-Hall. Eine einzigartige Atmosphäre und mitreißende Aufführungen warten auf die Besucher.",
+    "maxGuests": 400,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hannover Comedy Night",
+    "date": "2024-08-15T20:00:00",
+    "address": {
+      "city": "Hannover",
+      "country": "Deutschland",
+      "street": "Georgstraße 50",
+      "province": "Niedersachsen",
+      "locationInfo": "GOP Varieté-Theater"
+    },
+    "category": "art",
+    "description": "Lachen Sie herzhaft bei der Comedy Night im GOP Varieté-Theater in Hannover. Bekannte Comedians sorgen für einen unterhaltsamen Abend voller humorvoller Momente.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Oldenburg Maritime Festival",
+    "date": "2024-07-28T11:00:00",
+    "address": {
+      "city": "Oldenburg",
+      "country": "Deutschland",
+      "street": "Schlossplatz 5",
+      "province": "Niedersachsen",
+      "locationInfo": "Schloss Oldenburg"
+    },
+    "category": "food",
+    "description": "Erleben Sie das Oldenburger Maritime Festival am Schlossplatz. Traditionelle maritime Aktivitäten, Live-Musik und kulinarische Genüsse erwarten die Besucher.",
+    "maxGuests": 500,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Göttingen Film Festival",
+    "date": "2024-07-18T18:30:00",
+    "address": {
+      "city": "Göttingen",
+      "country": "Deutschland",
+      "street": "Wilhelmsplatz 1",
+      "province": "Niedersachsen",
+      "locationInfo": "Alte Mensa Göttingen"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die Welt des Films beim Göttingen Film Festival in der Alten Mensa. Independent-Filme und kreative Produktionen versprechen einen spannenden Kinogenuss.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Lüneburg Food Truck Fair",
+    "date": "2024-08-03T16:00:00",
+    "address": {
+      "city": "Lüneburg",
+      "country": "Deutschland",
+      "street": "Am Sande 1",
+      "province": "Niedersachsen",
+      "locationInfo": "Am Sande"
+    },
+    "category": "food",
+    "description": "Genießen Sie kulinarische Vielfalt beim Food Truck Fair in Lüneburg. Verschiedene Food Trucks bieten eine breite Auswahl an internationalen Speisen und Leckereien.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Osnabrück Rock Concert",
+    "date": "2024-07-22T21:00:00",
+    "address": {
+      "city": "Osnabrück",
+      "country": "Deutschland",
+      "street": "Heger-Tor-Wall 4",
+      "province": "Niedersachsen",
+      "locationInfo": "Rosenhof Osnabrück"
+    },
+    "category": "music",
+    "description": "Erleben Sie energiegeladene Rockmusik im Rosenhof Osnabrück. Lokale und internationale Bands sorgen für eine mitreißende Atmosphäre und unvergessliche Konzertmomente.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hildesheim Arts and Crafts Fair",
+    "date": "2024-08-12T14:00:00",
+    "address": {
+      "city": "Hildesheim",
+      "country": "Deutschland",
+      "street": "Marktplatz 1",
+      "province": "Niedersachsen",
+      "locationInfo": "Historischer Marktplatz"
+    },
+    "category": "art",
+    "description": "Stöbern Sie durch die Kunsthandwerksmesse auf dem historischen Marktplatz von Hildesheim. Kreative Arbeiten von regionalen Künstlern warten darauf, entdeckt zu werden.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Celle Historic Walking Tour",
+    "date": "2024-07-30T10:30:00",
+    "address": {
+      "city": "Celle",
+      "country": "Deutschland",
+      "street": "Markt 14",
+      "province": "Niedersachsen",
+      "locationInfo": "Celle Altstadt"
+    },
+    "category": "art",
+    "description": "Entdecken Sie die Geschichte von Celle bei einer historischen Stadtführung durch die Altstadt. Besuchen Sie beeindruckende historische Gebäude und erfahren Sie mehr über die Vergangenheit der Stadt.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Salzgitter Beer Garden Festival",
+    "date": "2024-08-05T17:30:00",
+    "address": {
+      "city": "Salzgitter",
+      "country": "Deutschland",
+      "street": "Schützenallee 35",
+      "province": "Niedersachsen",
+      "locationInfo": "Salzgittersee Biergarten"
+    },
+    "category": "food",
+    "description": "Genießen Sie eine entspannte Atmosphäre im Biergarten am Salzgittersee. Probieren Sie lokale Biere und kulinarische Köstlichkeiten beim Beer Garden Festival.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Wolfsburg Auto Show",
+    "date": "2024-07-25T12:00:00",
+    "address": {
+      "city": "Wolfsburg",
+      "country": "Deutschland",
+      "street": "Berliner Ring 2",
+      "province": "Niedersachsen",
+      "locationInfo": "Volkswagen Arena"
+    },
+    "category": "art",
+    "description": "Erleben Sie die neuesten Automodelle und Innovationen auf der Wolfsburg Auto Show in der Volkswagen Arena. Eine spannende Ausstellung für Autoenthusiasten.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Kiel Sailing Regatta",
+    "date": "2024-08-18T13:00:00",
+    "address": {
+      "city": "Kiel",
+      "country": "Deutschland",
+      "street": "Kiellinie",
+      "province": "Schleswig-Holstein",
+      "locationInfo": "Kieler Förde"
+    },
+    "category": "sports",
+    "description": "Erleben Sie die Faszination des Segelsports bei der Kiel Sailing Regatta. Segelboote aus aller Welt kämpfen um den Sieg in der malerischen Kulisse der Kieler Förde.",
+    "maxGuests": 500,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Lübeck Music and Art Festival",
+    "date": "2024-07-28T16:30:00",
+    "address": {
+      "city": "Lübeck",
+      "country": "Deutschland",
+      "street": "Mühlenstraße 3",
+      "province": "Schleswig-Holstein",
+      "locationInfo": "Museum Behnhaus Drägerhaus"
+    },
+    "category": "music",
+    "description": "Tauchen Sie ein in die Welt der Musik und Kunst beim Lübeck Music and Art Festival. Konzerte, Ausstellungen und kreative Performances warten auf die Besucher.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Flensburg Beer Tasting",
+    "date": "2024-08-05T19:00:00",
+    "address": {
+      "city": "Flensburg",
+      "country": "Deutschland",
+      "street": "Rote Straße 30",
+      "province": "Schleswig-Holstein",
+      "locationInfo": "Brauerei Flensburg"
+    },
+    "category": "food",
+    "description": "Genießen Sie eine Bierverkostung in der Brauerei Flensburg. Entdecken Sie die Vielfalt lokaler Biere und erfahren Sie mehr über die Kunst des Bierbrauens.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Schwerin Castle Night",
+    "date": "2024-07-22T21:15:00",
+    "address": {
+      "city": "Schwerin",
+      "country": "Deutschland",
+      "street": "Lennéstraße 1",
+      "province": "Mecklenburg-Vorpommern",
+      "locationInfo": "Schweriner Schloss"
+    },
+    "category": "art",
+    "description": "Erleben Sie eine zauberhafte Nacht am Schweriner Schloss. Illumination, Musik und kulturelle Darbietungen schaffen eine einzigartige Atmosphäre rund um das imposante Schloss.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Rostock Seafood Festival",
+    "date": "2024-08-12T12:00:00",
+    "address": {
+      "city": "Rostock",
+      "country": "Deutschland",
+      "street": "Am Strom 126",
+      "province": "Mecklenburg-Vorpommern",
+      "locationInfo": "Warnemünde Hafen"
+    },
+    "category": "food",
+    "description": "Probieren Sie frische Meeresfrüchte und lokale Spezialitäten beim Rostock Seafood Festival im Hafen von Warnemünde. Ein Fest für Liebhaber köstlicher Meeresküche.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Kiel Triathlon Challenge",
+    "date": "2024-07-30T08:00:00",
+    "address": {
+      "city": "Kiel",
+      "country": "Deutschland",
+      "street": "Holstenplatz 1",
+      "province": "Schleswig-Holstein",
+      "locationInfo": "Holstenplatz"
+    },
+    "category": "sports",
+    "description": "Nehmen Sie die Herausforderung beim Kiel Triathlon an. Schwimmen, Radfahren und Laufen durch die malerische Stadt Kiel bieten sportliche Spannung und Gemeinschaftsgeist.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Lübeck Street Art Exhibition",
+    "date": "2024-08-18T14:30:00",
+    "address": {
+      "city": "Lübeck",
+      "country": "Deutschland",
+      "street": "Königstraße 6",
+      "province": "Schleswig-Holstein",
+      "locationInfo": "Kunsthalle St. Annen"
+    },
+    "category": "art",
+    "description": "Erleben Sie die Vielfalt der Street Art in einer Ausstellung in der Kunsthalle St. Annen in Lübeck. Kreative Werke von regionalen und internationalen Künstlern warten darauf, entdeckt zu werden.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Stralsund Maritime History Tour",
+    "date": "2024-07-25T11:00:00",
+    "address": {
+      "city": "Stralsund",
+      "country": "Deutschland",
+      "street": "Alter Markt 9",
+      "province": "Mecklenburg-Vorpommern",
+      "locationInfo": "Stralsunder Rathaus"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die maritime Geschichte von Stralsund bei einer historischen Stadtführung. Besuchen Sie historische Orte und erfahren Sie mehr über die Seefahrtsvergangenheit der Stadt.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Flensburg Nordic Film Festival",
+    "date": "2024-08-03T18:00:00",
+    "address": {
+      "city": "Flensburg",
+      "country": "Deutschland",
+      "street": "Norderstraße 15",
+      "province": "Schleswig-Holstein",
+      "locationInfo": "Volksbad Flensburg"
+    },
+    "category": "art",
+    "description": "Genießen Sie nordische Filme beim Flensburg Nordic Film Festival im Volksbad. Entdecken Sie beeindruckende Geschichten aus Skandinavien auf der großen Leinwand.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bremen International Jazz Festival",
+    "date": "2024-08-15T19:30:00",
+    "address": {
+      "city": "Bremen",
+      "country": "Deutschland",
+      "street": "Teerhof 59",
+      "province": "Bremen",
+      "locationInfo": "Glocke Bremen"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine beeindruckende Jazznacht beim International Jazz Festival in der Glocke Bremen. Weltklasse-Jazzmusiker bieten ein abwechslungsreiches Programm für Musikliebhaber.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Mainz Wine Tasting Event",
+    "date": "2024-08-02T18:00:00",
+    "address": {
+      "city": "Mainz",
+      "country": "Deutschland",
+      "street": "Weißliliengasse 1",
+      "province": "Rheinland-Pfalz",
+      "locationInfo": "Kurfürstliches Schloss Mainz"
+    },
+    "category": "food",
+    "description": "Entdecken Sie die Vielfalt der Weine beim Wine Tasting Event im Kurfürstlichen Schloss Mainz. Erfahrene Winzer präsentieren erlesene Weine aus der Region.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Saarbrücken Outdoor Art Exhibition",
+    "date": "2024-07-25T11:30:00",
+    "address": {
+      "city": "Saarbrücken",
+      "country": "Deutschland",
+      "street": "Bismarckstraße 11",
+      "province": "Saarland",
+      "locationInfo": "Stadtgalerie Saarbrücken"
+    },
+    "category": "art",
+    "description": "Erleben Sie Kunst unter freiem Himmel bei der Outdoor Art Exhibition in der Stadtgalerie Saarbrücken. Kreative Werke regionaler und internationaler Künstler warten darauf, entdeckt zu werden.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bremen Food Truck Festival",
+    "date": "2024-08-10T17:00:00",
+    "address": {
+      "city": "Bremen",
+      "country": "Deutschland",
+      "street": "Schlachte 45",
+      "province": "Bremen",
+      "locationInfo": "Die Kompanistadt"
+    },
+    "category": "food",
+    "description": "Genießen Sie kulinarische Köstlichkeiten beim Food Truck Festival in Die Kompanistadt in Bremen. Verschiedene Food Trucks bieten eine vielfältige Auswahl an internationalen Speisen.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Ludwigshafen Sports Challenge",
+    "date": "2024-07-20T14:00:00",
+    "address": {
+      "city": "Ludwigshafen",
+      "country": "Deutschland",
+      "street": "Berliner Platz 1",
+      "province": "Rheinland-Pfalz",
+      "locationInfo": "Friedrich-Ebert-Halle Ludwigshafen"
+    },
+    "category": "sports",
+    "description": "Nehmen Sie an der Sports Challenge in der Friedrich-Ebert-Halle Ludwigshafen teil. Verschiedene sportliche Aktivitäten und Wettbewerbe bieten Spaß und Bewegung für alle Teilnehmer.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bremen Acoustic Music Night",
+    "date": "2024-08-05T20:00:00",
+    "address": {
+      "city": "Bremen",
+      "country": "Deutschland",
+      "street": "Sögestraße 50",
+      "province": "Bremen",
+      "locationInfo": "Lila Eule"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine intime und akustische Musiknacht in der Lila Eule in Bremen. Lokale Singer-Songwriter präsentieren ihre Songs in einer gemütlichen Atmosphäre.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Speyer Culinary Arts Expo",
+    "date": "2024-07-30T15:30:00",
+    "address": {
+      "city": "Speyer",
+      "country": "Deutschland",
+      "street": "Domplatz 1",
+      "province": "Rheinland-Pfalz",
+      "locationInfo": "Historischer Domplatz Speyer"
+    },
+    "category": "art",
+    "description": "Tauchen Sie ein in die Welt der kulinarischen Künste bei der Culinary Arts Expo auf dem Historischen Domplatz in Speyer. Kochshows, Verkostungen und kreative Präsentationen erwarten Sie.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Saarbrücken Music Festival",
+    "date": "2024-08-18T19:00:00",
+    "address": {
+      "city": "Saarbrücken",
+      "country": "Deutschland",
+      "street": "Franz-Josef-Röder-Straße 17",
+      "province": "Saarland",
+      "locationInfo": "Congresshalle Saarbrücken"
+    },
+    "category": "music",
+    "description": "Erleben Sie ein vielfältiges Musikfestival in der Congresshalle Saarbrücken. Verschiedene Genres und talentierte Künstler sorgen für eine mitreißende Musiknacht.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bremerhaven Seafood Cooking Class",
+    "date": "2024-08-12T16:30:00",
+    "address": {
+      "city": "Bremerhaven",
+      "country": "Deutschland",
+      "street": "Havenwelten 1",
+      "province": "Bremen",
+      "locationInfo": "Klimahaus Bremerhaven"
+    },
+    "category": "food",
+    "description": "Lernen Sie die Kunst des Meeresfrüchtekochens bei einer Seafood Cooking Class im Klimahaus Bremerhaven. Erfahrene Köche teilen ihre Tipps und Tricks für köstliche Fischgerichte.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Saarbrücken Soccer Tournament",
+    "date": "2024-08-08T14:00:00",
+    "address": {
+      "city": "Saarbrücken",
+      "country": "Deutschland",
+      "street": "Am Sportpark 9",
+      "province": "Saarland",
+      "locationInfo": "Ludwigsparkstadion"
+    },
+    "category": "sports",
+    "description": "Nehmen Sie teil am Saarbrücken Soccer Tournament im Ludwigsparkstadion. Teams aus der Region kämpfen um den Titel in diesem mitreißenden Fußballturnier.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Stuttgart Classical Music Gala",
+    "date": "2024-08-15T19:00:00",
+    "address": {
+      "city": "Stuttgart",
+      "country": "Deutschland",
+      "street": "Liederhalle 1",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Liederhalle Stuttgart"
+    },
+    "category": "music",
+    "description": "Tauchen Sie ein in die Welt der Klassik bei der Stuttgart Classical Music Gala in der Liederhalle. Ein beeindruckendes Konzert mit renommierten Orchestern und Solisten erwartet Sie.",
+    "maxGuests": 400,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Frankfurt Street Food Festival",
+    "date": "2024-08-05T17:30:00",
+    "address": {
+      "city": "Frankfurt",
+      "country": "Deutschland",
+      "street": "Zeil 1",
+      "province": "Hessen",
+      "locationInfo": "MyZeil Frankfurt"
+    },
+    "category": "food",
+    "description": "Genießen Sie kulinarische Vielfalt beim Street Food Festival in MyZeil Frankfurt. Food Trucks bieten eine breite Auswahl an internationalen Speisen und Leckereien.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Heidelberg Art Walk",
+    "date": "2024-07-28T14:00:00",
+    "address": {
+      "city": "Heidelberg",
+      "country": "Deutschland",
+      "street": "Hauptstraße 232",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Alte Brücke Heidelberg"
+    },
+    "category": "art",
+    "description": "Erkunden Sie die Kunstszene von Heidelberg beim Art Walk entlang der Alten Brücke. Kreative Werke von lokalen Künstlern schmücken die historische Kulisse.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Wiesbaden Wine Tasting Event",
+    "date": "2024-08-12T18:30:00",
+    "address": {
+      "city": "Wiesbaden",
+      "country": "Deutschland",
+      "street": "Marktplatz 1",
+      "province": "Hessen",
+      "locationInfo": "Schlossplatz Wiesbaden"
+    },
+    "category": "food",
+    "description": "Entdecken Sie erlesene Weine beim Wine Tasting Event auf dem Schlossplatz Wiesbaden. Weinexperten teilen ihr Wissen und präsentieren exquisite Tropfen aus der Region.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Karlsruhe Sports Expo",
+    "date": "2024-07-22T11:00:00",
+    "address": {
+      "city": "Karlsruhe",
+      "country": "Deutschland",
+      "street": "Festplatz 3",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Messe Karlsruhe"
+    },
+    "category": "sports",
+    "description": "Erleben Sie die neuesten Trends im Sport auf der Sports Expo in der Messe Karlsruhe. Ausstellungen, Workshops und Sportaktivitäten für alle Altersgruppen.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Darmstadt Jazz Night",
+    "date": "2024-08-18T20:00:00",
+    "address": {
+      "city": "Darmstadt",
+      "country": "Deutschland",
+      "street": "Ludwigshöhstraße 43",
+      "province": "Hessen",
+      "locationInfo": "Centralstation Darmstadt"
+    },
+    "category": "music",
+    "description": "Genießen Sie eine mitreißende Jazznacht in der Centralstation Darmstadt. Lokale und internationale Jazzkünstler bieten ein abwechslungsreiches Programm für Jazzliebhaber.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Freiburg Culinary Arts Fair",
+    "date": "2024-08-03T15:30:00",
+    "address": {
+      "city": "Freiburg",
+      "country": "Deutschland",
+      "street": "Münsterplatz 28",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Münsterplatz Freiburg"
+    },
+    "category": "food",
+    "description": "Tauchen Sie ein in die Welt der kulinarischen Künste auf dem Münsterplatz Freiburg. Köche präsentieren ihre Fähigkeiten und verwöhnen die Besucher mit köstlichen Gerichten.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hanau Outdoor Sculpture Exhibition",
+    "date": "2024-07-30T14:00:00",
+    "address": {
+      "city": "Hanau",
+      "country": "Deutschland",
+      "street": "Philippsruher Allee 45",
+      "province": "Hessen",
+      "locationInfo": "Schloss Philippsruhe"
+    },
+    "category": "art",
+    "description": "Erleben Sie faszinierende Skulpturen im Freien bei der Outdoor Sculpture Exhibition im Schloss Philippsruhe Hanau. Künstler präsentieren ihre Werke inmitten der historischen Kulisse.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Stuttgart Tennis Open",
+    "date": "2024-08-08T12:00:00",
+    "address": {
+      "city": "Stuttgart",
+      "country": "Deutschland",
+      "street": "Mercedesstraße 73",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Porsche-Arena Stuttgart"
+    },
+    "category": "sports",
+    "description": "Verfolgen Sie spannende Tennisspiele bei den Stuttgart Tennis Open in der Porsche-Arena. Weltklasse-Tennisspieler kämpfen um den Titel in diesem prestigeträchtigen Turnier.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Wetzlar Film Festival",
+    "date": "2024-08-10T18:30:00",
+    "address": {
+      "city": "Wetzlar",
+      "country": "Deutschland",
+      "street": "Domplatz 8",
+      "province": "Hessen",
+      "locationInfo": "Neuer Dom Wetzlar"
+    },
+    "category": "art",
+    "description": "Erleben Sie fesselnde Filme beim Wetzlar Film Festival im Neuen Dom. Filmvorführungen, Diskussionen und einzigartige Unterhaltung warten auf die Besucher.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hannover Marathon",
+    "date": "2024-09-15T09:00:00",
+    "address": {
+      "city": "Hannover",
+      "country": "Deutschland",
+      "street": "Rathausplatz 1",
+      "province": "Niedersachsen",
+      "locationInfo": "Start am Neuen Rathaus"
+    },
+    "category": "sports",
+    "description": "Laufen Sie mit beim Hannover Marathon und erleben Sie eine einzigartige Strecke durch die historische Innenstadt. Ein Event für Laufbegeisterte aller Altersgruppen.",
+    "maxGuests": 500,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Düsseldorf Cycling Tour",
+    "date": "2024-09-08T10:30:00",
+    "address": {
+      "city": "Düsseldorf",
+      "country": "Deutschland",
+      "street": "Burgplatz 2",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Start am Burgplatz"
+    },
+    "category": "sports",
+    "description": "Genießen Sie eine malerische Fahrradtour durch Düsseldorf bei der Düsseldorf Cycling Tour. Die Strecke führt entlang des Rheins und durch grüne Parks.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Leipzig Climbing Challenge",
+    "date": "2024-09-22T13:00:00",
+    "address": {
+      "city": "Leipzig",
+      "country": "Deutschland",
+      "street": "Richard-Wagner-Platz 1",
+      "province": "Sachsen",
+      "locationInfo": "Kletterhalle Leipzig"
+    },
+    "category": "sports",
+    "description": "Nehmen Sie an der Leipzig Climbing Challenge in der Kletterhalle teil. Herausfordernde Routen und spannende Kletterwettkämpfe für alle Könnerstufen.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Stuttgart Tennis Tournament",
+    "date": "2024-09-10T11:00:00",
+    "address": {
+      "city": "Stuttgart",
+      "country": "Deutschland",
+      "street": "Porscheplatz 1",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Porsche-Arena Stuttgart"
+    },
+    "category": "sports",
+    "description": "Verfolgen Sie packende Tennisspiele beim Stuttgart Tennis Tournament in der Porsche-Arena. Internationale Tennisstars kämpfen um den Turniersieg.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bremen Sailing Regatta",
+    "date": "2024-09-18T14:30:00",
+    "address": {
+      "city": "Bremen",
+      "country": "Deutschland",
+      "street": "Schlachte 23",
+      "province": "Bremen",
+      "locationInfo": "Weserufer Bremen"
+    },
+    "category": "sports",
+    "description": "Erleben Sie die Faszination des Segelsports bei der Bremen Sailing Regatta. Segelboote aus verschiedenen Klassen nehmen an diesem maritimen Event teil.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Essen Triathlon",
+    "date": "2024-09-12T08:00:00",
+    "address": {
+      "city": "Essen",
+      "country": "Deutschland",
+      "street": "Baldeneysee",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Start am Baldeneysee"
+    },
+    "category": "sports",
+    "description": "Bewältigen Sie die Herausforderungen des Essen Triathlons am malerischen Baldeneysee. Schwimmen, Radfahren und Laufen für Sportenthusiasten.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Nürnberg Football Championship",
+    "date": "2024-09-25T15:00:00",
+    "address": {
+      "city": "Nürnberg",
+      "country": "Deutschland",
+      "street": "Max-Morlock-Platz 1",
+      "province": "Bayern",
+      "locationInfo": "Max-Morlock-Stadion"
+    },
+    "category": "sports",
+    "description": "Erleben Sie spannende Fußballspiele beim Nürnberg Football Championship im Max-Morlock-Stadion. Lokale Teams kämpfen um den Titel.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Magdeburg Martial Arts Expo",
+    "date": "2024-09-20T12:00:00",
+    "address": {
+      "city": "Magdeburg",
+      "country": "Deutschland",
+      "street": "Elbauenpark 1",
+      "province": "Sachsen-Anhalt",
+      "locationInfo": "Messe Magdeburg"
+    },
+    "category": "sports",
+    "description": "Tauchen Sie ein in die Welt der Kampfkünste bei der Martial Arts Expo in der Messe Magdeburg. Vorführungen, Workshops und spannende Wettkämpfe erwarten Sie.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Mannheim Urban Cycling Race",
+    "date": "2024-09-15T16:30:00",
+    "address": {
+      "city": "Mannheim",
+      "country": "Deutschland",
+      "street": "Friedrichsplatz 1",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Friedrichsplatz Mannheim"
+    },
+    "category": "sports",
+    "description": "Erleben Sie actiongeladene Radrennen beim Mannheim Urban Cycling Race auf dem Friedrichsplatz. Spektakuläre Stunts und rasante Fahrten durch die Innenstadt.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Duisburg Fitness Challenge",
+    "date": "2024-09-10T09:30:00",
+    "address": {
+      "city": "Duisburg",
+      "country": "Deutschland",
+      "street": "Landschaftspark Duisburg-Nord",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Start am Landschaftspark"
+    },
+    "category": "sports",
+    "description": "Stellen Sie sich der Duisburg Fitness Challenge im Landschaftspark. Verschiedene Fitnessstationen und Herausforderungen für ein aktives Wochenende.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Berlin Street Food Market",
+    "date": "2024-10-05T17:00:00",
+    "address": {
+      "city": "Berlin",
+      "country": "Deutschland",
+      "street": "Markthalle Neun",
+      "province": "Berlin",
+      "locationInfo": "Eisenbahnstraße 42/43"
+    },
+    "category": "food",
+    "description": "Erleben Sie kulinarische Vielfalt auf dem Berlin Street Food Market in der Markthalle Neun. Food Stalls bieten internationale Spezialitäten und lokale Köstlichkeiten.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hamburg Seafood Festival",
+    "date": "2024-10-12T18:30:00",
+    "address": {
+      "city": "Hamburg",
+      "country": "Deutschland",
+      "street": "Fischmarkt 1",
+      "province": "Hamburg",
+      "locationInfo": "Fischmarkt Hamburg"
+    },
+    "category": "food",
+    "description": "Genießen Sie frische Meeresfrüchte beim Hamburg Seafood Festival am Fischmarkt. Verschiedene Stände bieten delikate Fischgerichte und maritime Leckereien.",
+    "maxGuests": 250,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Munich Beer and Pretzel Fest",
+    "date": "2024-10-20T16:00:00",
+    "address": {
+      "city": "Munich",
+      "country": "Deutschland",
+      "street": "Theresienwiese",
+      "province": "Bayern",
+      "locationInfo": "Theresienwiese Munich"
+    },
+    "category": "food",
+    "description": "Feiern Sie bayerische Tradition beim Munich Beer and Pretzel Fest auf der Theresienwiese. Genießen Sie Bier, Brezeln und bayerische Schmankerl.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Cologne Chocolate Tasting",
+    "date": "2024-10-15T14:30:00",
+    "address": {
+      "city": "Cologne",
+      "country": "Deutschland",
+      "street": "Am Schokoladenmuseum 1a",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Schokoladenmuseum Köln"
+    },
+    "category": "food",
+    "description": "Entdecken Sie die Welt der Schokolade beim Cologne Chocolate Tasting im Schokoladenmuseum Köln. Probieren Sie verschiedene Sorten und erfahren Sie mehr über die Herstellung.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Frankfurt Wine and Cheese Fair",
+    "date": "2024-10-25T17:00:00",
+    "address": {
+      "city": "Frankfurt",
+      "country": "Deutschland",
+      "street": "Paulsplatz 9",
+      "province": "Hessen",
+      "locationInfo": "Römer Frankfurt"
+    },
+    "category": "food",
+    "description": "Genießen Sie edle Weine und köstlichen Käse auf der Frankfurt Wine and Cheese Fair am Römer. Erleben Sie eine kulinarische Reise durch verschiedene Geschmacksrichtungen.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Dortmund International Food Bazaar",
+    "date": "2024-10-18T16:30:00",
+    "address": {
+      "city": "Dortmund",
+      "country": "Deutschland",
+      "street": "Westfalenpark 3",
+      "province": "Nordrhein-Westfalen",
+      "locationInfo": "Westfalenpark Dortmund"
+    },
+    "category": "food",
+    "description": "Probieren Sie internationale Köstlichkeiten beim Dortmund International Food Bazaar im Westfalenpark. Verschiedene Stände bieten exotische Speisen aus aller Welt.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Stuttgart Oktoberfest Feast",
+    "date": "2024-10-22T19:00:00",
+    "address": {
+      "city": "Stuttgart",
+      "country": "Deutschland",
+      "street": "Cannstatter Wasen",
+      "province": "Baden-Württemberg",
+      "locationInfo": "Cannstatter Wasen Stuttgart"
+    },
+    "category": "food",
+    "description": "Feiern Sie das Stuttgart Oktoberfest Feast auf dem Cannstatter Wasen. Traditionelles Essen, Live-Musik und bayerische Gemütlichkeit erwarten Sie.",
+    "maxGuests": 300,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Nuremberg Beer Garden Night",
+    "date": "2024-10-28T20:00:00",
+    "address": {
+      "city": "Nuremberg",
+      "country": "Deutschland",
+      "street": "Am Bürgermeistersteg 11",
+      "province": "Bayern",
+      "locationInfo": "Biergarten am Bürgermeistersteg"
+    },
+    "category": "food",
+    "description": "Genießen Sie einen gemütlichen Abend bei der Nuremberg Beer Garden Night im Biergarten am Bürgermeistersteg. Bier, Brezeln und bayrische Schmankerl unter freiem Himmel.",
+    "maxGuests": 150,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Hannover Gourmet Cooking Class",
+    "date": "2024-10-14T18:30:00",
+    "address": {
+      "city": "Hannover",
+      "country": "Deutschland",
+      "street": "Lavesstraße 77",
+      "province": "Niedersachsen",
+      "locationInfo": "Kochschule Lavesstraße"
+    },
+    "category": "food",
+    "description": "Lernen Sie die Kunst der Gourmetküche bei der Hannover Gourmet Cooking Class in der Kochschule Lavesstraße. Erfahrene Köche teilen ihre Tipps und Rezepte.",
+    "maxGuests": 100,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  },
+  {
+    "title": "Bremen Food Truck Fiesta",
+    "date": "2024-10-30T17:00:00",
+    "address": {
+      "city": "Bremen",
+      "country": "Deutschland",
+      "street": "Osterdeich 2",
+      "province": "Bremen",
+      "locationInfo": "Weserufer Bremen"
+    },
+    "category": "food",
+    "description": "Schlemmen Sie bei der Bremen Food Truck Fiesta am Weserufer. Food Trucks bieten eine Vielfalt an leckeren Gerichten und internationalen Spezialitäten.",
+    "maxGuests": 200,
+    "eventPicURL": "",
+    "registeredGuests": [],
+    "wishlistUser": [],
+    "isCancelled": false
+  }
+]

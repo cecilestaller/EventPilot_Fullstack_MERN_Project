@@ -1,0 +1,16 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Bookmark">
+<path id="Bookmark_2" fill-rule="evenodd" clip-rule="evenodd" d="M14.7892 18.9783L10.7425 21.0492C10.4194 21.206 10.0214 21.095 9.84327 20.7983V20.7983C9.79174 20.7064 9.76393 20.6046 9.76208 20.5008V11.325C9.76208 9.575 11.0423 8.875 12.8845 8.875H17.2123C18.9983 8.875 20.3347 9.52833 20.3347 11.2083V20.5008C20.3347 20.6664 20.2643 20.8251 20.139 20.9422C20.0137 21.0592 19.8438 21.125 19.6665 21.125C19.5535 21.1233 19.4424 21.0974 19.3418 21.0492L15.2701 18.9783C15.1201 18.9026 14.9393 18.9026 14.7892 18.9783Z" stroke="#00ECAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="Rectangle 4174" opacity="0.5" filter="url(#filter0_b_704_7075)">
+<rect width="30" height="30" rx="7" fill="white" fill-opacity="0.7"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_704_7075" x="-6" y="-6" width="42" height="42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="3"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_704_7075"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_704_7075" result="shape"/>
+</filter>
+</defs>
+</svg>
