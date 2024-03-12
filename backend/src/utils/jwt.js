@@ -23,6 +23,7 @@ export function createToken(user, tokenType = "access") {
 }
 // export function createToken(){}
 
+// for user logout:
 export function deleteToken(token) {
   try {
     // check, if token exists in blacklist
