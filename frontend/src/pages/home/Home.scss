@@ -1,1 +1,38 @@
-// Home-styling
+.homeContainer {
+    .headerHome {
+        padding-inline: 5% ;
+        padding-top: 5%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        .logo {
+            width: 29px;
+            height: 32px;
+        }
+        .locationContainer {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            .locationDropdownContainer {
+                display: flex;
+                .locationTitle {
+                    font-size: 12px;
+                    font-weight: 100;
+                    margin-right: 3px;
+                }
+            }
+            .showCurrentLocation {
+                color: purple;
+                font-size: 13px;
+            }
+        }
+        .emptyDivForFlexSpace {
+        }
+    }
+    .UpcomingTitleContainer, 
+    .NearbyTitleContainer {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+    }
+}
