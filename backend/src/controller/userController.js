@@ -24,3 +24,23 @@ export const postLoginUserCtrl = catchAsync(
   },
   { message: "Could not login user" }
 );
+
+// ====== LOGOUT ======
+export const postLogoutUserCtrl = catchAsync(
+  async (req, res) => {
+    const { refreshToken } = req.session;
+    if (!refreshToken) {
+      return res
+        .status(401)
+        .json({ success: false, message: "User not logged in" });
+    }
+
+    await UserService.logoutUser(refreshToken);
+    req.session.destroy(); // optional: destroy the session to make sure the user is logged out
+
+    res
+      .status(200)
+      .json({ success: true, message: "User logged out successfully" });
+  },
+  { message: "Could not logout user" }
+);

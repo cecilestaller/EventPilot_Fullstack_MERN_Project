@@ -5,4 +5,5 @@ import { UserController } from "../controller/index.js";
 export const userRouter = express
   .Router()
   .post("/signup", UserController.postSignUpUserCtrl)
-  .post("/login", UserController.postLoginUserCtrl);
+  .post("/login", UserController.postLoginUserCtrl)
+  .post("/logout", UserController.postLogoutCtrl);
