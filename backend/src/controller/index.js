@@ -9,7 +9,7 @@ import { getAllEventsCtrl } from "./eventController.js";
 import { getEventDetailsCtrl } from "./eventController.js";
 import { getUserProfileInfoCtrl } from "./userController.js";
 import { patchEventToWishlistCtrl } from "./userController.js";
-
+import { patchFillRegisteredGuestCheckFullyBookedCtrl } from "./eventController.js";
 import { postFileUploadCtrl } from "./fileUploadController.js";
 import { patchEditUserProfileCtrl } from "./userController.js";
 import { patchEventToRegisteredEventsListCtrl } from "./userController.js";
@@ -29,6 +29,7 @@ export const EventController = {
   postNewEventCtrl,
   getAllEventsCtrl,
   getEventDetailsCtrl,
+  patchFillRegisteredGuestCheckFullyBookedCtrl,
 };
 
 export const ReviewController = {};

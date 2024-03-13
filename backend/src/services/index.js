@@ -10,6 +10,7 @@ import { getUserProfileInfo } from "./getUserProfileInfo.js";
 import { addEventToWishlist } from "./addEventToWishlist.js";
 import { editUserProfile } from "./editUserProfile.js";
 import { addEventToRegisteredEventsList } from "./addEventToRegisteredEventsList.js";
+import { fillRegisteredGuestsArray } from "./fillRegisteredGuestsArray.js";
 
 export const UserService = {
   signUpUser,
@@ -23,9 +24,10 @@ export const UserService = {
 };
 
 export const EventService = {
-  addNewEvent,
-  getAllEvents,
-  getEventDetails,
+    addNewEvent,
+    getAllEvents,
+    getEventDetails,
+    fillRegisteredGuestsArray,
 };
 
 export const ReviewService = {};
