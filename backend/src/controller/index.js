@@ -11,6 +11,8 @@ import { getUserProfileInfoCtrl } from "./userController.js";
 import { patchEventToWishlistCtrl } from "./userController.js";
 
 import { postFileUploadCtrl } from "./fileUploadController.js";
+import { patchEditUserProfileCtrl } from "./userController.js";
+import { patchEventToRegisteredEventsListCtrl } from "./userController.js";
 
 export const UserController = {
   postSignUpUserCtrl,
@@ -19,17 +21,18 @@ export const UserController = {
   postLogoutUserCtrl,
   getUserProfileInfoCtrl,
   patchEventToWishlistCtrl,
-
+  patchEditUserProfileCtrl,
+  patchEventToRegisteredEventsListCtrl,
 };
 
 export const EventController = {
-    postNewEventCtrl,
-    getAllEventsCtrl,
-    getEventDetailsCtrl,
+  postNewEventCtrl,
+  getAllEventsCtrl,
+  getEventDetailsCtrl,
 };
 
 export const ReviewController = {};
 
 export const FileController = {
-    postFileUploadCtrl,
+  postFileUploadCtrl,
 };
