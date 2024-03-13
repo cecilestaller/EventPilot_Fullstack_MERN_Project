@@ -12,6 +12,8 @@ import { patchEventToWishlistCtrl } from "./userController.js";
 
 import { postFileUploadCtrl } from "./fileUploadController.js";
 import { patchFillRegisteredGuestCheckFullyBookedCtrl } from "./eventController.js";
+import { patchFillWishlistCounterCtrl } from "./eventController.js";
+import { patchEditEventCtrl } from "./eventController.js";
 
 export const UserController = {
     postSignUpUserCtrl,
@@ -27,6 +29,8 @@ export const EventController = {
     getAllEventsCtrl,
     getEventDetailsCtrl,
     patchFillRegisteredGuestCheckFullyBookedCtrl,
+    patchFillWishlistCounterCtrl,
+    patchEditEventCtrl,
 };
 
 export const ReviewController = {};
