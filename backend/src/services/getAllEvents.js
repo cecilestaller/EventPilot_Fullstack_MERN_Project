@@ -1,10 +1,9 @@
-import { Event } from "../models/index.js";
+import { Event, User } from "../models/index.js";
 
-export async function getAllEvents() {
+export async function getAllEvents(authenticatedUserId) {
+  const foundUser = await User.findById({ _id: authenticatedUserId });
+  if (!foundUser) throw new Error("User doesn't exist");
+
   const events = await Event.find();
   return events;
 }
-// export async function getAllEvents(authenticatedUserId) {
-//   const events = await Event.find({ hostId: authenticatedUserId });
-//   return events;
-// }

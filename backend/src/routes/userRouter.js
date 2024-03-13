@@ -9,4 +9,9 @@ export const userRouter = express
   .post("/login", UserController.postLoginUserCtrl)
   .post("/logout", UserController.postLogoutUserCtrl)
   .post("/refreshtoken", doJwtAuth, UserController.postRefreshtokenCtrl)
-  .get("/", doJwtAuth, UserController.getUserProfileInfoCtrl);
+  .get("/", doJwtAuth, UserController.getUserProfileInfoCtrl)
+  .patch(
+    "/wishlist/:eventId",
+    doJwtAuth,
+    UserController.patchEventToWishlistCtrl
+  );

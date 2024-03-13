@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema(
     follower: [{ type: mongoose.Types.ObjectId }], // IDs von Usern, die diesem User folgen
     following: [{ type: mongoose.Types.ObjectId }], // IDs von Usern, dem diser User folgt
     userWishlist: [{ type: mongoose.Types.ObjectId }], // Event-IDs
+    registeredEvents: [{ type: mongoose.Types.ObjectId }], // IDs von Events, für die sich der User registriert hat
   },
   { collection: "users", timestamps: true }
 );

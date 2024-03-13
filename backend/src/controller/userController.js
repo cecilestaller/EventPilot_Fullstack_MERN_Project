@@ -65,3 +65,21 @@ export const getUserProfileInfoCtrl = catchAsync(
   },
   { message: "Could not retrieve user info" }
 );
+
+// ====== Add event to wishlist =======
+export const patchEventToWishlistCtrl = catchAsync(
+  async (req, res) => {
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    console.log({ authenticatedUserId });
+
+    const eventId = req.params.eventId;
+    console.log({ eventId });
+
+    const result = await UserService.addEventToWishlist(
+      authenticatedUserId,
+      eventId
+    );
+    res.status(200).json({ success: true, result });
+  },
+  { message: "Could not add event to wishlist" }
+);
