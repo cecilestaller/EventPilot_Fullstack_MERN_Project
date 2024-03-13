@@ -25,13 +25,43 @@ export const postLoginUserCtrl = catchAsync(
   { message: "Could not login user" }
 );
 
+// ====== LOGOUT ======
+export const postLogoutUserCtrl = catchAsync(
+  async (req, res) => {
+    const { refreshToken } = req.body;
+    if (!refreshToken) {
+      return res
+        .status(401)
+        .json({ success: false, message: "User not logged in" });
+    }
+
+    await UserService.logoutUser(refreshToken);
+
+    res
+      .status(200)
+      .json({ success: true, message: "User logged out successfully" });
+  },
+  { message: "Could not logout user" }
+);
+
 // ====== REFRESHTOKEN =======
 export const postRefreshtokenCtrl = catchAsync(
   async (req, res) => {
-    if (req.verifiedUserClaims.type !== "refresh") throw new Error ("Type is not refresh Token")
-    const authenticatedUserId = req.verifiedUserClaims.sub
-    const result = await UserService.refreshToken(authenticatedUserId)
-    res.status(200).json({ success: true, result })
+    if (req.verifiedUserClaims.type !== "refresh")
+      throw new Error("Type is not refresh Token");
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const result = await UserService.refreshToken(authenticatedUserId);
+    res.status(200).json({ success: true, result });
   },
-  { message: "Could not create Tokens"}
+  { message: "Could not create Tokens" }
+);
+
+// ====== Get user Profile Info =======
+export const getUserProfileInfoCtrl = catchAsync(
+  async (req, res) => {
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const result = await UserService.getUserProfileInfo(authenticatedUserId);
+    res.status(200).json({ success: true, result });
+  },
+  { message: "Could not retrieve user info" }
 );

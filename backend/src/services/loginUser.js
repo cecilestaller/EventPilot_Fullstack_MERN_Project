@@ -22,6 +22,12 @@ export async function loginUser({ email, password }) {
   };
 }
 
-function userToProfileInfo({ _id, userName, email, userAddress }) {
-  return { _id, userName, email, userAddress };
+function userToProfileInfo({
+  _id,
+  userName,
+  email,
+  userAddress,
+  profilePicURL,
+}) {
+  return { _id, userName, email, userAddress, profilePicURL };
 }
