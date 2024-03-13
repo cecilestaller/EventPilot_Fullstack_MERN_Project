@@ -14,4 +14,10 @@ export const userRouter = express
     "/wishlist/:eventId",
     doJwtAuth,
     UserController.patchEventToWishlistCtrl
+  )
+  .patch("/edit-profile", doJwtAuth, UserController.patchEditUserProfileCtrl)
+  .patch(
+    "/register/:eventId",
+    doJwtAuth,
+    UserController.patchEventToRegisteredEventsListCtrl
   );

@@ -8,17 +8,21 @@ import { getAllEvents } from "./getAllEvents.js";
 import { getEventDetails } from "./getEventDetails.js";
 import { getUserProfileInfo } from "./getUserProfileInfo.js";
 import { addEventToWishlist } from "./addEventToWishlist.js";
+import { editUserProfile } from "./editUserProfile.js";
+import { addEventToRegisteredEventsList } from "./addEventToRegisteredEventsList.js";
 import { fillRegisteredGuestsArray } from "./fillRegisteredGuestsArray.js";
 import { fillEventWishlistCounter } from "./fillEventWishlistCounter.js";
 import { editEvent } from "./editEvent.js";
 
 export const UserService = {
-    signUpUser,
-    loginUser,
-    refreshToken,
-    logoutUser,
-    getUserProfileInfo,
-    addEventToWishlist,
+  signUpUser,
+  loginUser,
+  refreshToken,
+  logoutUser,
+  getUserProfileInfo,
+  addEventToWishlist,
+  editUserProfile,
+  addEventToRegisteredEventsList,
 };
 
 export const EventService = {
