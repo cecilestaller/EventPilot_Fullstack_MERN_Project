@@ -32,6 +32,8 @@ export const EventController = {
     getAllEventsCtrl,
     getEventDetailsCtrl,
     patchFillRegisteredGuestCheckFullyBookedCtrl,
+    patchFillWishlistCounterCtrl,
+    patchEditEventCtrl,
 };
 
 export const ReviewController = {};
