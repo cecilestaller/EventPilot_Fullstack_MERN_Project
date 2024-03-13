@@ -55,3 +55,13 @@ export const postRefreshtokenCtrl = catchAsync(
   },
   { message: "Could not create Tokens" }
 );
+
+// ====== Get user Profile Info =======
+export const getUserProfileInfoCtrl = catchAsync(
+  async (req, res) => {
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const result = await UserService.getUserProfileInfo(authenticatedUserId);
+    res.status(200).json({ success: true, result });
+  },
+  { message: "Could not retrieve user info" }
+);

@@ -7,12 +7,14 @@ import { postLogoutUserCtrl } from "./userController.js";
 import { postNewEventCtrl } from "./eventController.js";
 import { getAllEventsCtrl } from "./eventController.js";
 import { getEventDetailsCtrl } from "./eventController.js";
+import { getUserProfileInfoCtrl } from "./userController.js";
 
 export const UserController = {
   postSignUpUserCtrl,
   postLoginUserCtrl,
   postRefreshtokenCtrl,
   postLogoutUserCtrl,
+  getUserProfileInfoCtrl,
 };
 
 export const EventController = {
