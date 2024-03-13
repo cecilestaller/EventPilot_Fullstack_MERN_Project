@@ -16,13 +16,26 @@ const Home = () => {
     const navigate = useNavigate()
 
     // ============ fetching events and save into context ==================
-    useEffect(() => {
-        const getEventData = async () => {
-            try {
-                const response = await fetch(`http://localhost:3333`)
-            }
-        }
-    },[])
+    // useEffect(() => {
+    //     const getEventData = async () => {
+    //         try {
+    //             const response = await fetch(`http://localhost:3333/api/v1/events/`)
+    //             if (!response.ok) {
+    //                 throw new Error("Network response was not ok")
+    //             } else {
+    //                 console.log(response);
+    //                 // const responseData = await response.json()
+    //                 // setEventsFetchData(responseData.result)
+    //                 return
+    //             }
+    //         } catch (error) {
+    //             console.error("Error fetching data: ", error)
+    //         }
+    //     }
+    //     getEventData()
+    // },[])
+
+    // console.log(eventsFetchData);
 
     // ========= function of "Alle zeigen" in "Anstehende Events" ===================
     const forwardToSeeAllUpcoming = () => {
