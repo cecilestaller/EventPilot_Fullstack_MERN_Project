@@ -11,4 +11,10 @@ export const eventRouter = express
         "/register/:eventId",
         doJwtAuth,
         EventController.patchFillRegisteredGuestCheckFullyBookedCtrl
-    );
+    )
+    .patch(
+        "/wishlist/:eventId",
+        doJwtAuth,
+        EventController.patchFillWishlistCounterCtrl
+    )
+    .patch("/edit/:eventId", doJwtAuth, EventController.patchEditEventCtrl);

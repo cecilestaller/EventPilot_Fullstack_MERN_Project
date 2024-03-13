@@ -13,27 +13,29 @@ import { patchFillRegisteredGuestCheckFullyBookedCtrl } from "./eventController.
 import { postFileUploadCtrl } from "./fileUploadController.js";
 import { patchEditUserProfileCtrl } from "./userController.js";
 import { patchEventToRegisteredEventsListCtrl } from "./userController.js";
+import { patchFillWishlistCounterCtrl } from "./eventController.js";
+import { patchEditEventCtrl } from "./eventController.js";
 
 export const UserController = {
-  postSignUpUserCtrl,
-  postLoginUserCtrl,
-  postRefreshtokenCtrl,
-  postLogoutUserCtrl,
-  getUserProfileInfoCtrl,
-  patchEventToWishlistCtrl,
-  patchEditUserProfileCtrl,
-  patchEventToRegisteredEventsListCtrl,
+    postSignUpUserCtrl,
+    postLoginUserCtrl,
+    postRefreshtokenCtrl,
+    postLogoutUserCtrl,
+    getUserProfileInfoCtrl,
+    patchEventToWishlistCtrl,
+    patchEditUserProfileCtrl,
+    patchEventToRegisteredEventsListCtrl,
 };
 
 export const EventController = {
-  postNewEventCtrl,
-  getAllEventsCtrl,
-  getEventDetailsCtrl,
-  patchFillRegisteredGuestCheckFullyBookedCtrl,
+    postNewEventCtrl,
+    getAllEventsCtrl,
+    getEventDetailsCtrl,
+    patchFillRegisteredGuestCheckFullyBookedCtrl,
 };
 
 export const ReviewController = {};
 
 export const FileController = {
-  postFileUploadCtrl,
+    postFileUploadCtrl,
 };
