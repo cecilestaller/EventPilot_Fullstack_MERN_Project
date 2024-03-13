@@ -14,16 +14,17 @@ import { fillRegisteredGuestsArray } from "./fillRegisteredGuestsArray.js";
 import { toggleIsCancelled } from "./toggleIsCancelled.js";
 import { fillEventWishlistCounter } from "./fillEventWishlistCounter.js";
 import { editEvent } from "./editEvent.js";
+import { addReview } from "./addReview.js";
 
 export const UserService = {
-  signUpUser,
-  loginUser,
-  refreshToken,
-  logoutUser,
-  getUserProfileInfo,
-  addEventToWishlist,
-  editUserProfile,
-  addEventToRegisteredEventsList,
+    signUpUser,
+    loginUser,
+    refreshToken,
+    logoutUser,
+    getUserProfileInfo,
+    addEventToWishlist,
+    editUserProfile,
+    addEventToRegisteredEventsList,
 };
 
 export const EventService = {
@@ -36,4 +37,6 @@ export const EventService = {
     toggleIsCancelled,
 };
 
-export const ReviewService = {};
+export const ReviewService = {
+    addReview,
+};
