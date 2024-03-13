@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const eventSchema = new mongoose.Schema(
     {
         hostId: { type: mongoose.Types.ObjectId, required: true, ref: "User" },
-        eventPicUrl: { type: String },
+        eventPicURL: { type: String },
         title: { type: String, required: true },
         eventDate: { type: Date, required: true },
         eventAddress: {

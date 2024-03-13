@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import cookieSession from "cookie-session";
 import { userRouter } from "./routes/userRouter.js";
 import { eventRouter } from "./routes/eventRouter.js";
+import { fileUploadRouter } from "./routes/fileUploadRouter.js";
 
 dotenv.config();
 
@@ -47,6 +48,7 @@ app.use(express.json()); // body-parser
 app.get("/", (req, res) => res.send("it works")); // Health-Check
 
 app.use("/download", express.static("data/images")); // download assets via static middleware (MULTER)
+app.use("/api/v1/files", fileUploadRouter);
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/events", eventRouter);
