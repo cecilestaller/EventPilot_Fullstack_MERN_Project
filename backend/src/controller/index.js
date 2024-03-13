@@ -9,20 +9,24 @@ import { getAllEventsCtrl } from "./eventController.js";
 import { getEventDetailsCtrl } from "./eventController.js";
 import { getUserProfileInfoCtrl } from "./userController.js";
 
+import { postFileUploadCtrl } from "./fileUploadController.js";
+
 export const UserController = {
-  postSignUpUserCtrl,
-  postLoginUserCtrl,
-  postRefreshtokenCtrl,
-  postLogoutUserCtrl,
-  getUserProfileInfoCtrl,
+    postSignUpUserCtrl,
+    postLoginUserCtrl,
+    postRefreshtokenCtrl,
+    postLogoutUserCtrl,
+    getUserProfileInfoCtrl,
 };
 
 export const EventController = {
-  postNewEventCtrl,
-  getAllEventsCtrl,
-  getEventDetailsCtrl,
+    postNewEventCtrl,
+    getAllEventsCtrl,
+    getEventDetailsCtrl,
 };
 
 export const ReviewController = {};
 
-export const FileController = {};
+export const FileController = {
+    postFileUploadCtrl,
+};
