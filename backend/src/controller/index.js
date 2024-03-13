@@ -10,6 +10,8 @@ import { getEventDetailsCtrl } from "./eventController.js";
 import { getUserProfileInfoCtrl } from "./userController.js";
 import { patchEventToWishlistCtrl } from "./userController.js";
 
+import { postFileUploadCtrl } from "./fileUploadController.js";
+
 export const UserController = {
   postSignUpUserCtrl,
   postLoginUserCtrl,
@@ -17,14 +19,17 @@ export const UserController = {
   postLogoutUserCtrl,
   getUserProfileInfoCtrl,
   patchEventToWishlistCtrl,
+
 };
 
 export const EventController = {
-  postNewEventCtrl,
-  getAllEventsCtrl,
-  getEventDetailsCtrl,
+    postNewEventCtrl,
+    getAllEventsCtrl,
+    getEventDetailsCtrl,
 };
 
 export const ReviewController = {};
 
-export const FileController = {};
+export const FileController = {
+    postFileUploadCtrl,
+};

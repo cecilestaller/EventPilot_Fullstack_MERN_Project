@@ -5,6 +5,7 @@ import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 import logo from "../../assets/images/Logo.svg";
 import mailIcon from "../../assets/images/email_icon.svg";
 import passwordIcon from "../../assets/images/Lock.svg";
+import arrowBack from "../../assets/images/arrow_back.svg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,10 +27,13 @@ const Login = () => {
   return (
     <>
       <div className="register__wrapper">
+        <Link to="/login">
+          <img src={arrowBack} alt="" style={{ visibility: "hidden" }} />
+        </Link>
         <div className="register_header">
           <img src={logo} alt="logo" className="register_logo" />
           <p className="register_logo-title">
-            Event <span className="register_logo-subtitle">Pilot</span>
+            Event<span className="register_logo-subtitle">Pilot</span>
           </p>
         </div>
 
@@ -41,17 +45,19 @@ const Login = () => {
                 <img src={mailIcon} alt="" />
               </span>
               <input
+                className="register_input"
                 type="email"
                 placeholder="deinemail@email.com"
                 value={email}
                 onChange={handleInputChange(setEmail)}
               />
             </div>
-            <div className="input-group">
-              <span className="input-icon">
+            <div className="register_input-group">
+              <span className="register_input-icon">
                 <img src={passwordIcon} alt="" />
               </span>
               <input
+                className="register_input"
                 type="password"
                 placeholder="Passwort"
                 value={password}
@@ -60,12 +66,12 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <p style={{ color: "red" }}>{errorMessage}</p>
+        <p className="register_error-message">{errorMessage}</p>
         <BtnSubmit text="Login" onClick={loginUser} />
         <p className="register_sign-in-prompt">
           Du hast keinen Account?
-          <Link to="/register">
-            <button>Account erstellen</button>
+          <Link className="register_link" to="/register">
+            Account erstellen
           </Link>
         </p>
       </div>

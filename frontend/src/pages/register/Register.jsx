@@ -6,6 +6,7 @@ import logo from "../../assets/images/Logo.svg";
 import nameIcon from "../../assets/images/Profile.svg";
 import mailIcon from "../../assets/images/email_icon.svg";
 import passwordIcon from "../../assets/images/Lock.svg";
+import arrowBack from "../../assets/images/arrow_back.svg";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -34,6 +35,9 @@ const Register = () => {
   return (
     <>
       <div className="register__wrapper">
+        <Link to="/login">
+          <img src={arrowBack} alt="" />
+        </Link>
         <div className="register_header">
           <img src={logo} alt="logo" className="register_logo" />
           <p className="register_logo-title">
@@ -94,12 +98,12 @@ const Register = () => {
             </div>
           </form>
         </div>
-        <p style={{ color: "red" }}>{errorMessage}</p>
+        <p className="register_error-message">{errorMessage}</p>
         <BtnSubmit text="Account erstellen" onClick={registerUser} />
         <p className="register_sign-in-prompt">
           Du hast bereits einen Account?
-          <Link to="/login">
-            <button> Login</button>
+          <Link className="register_link" to="/login">
+            Login
           </Link>
         </p>
       </div>
