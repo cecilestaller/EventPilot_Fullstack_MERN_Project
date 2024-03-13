@@ -8,6 +8,7 @@ import { postNewEventCtrl } from "./eventController.js";
 import { getAllEventsCtrl } from "./eventController.js";
 import { getEventDetailsCtrl } from "./eventController.js";
 import { getUserProfileInfoCtrl } from "./userController.js";
+import { patchEventToWishlistCtrl } from "./userController.js";
 
 export const UserController = {
   postSignUpUserCtrl,
@@ -15,6 +16,7 @@ export const UserController = {
   postRefreshtokenCtrl,
   postLogoutUserCtrl,
   getUserProfileInfoCtrl,
+  patchEventToWishlistCtrl,
 };
 
 export const EventController = {

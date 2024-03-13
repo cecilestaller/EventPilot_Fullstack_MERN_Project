@@ -18,9 +18,8 @@ export const postNewEventCtrl = catchAsync(
 // ==== View all events ====
 export const getAllEventsCtrl = catchAsync(
   async (req, res) => {
-    // const authenticatedUserId = req.verifiedUserClaims.sub;
-    const result = await EventService.getAllEvents();
-    // const result = await EventService.getAllEvents(authenticatedUserId);
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const result = await EventService.getAllEvents(authenticatedUserId);
     res.status(200).json({ success: true, result });
   },
   { message: "Coult not retrieve events" }
