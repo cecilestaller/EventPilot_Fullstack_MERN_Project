@@ -8,4 +8,5 @@ export const userRouter = express
   .post("/signup", UserController.postSignUpUserCtrl)
   .post("/login", UserController.postLoginUserCtrl)
   .post("/logout", UserController.postLogoutUserCtrl)
-  .post("/refreshtoken", doJwtAuth, UserController.postRefreshtokenCtrl);
+  .post("/refreshtoken", doJwtAuth, UserController.postRefreshtokenCtrl)
+  .get("/", doJwtAuth, UserController.getUserProfileInfoCtrl);
