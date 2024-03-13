@@ -12,6 +12,8 @@ import { editUserProfile } from "./editUserProfile.js";
 import { addEventToRegisteredEventsList } from "./addEventToRegisteredEventsList.js";
 import { fillRegisteredGuestsArray } from "./fillRegisteredGuestsArray.js";
 import { toggleIsCancelled } from "./toggleIsCancelled.js";
+import { fillEventWishlistCounter } from "./fillEventWishlistCounter.js";
+import { editEvent } from "./editEvent.js";
 
 export const UserService = {
   signUpUser,
@@ -25,11 +27,13 @@ export const UserService = {
 };
 
 export const EventService = {
-  addNewEvent,
-  getAllEvents,
-  getEventDetails,
-  fillRegisteredGuestsArray,
-  toggleIsCancelled,
+    addNewEvent,
+    getAllEvents,
+    getEventDetails,
+    fillRegisteredGuestsArray,
+    fillEventWishlistCounter,
+    editEvent,
+    toggleIsCancelled,
 };
 
 export const ReviewService = {};
