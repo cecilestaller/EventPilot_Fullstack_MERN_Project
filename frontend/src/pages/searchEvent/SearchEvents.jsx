@@ -5,7 +5,7 @@ const SearchEvents = () => {
     return (
         <>
             <h2>Hier können wir Events suchen</h2>
-            <Nav/>
+            <Nav highlight="search"/>
         </>
     );
 };

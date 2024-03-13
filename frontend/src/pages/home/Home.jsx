@@ -7,10 +7,22 @@ import UpcomingEvents from "../../components/upcomingEvents/UpcomingEvents";
 import RandomEvent from "../../components/randomEvent/RandomEvent";
 import SeeAllArrow from "../../assets/images/seeall_arrow.svg"
 import { useNavigate } from "react-router-dom"
+import { useEventFetchContext } from "../../context/eventFetchContext";
+import { useEffect } from "react";
 
 const Home = () => {
 
+    const { eventsFetchData, setEventsFetchData } = useEventFetchContext
     const navigate = useNavigate()
+
+    // ============ fetching events and save into context ==================
+    useEffect(() => {
+        const getEventData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3333`)
+            }
+        }
+    },[])
 
     // ========= function of "Alle zeigen" in "Anstehende Events" ===================
     const forwardToSeeAllUpcoming = () => {
@@ -53,7 +65,7 @@ const Home = () => {
             </div>
             <NearbyEvents/>
             <RandomEvent/>
-            <Nav/>
+            <Nav highlight="explore"/>
         </div>
     );
 };

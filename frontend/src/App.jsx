@@ -10,23 +10,26 @@ import AddEvent from "./pages/addEvent/AddEvent";
 import LikedEvents from "./pages/likedEvents/LikedEvents";
 import EventDetails from "./pages/eventDetails/EventDetails";
 import HostProfile from "./pages/hostProfile/HostProfile";
+import { EventFetchProvider } from "./context/eventFetchContext";
 
 function App() {
     return (
         <>
             <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Splash/>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/register" element={<Register/>}/>
-                    <Route path="/home" element={<Home/>}/>
-                    <Route path="/search" element={<SearchEvents/>}/>
-                    <Route path="/profile" element={<UserProfile/>}/>
-                    <Route path="/addevent" element={<AddEvent/>}/>
-                    <Route path="/likedevents" element={<LikedEvents/>}/>
-                    <Route path="/eventdetails/:eventId" element={<EventDetails/>}/>
-                    <Route path="/host/:hostId" element={<HostProfile/>}/>
-                </Routes>
+                <EventFetchProvider>
+                    <Routes>
+                        <Route path="/" element={<Splash/>}/>
+                        <Route path="/login" element={<Login/>}/>
+                        <Route path="/register" element={<Register/>}/>
+                        <Route path="/home" element={<Home/>}/>
+                        <Route path="/search" element={<SearchEvents/>}/>
+                        <Route path="/profile" element={<UserProfile/>}/>
+                        <Route path="/addevent" element={<AddEvent/>}/>
+                        <Route path="/likedevents" element={<LikedEvents/>}/>
+                        <Route path="/eventdetails/:eventId" element={<EventDetails/>}/>
+                        <Route path="/host/:hostId" element={<HostProfile/>}/>
+                    </Routes>
+                </EventFetchProvider>
             </BrowserRouter>
         </>
     );

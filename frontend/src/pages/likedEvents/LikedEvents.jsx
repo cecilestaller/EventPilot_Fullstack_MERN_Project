@@ -5,7 +5,7 @@ const LikedEvents = () => {
     return (
         <>
             <h2>Hier sieht man gespeicherte Events</h2>
-            <Nav/>
+            <Nav highlight="events"/>
         </>
     );
 };
