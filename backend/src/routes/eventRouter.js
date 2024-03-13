@@ -4,6 +4,6 @@ import { EventController } from "../controller/index.js";
 
 export const eventRouter = express
   .Router()
-  .get("/", EventController.getAllEventsCtrl)
-  // .get("/", doJwtAuth, EventController.getAllEventsCtrl)
+  .get("/", doJwtAuth, EventController.getAllEventsCtrl)
+  .get("/:eventId", doJwtAuth, EventController.getEventDetailsCtrl)
   .post("/", doJwtAuth, EventController.postNewEventCtrl);

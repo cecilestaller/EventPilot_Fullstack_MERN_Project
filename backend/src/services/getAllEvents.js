@@ -5,6 +5,6 @@ export async function getAllEvents() {
   return events;
 }
 // export async function getAllEvents(authenticatedUserId) {
-//   const events = await Event.find({ userId: authenticatedUserId });
+//   const events = await Event.find({ hostId: authenticatedUserId });
 //   return events;
 // }

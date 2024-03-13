@@ -25,3 +25,17 @@ export const getAllEventsCtrl = catchAsync(
   },
   { message: "Coult not retrieve events" }
 );
+
+// ==== Get event details ====
+export const getEventDetailsCtrl = catchAsync(
+  async (req, res) => {
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const eventId = req.body;
+    const result = await EventService.getEventDetails(
+      authenticatedUserId,
+      eventId
+    );
+    res.status(200).json({ success: true, result });
+  },
+  { message: "Could not retrieve event details" }
+);
