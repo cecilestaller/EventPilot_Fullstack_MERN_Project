@@ -1,5 +1,7 @@
 import express from "express";
-// import makeJwtAuth
-// import ReviewController
+import { doJwtAuth } from "../middleware/doJwtAuth.js";
+import { ReviewController } from "../controller/index.js";
 
-export const reviewRouter = express.Router();
+export const reviewRouter = express
+    .Router()
+    .post("/:hostId", doJwtAuth, ReviewController.postNewReviewCtrl);
