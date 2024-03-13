@@ -9,18 +9,26 @@
     src: url("./assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
 }
 
-/*#00ECAA
-#44ABD4
-#668BE9
-#876AFD
-#777BF3
-#7254EE
-#5D3EDE
-#1F1F1F
-#FFB21C
-#848484
-#A6A6A6*/
+
+:root {
+    --main-bg-color: white;
+    --main-focus-color: #00ECAA;
+    --: #44ABD4;
+    --: #668BE9;
+    --unfocused-element-color: #777BF3;
+    --botton-color: #876AFD;
+    --: #7254EE;
+    --main-akcent-color: #5D3EDE;
+    --main-text-color: #1F1F1F;
+    --: #FFB21C;
+    --icon-standard-color: #848484;
+    --secondary-text-color: #A6A6A6;
+    --button-text-color: white
+}
 
 body {
     font-family: "Inter";
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+
 }
