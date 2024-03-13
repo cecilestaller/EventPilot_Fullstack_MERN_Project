@@ -1,6 +1,7 @@
 import "./Register.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { backendUrl } from "../../api/index";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 import logo from "../../assets/images/Logo.svg";
 import nameIcon from "../../assets/images/Profile.svg";
@@ -14,13 +15,16 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleInputChange = (setter) => (e) => {
     setter(e.target.value);
   };
 
   const registerUser = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
     if (!name || !email || !password) {
       setErrorMessage("Fülle bitte alle Felder aus!");
@@ -30,6 +34,26 @@ const Register = () => {
       setErrorMessage("Dein Passwort stimmt nicht überein!");
       return;
     }
+
+    fetch(backendUrl + "/api/v1/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userName: name, email, password }),
+    })
+      .then((res) => res.json())
+      .then(({ success, result, message }) => {
+        if (!success) return setErrorMessage(message || "Registration failed");
+        console.log(result);
+        setSuccessMessage("Accounted created, welcome!");
+
+        setErrorMessage("");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+
+        navigate("/login");
+      });
   };
 
   return (
@@ -98,6 +122,7 @@ const Register = () => {
             </div>
           </form>
         </div>
+        <p className="register_success-message">{successMessage}</p>
         <p className="register_error-message">{errorMessage}</p>
         <BtnSubmit text="Account erstellen" onClick={registerUser} />
         <p className="register_sign-in-prompt">
