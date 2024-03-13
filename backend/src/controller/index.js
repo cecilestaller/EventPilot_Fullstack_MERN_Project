@@ -13,6 +13,7 @@ import { patchFillRegisteredGuestCheckFullyBookedCtrl } from "./eventController.
 import { postFileUploadCtrl } from "./fileUploadController.js";
 import { patchEditUserProfileCtrl } from "./userController.js";
 import { patchEventToRegisteredEventsListCtrl } from "./userController.js";
+import { patchEventIsCancelledCtrl } from "./eventController.js";
 
 export const UserController = {
   postSignUpUserCtrl,
@@ -30,6 +31,7 @@ export const EventController = {
   getAllEventsCtrl,
   getEventDetailsCtrl,
   patchFillRegisteredGuestCheckFullyBookedCtrl,
+  patchEventIsCancelledCtrl,
 };
 
 export const ReviewController = {};
