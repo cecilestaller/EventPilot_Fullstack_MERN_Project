@@ -5,6 +5,7 @@ import { logoutUser } from "./logoutUser.js";
 import { refreshToken } from "./refreshToken.js";
 import { addNewEvent } from "./addNewEvent.js";
 import { getAllEvents } from "./getAllEvents.js";
+import { getEventDetails } from "./getEventDetails.js";
 
 export const UserService = {
   signUpUser,
@@ -16,6 +17,7 @@ export const UserService = {
 export const EventService = {
   addNewEvent,
   getAllEvents,
+  getEventDetails,
 };
 
 export const ReviewService = {};
