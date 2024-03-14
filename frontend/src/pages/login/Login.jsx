@@ -49,6 +49,7 @@ const Login = ({ onLoginSuccess }) => {
           }
         );
 
+        console.log(authorization);
         setErrorMessage(""); // reset error message after success
         setSuccessMessage("Login successful, enjoy!");
         navigate("/home");
