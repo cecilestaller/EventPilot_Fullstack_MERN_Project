@@ -30,5 +30,8 @@ body {
     font-family: "Inter";
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+}
 
+.hide {
+    display: none !important;
 }
