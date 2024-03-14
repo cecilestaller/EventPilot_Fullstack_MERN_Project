@@ -13,6 +13,9 @@ import { useEffect, useState } from "react";
 const Home = ({authorization, userProfileInfo}) => {
 
     const { fetchEventData, setFetchEventData } = useEventFetchContext();
+    const [getUserLocation, setGetUserLocation] = useState("")
+    const [saveUserLocation, setSaveUserLocation] = useState("")
+    const [hideClassForDropdown, setHideClassForDropdown] = useState("hide")
 
     const navigate = useNavigate()
 
@@ -37,9 +40,54 @@ const Home = ({authorization, userProfileInfo}) => {
         getEventData()
     },[])
 
-    console.log(userProfileInfo);
-    console.log(userProfileInfo.userAddress);
-    console.log(fetchEventData);
+    // console.log(userProfileInfo);
+    // console.log(userProfileInfo.userAddress);
+    // console.log(fetchEventData);
+
+// ==================== getting user location ===============================
+
+    const [location, setLocation] = useState(null);
+
+    useEffect(() => {
+        const getLocation = async () => {
+            try {
+                if (navigator.geolocation) {
+                    const position = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject);
+                    });
+                    const { latitude, longitude } = position.coords;
+                    await setLocation({ latitude, longitude });
+                    if (location?.latitude === null || location?.longitude === null) {
+                        alert("Konnte Adressdaten nicht abrufen")
+                    } else {
+                        // ==================== getting address via nominatim API ===========================
+                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
+                        if (!response.ok) {
+                            throw new Error("Error fetching address");
+                        }
+                        const data = await response.json();
+                        // console.log("Adresse:", data.address);
+                        setGetUserLocation(data.address.state);
+                        setSaveUserLocation(getUserLocation)
+                    }
+                } else {
+                    throw new Error("Geolocation is not supported by Browser.");
+                }
+            } catch (error) {
+                console.error("Error getting location: ", error);
+            }
+        };
+        getLocation();
+    }, []);
+
+    // ==================== dropdown menu function ==============================
+    const locationDropdownMenu = () => {
+        setHideClassForDropdown(hideClassForDropdown === "hide" ? "" : "hide")
+    }
+
+    const changeLocationInfo = (province) => {
+        setSaveUserLocation(province) //changes location value displayed
+    }
 
     // ========= function of "Alle zeigen" in "Anstehende Events" ===================
     const forwardToSeeAllUpcoming = () => {
@@ -59,7 +107,13 @@ const Home = ({authorization, userProfileInfo}) => {
                         <p className="locationTitle">Standort</p>
                         <img src={DropdownArrow} alt="arrowIcon" />
                     </div>
-                    <h3 className="showCurrentLocation">Berlin, DE</h3>
+                    <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
+                        <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections`}>Dein Standort: {getUserLocation}</p>
+                        {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
+                            <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
+                        ))}
+                    </div>
+                    <h3 className="showCurrentLocation">{saveUserLocation}</h3>
                 </div>
                 {/* Element emptyDivForFlexSpace is invisible and only used to properly center  locationDropdownContainer */}
                 <div className="emptyDivForFlexSpace">
