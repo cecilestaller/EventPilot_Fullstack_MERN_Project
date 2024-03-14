@@ -39,6 +39,20 @@ export const getEventDetailsCtrl = catchAsync(
     { message: "Could not retrieve event details" }
 );
 
+// ==== Patch event is cancelled ====
+export const patchEventIsCancelledCtrl = catchAsync(
+    async (req, res) => {
+        const authenticatedUserId = req.verifiedUserClaims.sub;
+        const eventId = req.params.eventId;
+        const result = await EventService.toggleIsCancelled(
+            authenticatedUserId,
+            eventId
+        );
+        res.status(200).json({ success: true, result });
+    },
+    { message: "Could not update event's cancel status" }
+);
+// ==== fill registeredGuests Array of Event with userId + check if Event ist fully booked now =====
 export const patchFillRegisteredGuestCheckFullyBookedCtrl = catchAsync(
     async (req, res) => {
         const authenticatedUserId = req.verifiedUserClaims.sub;
@@ -49,5 +63,35 @@ export const patchFillRegisteredGuestCheckFullyBookedCtrl = catchAsync(
         );
         res.status(200).json({ success: true, result });
     },
-    { message: "Could not retrieve event details" }
+    { message: "Could not register User for this Event" }
+);
+
+// ===== fill wishlistCounter of Event with userId and return updated Event + Number of user's who have this Event on own wishlist ===
+export const patchFillWishlistCounterCtrl = catchAsync(
+    async (req, res) => {
+        const authenticatedUserId = req.verifiedUserClaims.sub;
+        const eventId = req.params.eventId;
+        const result = await EventService.fillEventWishlistCounter(
+            authenticatedUserId,
+            eventId
+        );
+        res.status(200).json({ success: true, result });
+    },
+    { message: "Could not add User to wishlistCounter of this Event" }
+);
+
+// ==== EDIT EVENT =====
+export const patchEditEventCtrl = catchAsync(
+    async (req, res) => {
+        const authenticatedUserId = req.verifiedUserClaims.sub;
+        const eventEditInfo = req.body;
+        const eventId = req.params.eventId;
+        const result = await EventService.editEvent(
+            authenticatedUserId,
+            eventEditInfo,
+            eventId
+        );
+        res.status(200).json({ success: true, result });
+    },
+    { message: "Could not edit Event" }
 );

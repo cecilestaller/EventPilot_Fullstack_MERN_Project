@@ -7,6 +7,7 @@ import cookieSession from "cookie-session";
 import { userRouter } from "./routes/userRouter.js";
 import { eventRouter } from "./routes/eventRouter.js";
 import { fileUploadRouter } from "./routes/fileUploadRouter.js";
+import { reviewRouter } from "./routes/reviewRouter.js";
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ app.use("/api/v1/files", fileUploadRouter);
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/events", eventRouter);
+app.use("/api/v1/review", reviewRouter);
 
 // ---------------
 // Declaration of serverListenPort-function which will be called in the DB-connection setup:
