@@ -1,1 +1,60 @@
-// AddEvent styling
+.addevent__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 7%;
+  padding-top: 8px;
+  padding-bottom: 24px;
+
+  .addevent_header {
+    display: flex;
+    justify-content: space-between;
+    .addevent_header-titel {
+      font-size: 2em;
+      color: var(--main-akcent-color);
+      font-weight: 500;
+
+      .addevent_header-title-span {
+        color: var(--main-focus-color);
+      }
+    }
+  }
+
+  .addevent_form {
+    border-radius: 8px;
+    margin-top: 32px;
+    margin-bottom: 20px;
+
+    .addevent_heading {
+      margin-bottom: 30px;
+      font-size: 1.6em;
+      font-weight: 500;
+    }
+
+    .addevent_input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+
+      .addevent_input-icon {
+        padding-right: 16px;
+      }
+
+      .addevent_input {
+        border: none;
+        font-size: 1em;
+        font-weight: 100;
+        outline: none;
+        width: 100%;
+
+        &::placeholder {
+          color: var(--icon-standard-color);
+          font-weight: 100;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ const BtnSubmit = ({ text, onClick }) => {
     <button className="BtnSubmit" onClick={onClick}>
       {text}
       <span className="button-icon">
-        <img src={arrow} alt="" />
+        <img src={arrow} alt="" className="btnsubmit-img" />
       </span>
     </button>
   );
