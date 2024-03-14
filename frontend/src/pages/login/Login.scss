@@ -1,40 +1,39 @@
-.register__wrapper {
+.login__wrapper {
   display: flex;
   flex-direction: column;
   padding: 7%;
 
-  .register_header {
+  .login_header {
     margin-bottom: 40px;
     text-align: center;
 
-    .register_logo {
+    .login_logo {
       height: 60px;
       margin-bottom: 8px;
     }
 
-    .register_logo-title {
+    .login_logo-title {
       font-size: 2em;
       color: var(--main-akcent-color);
       font-weight: 500;
 
-      .register_logo-subtitle {
+      .login_logo-subtitle {
         color: var(--main-focus-color);
       }
     }
   }
 
-  .register_sign-up-form {
+  .login_sign-up-form {
     border-radius: 8px;
-    // margin-block: 16px;
     margin-bottom: 20px;
 
-    .register_heading {
+    .login_heading {
       margin-bottom: 30px;
       font-size: 1.6em;
       font-weight: 500;
     }
 
-    .register_input-group {
+    .login_input-group {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
@@ -42,11 +41,11 @@
       border-radius: 8px;
       box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
 
-      .register_input-icon {
+      .login_input-icon {
         padding-right: 16px;
       }
 
-      .register_input {
+      .login_input {
         border: none;
         font-size: 1em;
         font-weight: 100;
@@ -62,18 +61,24 @@
     }
   }
 
-  .register_error-message {
+  .login_success-message {
+    text-align: center;
+    color: green;
+    padding-bottom: 16px;
+  }
+
+  .login_error-message {
     text-align: center;
     color: red;
     padding-bottom: 16px;
   }
 
-  .register_sign-in-prompt {
+  .login_sign-in-prompt {
     text-align: center;
     padding-block: 16px;
     font-size: 14px;
 
-    .register_link {
+    .login_link {
       color: var(--main-akcent-color);
       font-weight: bold;
       text-decoration: none;

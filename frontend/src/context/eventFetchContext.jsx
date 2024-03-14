@@ -8,7 +8,7 @@ export const useEventFetchContext = () => {
 }
 
 export const EventFetchProvider = ({ children }) => {
-    const [fetchEventData, setFetchEventData] = useState()
+    const [fetchEventData, setFetchEventData] = useState([])
     return (
         <EventFetchContext.Provider value={{ fetchEventData, setFetchEventData }}>
             {children}

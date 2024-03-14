@@ -8,34 +8,38 @@ import RandomEvent from "../../components/randomEvent/RandomEvent";
 import SeeAllArrow from "../../assets/images/seeall_arrow.svg"
 import { useNavigate } from "react-router-dom"
 import { useEventFetchContext } from "../../context/eventFetchContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const Home = () => {
+const Home = ({authorization, userProfileInfo}) => {
 
-    const { eventsFetchData, setEventsFetchData } = useEventFetchContext
+    const { fetchEventData, setFetchEventData } = useEventFetchContext();
+
     const navigate = useNavigate()
 
     // ============ fetching events and save into context ==================
-    // useEffect(() => {
-    //     const getEventData = async () => {
-    //         try {
-    //             const response = await fetch(`http://localhost:3333/api/v1/events/`)
-    //             if (!response.ok) {
-    //                 throw new Error("Network response was not ok")
-    //             } else {
-    //                 console.log(response);
-    //                 // const responseData = await response.json()
-    //                 // setEventsFetchData(responseData.result)
-    //                 return
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching data: ", error)
-    //         }
-    //     }
-    //     getEventData()
-    // },[])
+    useEffect(() => {
+        const getEventData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3333/api/v1/events`, { 
+                    headers: { authorization }
+                })
+                if (!response.ok) {
+                    throw new Error("Network response was not ok")
+                } else {
+                    const {success, result, error, message} = await response.json()
+                    setFetchEventData(result)
+                    return
+                }
+            } catch (error) {
+                console.error("Error fetching data: ", error)
+            }
+        }
+        getEventData()
+    },[])
 
-    // console.log(eventsFetchData);
+    console.log(userProfileInfo);
+    console.log(userProfileInfo.userAddress);
+    console.log(fetchEventData);
 
     // ========= function of "Alle zeigen" in "Anstehende Events" ===================
     const forwardToSeeAllUpcoming = () => {

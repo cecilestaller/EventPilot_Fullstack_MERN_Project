@@ -1,5 +1,6 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Splash from "./pages/splashScreen/Splash";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -13,26 +14,41 @@ import HostProfile from "./pages/hostProfile/HostProfile";
 import { EventFetchProvider } from "./context/eventFetchContext";
 
 function App() {
-    return (
-        <>
-            <BrowserRouter>
-                <EventFetchProvider>
-                    <Routes>
-                        <Route path="/" element={<Splash/>}/>
-                        <Route path="/login" element={<Login/>}/>
-                        <Route path="/register" element={<Register/>}/>
-                        <Route path="/home" element={<Home/>}/>
-                        <Route path="/search" element={<SearchEvents/>}/>
-                        <Route path="/profile" element={<UserProfile/>}/>
-                        <Route path="/addevent" element={<AddEvent/>}/>
-                        <Route path="/likedevents" element={<LikedEvents/>}/>
-                        <Route path="/eventdetails/:eventId" element={<EventDetails/>}/>
-                        <Route path="/host/:hostId" element={<HostProfile/>}/>
-                    </Routes>
-                </EventFetchProvider>
-            </BrowserRouter>
-        </>
-    );
+  const [authorization, setAuthorization] = useState(null);
+  const [userProfileInfo, setUserProfileInfo] = useState(null);
+  return (
+    <>
+      <BrowserRouter>
+        <EventFetchProvider>
+          <Routes>
+            <Route path="/" element={<Splash />} />
+            <Route
+              path="/login"
+              element={
+                <Login
+                  onLoginSuccess={(authorization, userProfileInfo) => {
+                    setAuthorization(authorization);
+                    setUserProfileInfo(userProfileInfo);
+                  }}
+                />
+              }
+            />
+            <Route path="/register" element={<Register />} />
+            <Route path="/home" element={<Home 
+              authorization={authorization}
+              userProfileInfo={userProfileInfo}
+            />} />
+            <Route path="/search" element={<SearchEvents />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/addevent" element={<AddEvent />} />
+            <Route path="/likedevents" element={<LikedEvents />} />
+            <Route path="/eventdetails/:eventId" element={<EventDetails />} />
+            <Route path="/host/:hostId" element={<HostProfile />} />
+          </Routes>
+        </EventFetchProvider>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;

@@ -25,7 +25,6 @@
 
   .register_sign-up-form {
     border-radius: 8px;
-    // margin-block: 16px;
     margin-bottom: 20px;
 
     .register_heading {
@@ -60,6 +59,12 @@
         }
       }
     }
+  }
+
+  .register_success-message {
+    text-align: center;
+    color: green;
+    padding-bottom: 16px;
   }
 
   .register_error-message {

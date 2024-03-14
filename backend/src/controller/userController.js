@@ -66,14 +66,26 @@ export const getUserProfileInfoCtrl = catchAsync(
   { message: "Could not retrieve user info" }
 );
 
+// ====== Edit user Profile Info =======
+export const patchEditUserProfileCtrl = catchAsync(
+  async (req, res) => {
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const userProfileInfo = req.body;
+
+    const result = await UserService.editUserProfile(
+      authenticatedUserId,
+      userProfileInfo
+    );
+    res.status(200).json({ success: true, result });
+  },
+  { message: "Could not update user profile" }
+);
+
 // ====== Add event to wishlist =======
 export const patchEventToWishlistCtrl = catchAsync(
   async (req, res) => {
     const authenticatedUserId = req.verifiedUserClaims.sub;
-    console.log({ authenticatedUserId });
-
     const eventId = req.params.eventId;
-    console.log({ eventId });
 
     const result = await UserService.addEventToWishlist(
       authenticatedUserId,
@@ -82,4 +94,19 @@ export const patchEventToWishlistCtrl = catchAsync(
     res.status(200).json({ success: true, result });
   },
   { message: "Could not add event to wishlist" }
+);
+
+// ====== Add event to registered events list =======
+export const patchEventToRegisteredEventsListCtrl = catchAsync(
+  async (req, res) => {
+    const authenticatedUserId = req.verifiedUserClaims.sub;
+    const eventId = req.params.eventId;
+
+    const result = await UserService.addEventToRegisteredEventsList(
+      authenticatedUserId,
+      eventId
+    );
+    res.status(200).json({ success: true, result });
+  },
+  { message: "Could not add event to registered events list" }
 );
