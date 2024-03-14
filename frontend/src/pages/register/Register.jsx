@@ -23,9 +23,7 @@ const Register = () => {
     setter(e.target.value);
   };
 
-  const registerUser = (event) => {
-    // event.preventDefault();
-
+  const registerUser = () => {
     if (!name || !email || !password) {
       setErrorMessage("Fülle bitte alle Felder aus!");
       return;
@@ -43,7 +41,6 @@ const Register = () => {
       .then((res) => res.json())
       .then(({ success, result, message }) => {
         if (!success) return setErrorMessage(message || "Registration failed");
-        console.log(result);
         setSuccessMessage("Accounted created, welcome!");
 
         setErrorMessage("");
@@ -52,7 +49,8 @@ const Register = () => {
         setPassword("");
         setConfirmPassword("");
 
-        navigate("/login");
+        // setTimeout(() => navigate("/login"), 2000);
+        // navigate("/login");
       });
   };
 

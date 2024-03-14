@@ -32,7 +32,7 @@ export async function doSilentRefresh() {
       console.log(message);
       throw new Error("Could not refresh token, please login");
     }
-    return result.newAccessToken;
+    return result;
   } catch (err) {
     console.log(err);
     throw new Error("Could not refresh token, please login");
