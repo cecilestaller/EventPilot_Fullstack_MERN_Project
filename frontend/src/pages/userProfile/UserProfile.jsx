@@ -8,7 +8,7 @@ const UserProfile = () => {
                 hier ist das Profil des eingeloggeten User, dass er bei bedarf
                 bearbeiten kann
             </h2>
-            <Nav/>
+            <Nav highlight="profile"/>
         </>
     );
 };
