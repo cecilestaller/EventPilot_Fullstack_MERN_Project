@@ -16,7 +16,16 @@ const eventSchema = new mongoose.Schema(
         },
         category: {
             type: String,
-            enum: ["music", "art", "sport", "food", "movie", "others"],
+            enum: [
+                "music",
+                "art",
+                "sport",
+                "food",
+                "movie",
+                "comedy",
+                "literature",
+                "others",
+            ],
         },
         description: { type: String, required: true },
         maxGuests: { type: Number, required: true },
