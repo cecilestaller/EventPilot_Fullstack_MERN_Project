@@ -21,6 +21,8 @@ export async function getEventDetails(authenticatedUserId, eventId) {
 
     return {
         eventDetails: foundEvent,
+        amountRegisteredGuests: foundEvent.registeredGuests.length,
+        eventOnWishlists: foundEvent.wishlistCounter.length,
         host: foundHost,
         avgStarsOfHost: Number(hostStarAvg.toFixed(2)),
     };
