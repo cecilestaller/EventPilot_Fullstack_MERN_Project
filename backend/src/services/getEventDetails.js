@@ -1,14 +1,27 @@
-import { Event, User } from "../models/index.js";
+import { Event, User, Review } from "../models/index.js";
 
 export async function getEventDetails(authenticatedUserId, eventId) {
-  const foundEvent = await Event.findOne({
-    hostId: authenticatedUserId,
-    _id: eventId,
-  });
-  if (!foundEvent) throw new Error("Could not find event");
+    const foundUser = await User.findById(authenticatedUserId);
+    if (!foundUser) throw new Error("User doesn't exist anymore");
+    // find Event
+    const foundEvent = await Event.findById(eventId);
+    if (!foundEvent) throw new Error("Could not find event" + eventId);
+    // find Host of this Event
+    const foundHost = await User.findById({ _id: foundEvent.hostId });
+    if (!foundHost) throw new Error("Could not find host for this event");
+    // find all reviews of host
+    const foundReviews = await Review.find({ hostId: foundHost._id });
 
-  const foundHost = await User.findById({ _id: authenticatedUserId });
-  if (!foundHost) throw new Error("Could not find host for this event");
+    const hostStarAvg =
+        foundReviews
+            .map((review) => review.stars)
+            .reduce((acc, element) => {
+                return acc + element;
+            }, 0) / foundReviews.length;
 
-  return { eventDetails: foundEvent, host: foundHost };
+    return {
+        eventDetails: foundEvent,
+        host: foundHost,
+        avgStarsOfHost: Number(hostStarAvg.toFixed(2)),
+    };
 }

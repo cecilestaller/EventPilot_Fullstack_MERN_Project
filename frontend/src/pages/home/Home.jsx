@@ -1,44 +1,44 @@
 import Nav from "../../components/nav/Nav";
 import "./Home.scss";
 import Logo from "../../assets/images/Logo.svg";
-import DropdownArrow from "../../assets/images/location_dropdown_arrow.svg"
+import DropdownArrow from "../../assets/images/location_dropdown_arrow.svg";
 import NearbyEvents from "../../components/nearbyEvents/NearbyEvents";
 import UpcomingEvents from "../../components/upcomingEvents/UpcomingEvents";
 import RandomEvent from "../../components/randomEvent/RandomEvent";
-import SeeAllArrow from "../../assets/images/seeall_arrow.svg"
-import { useNavigate } from "react-router-dom"
+import SeeAllArrow from "../../assets/images/seeall_arrow.svg";
+import { useNavigate } from "react-router-dom";
 import { useEventFetchContext } from "../../context/eventFetchContext";
 import { useEffect, useState } from "react";
 
-const Home = ({authorization, userProfileInfo}) => {
+const Home = ({ authorization, userProfileInfo }) => {
 
     const { fetchEventData, setFetchEventData } = useEventFetchContext();
     const [getUserLocation, setGetUserLocation] = useState("")
     const [saveUserLocation, setSaveUserLocation] = useState("")
     const [hideClassForDropdown, setHideClassForDropdown] = useState("hide")
+    const [zwischenspeicher, setZwischenspeicher] = useState("")
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
-
-    // ============ fetching events and save into context ==================
+  // ============ fetching events and save into context ==================
     useEffect(() => {
         const getEventData = async () => {
-            try {
-                const response = await fetch(`http://localhost:3333/api/v1/events`, { 
-                    headers: { authorization }
-                })
-                if (!response.ok) {
-                    throw new Error("Network response was not ok")
-                } else {
-                    const {success, result, error, message} = await response.json()
-                    setFetchEventData(result)
-                    return
-                }
-            } catch (error) {
-                console.error("Error fetching data: ", error)
+        try {
+            const response = await fetch(`http://localhost:3333/api/v1/events`, {
+                headers: { authorization },
+            });
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            } else {
+                const { success, result, error, message } = await response.json();
+                setFetchEventData(result);
+                return;
             }
+        } catch (error) {
+            console.error("Error fetching data: ", error);
         }
-        getEventData()
-    },[])
+    };
+    getEventData();
+    }, []);
 
     // console.log(userProfileInfo);
     // console.log(userProfileInfo.userAddress);
@@ -68,7 +68,7 @@ const Home = ({authorization, userProfileInfo}) => {
                         const data = await response.json();
                         // console.log("Adresse:", data.address);
                         setGetUserLocation(data.address.state);
-                        setSaveUserLocation(getUserLocation)
+                        // setSaveUserLocation(getUserLocation)
                     }
                 } else {
                     throw new Error("Geolocation is not supported by Browser.");
@@ -89,6 +89,10 @@ const Home = ({authorization, userProfileInfo}) => {
         setSaveUserLocation(province) //changes location value displayed
     }
 
+    useEffect(() => {
+        setSaveUserLocation(getUserLocation)
+    },[getUserLocation])
+
     // ========= function of "Alle zeigen" in "Anstehende Events" ===================
     const forwardToSeeAllUpcoming = () => {
         navigate("/search")
@@ -97,7 +101,7 @@ const Home = ({authorization, userProfileInfo}) => {
     const forwardToSeeAllNearby = () => {
         navigate("/search")
     }
-    
+    console.log(saveUserLocation);
     return (
         <div className="homeContainer">
             <header className="headerHome">
