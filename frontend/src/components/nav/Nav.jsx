@@ -1,6 +1,7 @@
 import ExploreIcon from "../../assets/images/compass_grey.svg"
 import EventsIcon from "../../assets/images/Calender.svg"
 import AddEventIcon from "../../assets/images/add_plus.svg"
+import AddEventIconWhite from "../../assets/images/add_plus_white.svg"
 import SearchIcon from "../../assets/images/search_icon_grey.svg"
 import ProfileIcon from "../../assets/images/Profile.svg"
 import PurpleExploreIcon from "../../assets/images/compass_purple.svg"
@@ -19,6 +20,7 @@ const Nav = ({ highlight }) => {
     const [stateEventsIcon, setStateEventsIcon] = useState(EventsIcon)
     const [stateSearchIcon, setStateSearchIcon] = useState(SearchIcon)
     const [stateProfileIcon, setStateProfileIcon] = useState(ProfileIcon)
+    const [stateAddEventIcon, setStateAddEventIcon] = useState(AddEventIcon)
     const [stateTextColorExplore, setStateTextColorExplore] = useState("")
     const [stateTextColorEvents, setStateTextColorEvents] = useState("")
     const [stateTextColorSearch, setStateTextColorSearch] = useState("")
@@ -32,6 +34,8 @@ const Nav = ({ highlight }) => {
         } else if  (highlight === "events") {
             setStateEventsIcon(PurpleEventsIcon)
             setStateTextColorEvents("NavIconFocusColor")
+        } else if ( highlight === "addEvent") {
+            setStateAddEventIcon(AddEventIconWhite)
         } else if  (highlight === "search") {
             setStateSearchIcon(PurpleSearchIcon)
             setStateTextColorSearch("NavIconFocusColor")
@@ -43,23 +47,33 @@ const Nav = ({ highlight }) => {
 
     // ===================== onclick function for navigation ==============
     const navigateExploreIcon = () => {
-        navigate("/home")
+        if (highlight !== "explore") {
+            navigate("/home")
+        }
     }
 
     const navigateEventsIcon = () => {
+        if (highlight !== "events") {
         navigate("/likedevents")
+        }
     }
 
     const navigateAddEvent = () => {
+        if (highlight !== "addEvent") {
         navigate("/addevent")
+        }
     }
 
     const navigateSearchIcon = () => {
+        if (highlight !== "search") {
         navigate("/search")
+        }
     }
 
     const navigateProfileIcon = () => {
+        if (highlight !== "profile") {
         navigate("/profile")
+        }
     }
 
     return (
@@ -73,7 +87,7 @@ const Nav = ({ highlight }) => {
                 <p className={`NavIconDescriptions ${stateTextColorEvents}`} >Events</p>
             </label>
             <label onClick={() => navigateAddEvent()} className="iconLabels addEventIcon">
-                <img className="NavbarIcons" src={AddEventIcon} alt="navbarIcons" />
+                <img className="NavbarIcons" src={stateAddEventIcon} alt="navbarIcons" />
             </label>
             <label onClick={() => navigateSearchIcon()} className="iconLabels">
                 <img className="NavbarIcons" src={stateSearchIcon} alt="navbarIcons" />
