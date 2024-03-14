@@ -9,27 +9,60 @@
     src: url("./assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
 }
 
-
 :root {
     --main-bg-color: white;
-    --main-focus-color: #00ECAA;
-    --: #44ABD4;
-    --: #668BE9;
-    --unfocused-element-color: #777BF3;
-    --botton-color: #876AFD;
-    --: #7254EE;
-    --main-akcent-color: #5D3EDE;
-    --main-text-color: #1F1F1F;
-    --: #FFB21C;
+    --main-focus-color: #00ecaa;
+    --: #44abd4;
+    --: #668be9;
+    --unfocused-element-color: #777bf3;
+    --botton-color: #876afd;
+    --: #7254ee;
+    --main-akcent-color: #5d3ede;
+    --main-text-color: ##120d26;
+    --: #ffb21c;
     --icon-standard-color: #848484;
-    --secondary-text-color: #A6A6A6;
-    --button-text-color: white
+    --secondary-text-color: #a6a6a6;
+    --button-text-color: white;
 }
 
 body {
     font-family: "Inter";
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
+}
+
+// =======================
+//  headings
+// =======================
+
+h1 {
+    font-size: 35px;
+    font-weight: 100;
+    line-height: normal;
+    color: var(--main-text-color);
+}
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    line-height: normal;
+    font-weight: 500;
+    color: var(--main-text-color);
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 34px;
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.16px;
+    line-height: normal;
+    text-align: center;
 }
 
 .hide {
