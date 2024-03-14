@@ -3,10 +3,13 @@
     position: fixed;
     width: 100%;
     bottom: 0;
+    left: 0;
     height: 60px;
     display: flex;
-    justify-content:space-evenly ;
+    justify-content: space-evenly;
     align-items: center;
+    background-color: var(--main-bg-color);
+
     .iconLabels {
         display: flex;
         flex-direction: column;
@@ -14,15 +17,18 @@
         gap: 2px;
         // opacity: 0.5;
         width: 30px;
+
         .NavbarIcons {
             width: 23px;
             aspect-ratio: 1;
             fill: var(--main-akcent-color);
         }
+
         .NavIconDescriptions {
             font-size: 12px;
         }
     }
+
     .addEventIcon {
         width: 46px;
         aspect-ratio: 1;
