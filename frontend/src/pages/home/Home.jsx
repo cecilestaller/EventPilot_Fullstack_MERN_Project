@@ -11,93 +11,138 @@ import { useEventFetchContext } from "../../context/eventFetchContext";
 import { useEffect, useState } from "react";
 
 const Home = ({ authorization, userProfileInfo }) => {
-  const { fetchEventData, setFetchEventData } = useEventFetchContext();
 
-  const navigate = useNavigate();
+    const { fetchEventData, setFetchEventData } = useEventFetchContext();
+    const [getUserLocation, setGetUserLocation] = useState("")
+    const [saveUserLocation, setSaveUserLocation] = useState("")
+    const [hideClassForDropdown, setHideClassForDropdown] = useState("hide")
+    const [zwischenspeicher, setZwischenspeicher] = useState("")
+    const navigate = useNavigate();
 
   // ============ fetching events and save into context ==================
-  useEffect(() => {
-    const getEventData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3333/api/v1/events`, {
-          headers: { authorization },
-        });
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        } else {
-          const { success, result, error, message } = await response.json();
-          setFetchEventData(result);
-          return;
+    useEffect(() => {
+        const getEventData = async () => {
+        try {
+            const response = await fetch(`http://localhost:3333/api/v1/events`, {
+                headers: { authorization },
+            });
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            } else {
+                const { success, result, error, message } = await response.json();
+                setFetchEventData(result);
+                return;
+            }
+        } catch (error) {
+            console.error("Error fetching data: ", error);
         }
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
     };
     getEventData();
-  }, []);
+    }, []);
 
-  console.log(userProfileInfo);
-  console.log(userProfileInfo.userAddress);
-  console.log(fetchEventData);
+    // console.log(userProfileInfo);
+    // console.log(userProfileInfo.userAddress);
+    // console.log(fetchEventData);
 
-  // ========= function of "Alle zeigen" in "Anstehende Events" ===================
-  const forwardToSeeAllUpcoming = () => {
-    navigate("/search");
-  };
-  // ========= function of "Alle zeigen" in "In der Nähe" ===================
-  const forwardToSeeAllNearby = () => {
-    navigate("/search");
-  };
+// ==================== getting user location ===============================
 
-  return (
-    <div className="homeContainer">
-      <header className="headerHome">
-        <img className="logo" src={Logo} alt="logoIcon" />
-        <div className="locationContainer">
-          <div
-            className="locationDropdownContainer"
-            onClick={() => locationDropdownMenu()}
-          >
-            <p className="locationTitle">Standort</p>
-            <img src={DropdownArrow} alt="arrowIcon" />
-          </div>
-          <h3 className="showCurrentLocation">Berlin, DE</h3>
+    const [location, setLocation] = useState(null);
+
+    useEffect(() => {
+        const getLocation = async () => {
+            try {
+                if (navigator.geolocation) {
+                    const position = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject);
+                    });
+                    const { latitude, longitude } = position.coords;
+                    await setLocation({ latitude, longitude });
+                    if (location?.latitude === null || location?.longitude === null) {
+                        alert("Konnte Adressdaten nicht abrufen")
+                    } else {
+                        // ==================== getting address via nominatim API ===========================
+                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
+                        if (!response.ok) {
+                            throw new Error("Error fetching address");
+                        }
+                        const data = await response.json();
+                        // console.log("Adresse:", data.address);
+                        setGetUserLocation(data.address.state);
+                        // setSaveUserLocation(getUserLocation)
+                    }
+                } else {
+                    throw new Error("Geolocation is not supported by Browser.");
+                }
+            } catch (error) {
+                console.error("Error getting location: ", error);
+            }
+        };
+        getLocation();
+    }, []);
+
+    // ==================== dropdown menu function ==============================
+    const locationDropdownMenu = () => {
+        setHideClassForDropdown(hideClassForDropdown === "hide" ? "" : "hide")
+    }
+
+    const changeLocationInfo = (province) => {
+        setSaveUserLocation(province) //changes location value displayed
+    }
+
+    useEffect(() => {
+        setSaveUserLocation(getUserLocation)
+    },[getUserLocation])
+
+    // ========= function of "Alle zeigen" in "Anstehende Events" ===================
+    const forwardToSeeAllUpcoming = () => {
+        navigate("/search")
+    }
+    // ========= function of "Alle zeigen" in "In der Nähe" ===================
+    const forwardToSeeAllNearby = () => {
+        navigate("/search")
+    }
+    console.log(saveUserLocation);
+    return (
+        <div className="homeContainer">
+            <header className="headerHome">
+                <img className="logo" src={Logo} alt="logoIcon" />
+                <div className="locationContainer">
+                    <div className="locationDropdownContainer" onClick={() => locationDropdownMenu()}>
+                        <p className="locationTitle">Standort</p>
+                        <img src={DropdownArrow} alt="arrowIcon" />
+                    </div>
+                    <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
+                        <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections`}>Dein Standort: {getUserLocation}</p>
+                        {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
+                            <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
+                        ))}
+                    </div>
+                    <h3 className="showCurrentLocation">{saveUserLocation}</h3>
+                </div>
+                {/* Element emptyDivForFlexSpace is invisible and only used to properly center  locationDropdownContainer */}
+                <div className="emptyDivForFlexSpace">
+                    <img className="logo" style={{visibility: "hidden"}} src={Logo} alt="logoIcon" />
+                </div>
+                {/* ===================================================================================================== */}
+            </header>
+            <div className="UpcomingTitleContainer">
+                <p className="titleOfConponent">Anstehende Events</p>
+                <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllUpcoming()}>
+                    Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
+                </label>
+            </div>
+            <UpcomingEvents/>
+            <div className="NearbyTitleContainer">
+                <p className="titleOfConponent">In deiner Nähe</p>
+                <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllNearby()}>
+                    Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
+                </label>
+            </div>
+            <NearbyEvents/>
+            <RandomEvent/>
+            <Nav highlight="explore"/>
         </div>
-        {/* Element emptyDivForFlexSpace is invisible and only used to properly center  locationDropdownContainer */}
-        <div className="emptyDivForFlexSpace">
-          <img
-            className="logo"
-            style={{ visibility: "hidden" }}
-            src={Logo}
-            alt="logoIcon"
-          />
-        </div>
-        {/* ===================================================================================================== */}
-      </header>
-      <div className="UpcomingTitleContainer">
-        <p className="titleOfConponent">Anstehende Events</p>
-        <label
-          className="seeAllTextAndIcon"
-          onClick={() => forwardToSeeAllUpcoming()}
-        >
-          Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
-        </label>
-      </div>
-      <UpcomingEvents />
-      <div className="NearbyTitleContainer">
-        <p className="titleOfConponent">In deiner Nähe</p>
-        <label
-          className="seeAllTextAndIcon"
-          onClick={() => forwardToSeeAllNearby()}
-        >
-          Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
-        </label>
-      </div>
-      <NearbyEvents />
-      <RandomEvent />
-      <Nav highlight="explore" />
-    </div>
-  );
+    );
 };
 
 export default Home;

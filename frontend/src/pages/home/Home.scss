@@ -10,15 +10,33 @@
             height: 32px;
         }
         .locationContainer {
-            text-align: center;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            position: relative;
             .locationDropdownContainer {
                 display: flex;
                 .locationTitle {
                     font-size: 12px;
                     font-weight: 100;
                     margin-right: 3px;
+                }
+            }
+            .dropdownAddressMenu {
+                position: absolute;
+                top: 18px;
+                width: 200%;
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                background-color: var(--main-bg-color);
+                .HomeDropdownSelections {
+                    padding: 8px;
+                    font-size: 12px;
+                    &:hover {
+                        background-color: var(--main-akcent-color);
+                        color: var(--button-text-color);
+                    }
                 }
             }
             .showCurrentLocation {
