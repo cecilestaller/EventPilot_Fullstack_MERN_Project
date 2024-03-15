@@ -48,8 +48,6 @@ const Login = ({ onLoginSuccess }) => {
             onLoginSuccess(authorization, result.user); // update suthorization state
           }
         );
-
-        console.log(authorization);
         setErrorMessage(""); // reset error message after success
         setSuccessMessage("Login successful, enjoy!");
         navigate("/home");
