@@ -14,6 +14,7 @@ import { toggleIsCancelled } from "./toggleIsCancelled.js";
 import { editEvent } from "./editEvent.js";
 import { addReview } from "./addReview.js";
 import { getHostProfileDetails } from "./getHostProfileDetails.js";
+import { removeEventFromWishlist } from "./removeEventFromWishlist.js";
 
 export const UserService = {
     signUpUser,
@@ -25,6 +26,7 @@ export const UserService = {
     editUserProfile,
     addEventToRegisteredEventsList,
     getHostProfileDetails,
+    removeEventFromWishlist,
 };
 
 export const EventService = {
