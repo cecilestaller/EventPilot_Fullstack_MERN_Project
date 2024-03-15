@@ -150,7 +150,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                     </div>
                     <div onClick={() => hideStateSelectionAgain()} className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}>
                         <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
-                            <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections`}>Dein Standort: {getUserLocation}</p>
+                            <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections DeinStandortTag`}>Dein Standort: {getUserLocation}</p>
                             {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
                                 <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
                                 ))}
