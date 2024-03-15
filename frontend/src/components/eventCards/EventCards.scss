@@ -1,4 +1,4 @@
-.RandomEventContainer {
+.EventCardsContainer {
     display: flex;
     padding:8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -8,46 +8,47 @@
     background-color: var(--main-bg-color);
     position: relative;
     margin: 0 auto;
-    .RandomEventPic {
+    z-index: 0;
+    .EventCardsPic {
         border-radius: 8px;
     }
-    .RandomEventDetails {
+    .EventCardsDetails {
         position: relative;
         padding: 8px;
-        .RandomEventDateTag {
+        .EventCardsDateTag {
             color: var(--main-akcent-color);
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 5px;
         }
-        .RandomEventTitleTag {
+        .EventCardsTitleTag {
             font-size: 18px;
             font-weight: 600;
         }
-        .RandomEventLocationIconContainer {
+        .EventCardsLocationIconContainer {
             bottom: 8px;
             position: absolute;
             display: flex;
             gap: 5px;
             align-items: center;
-            .RandomEventLocationIcon {
+            .EventCardsLocationIcon {
                 width: 12px;
             }
-            .RandomEventLocationIconText {
+            .EventCardsLocationIconText {
                 font-size: 13px;
                 font-weight: 100;
             }
         }
     }
-    .RandomEventBookmarkContainer {
+    .EventCardsBookmarkContainer {
         width: 36px;
         height: 36px;
         background-color: var(--main-bg-color);
-        box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1);
-        border-radius: 8px 16px 8px 8px;
+        box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px 8px 8px 8px;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 8px;
+        right: 8px;
         display: flex;
         align-items:center;
         justify-content: center;

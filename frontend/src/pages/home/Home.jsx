@@ -4,16 +4,18 @@ import Logo from "../../assets/images/Logo.svg";
 import DropdownArrow from "../../assets/images/location_dropdown_arrow.svg";
 import NearbyEvents from "../../components/nearbyEvents/NearbyEvents";
 import UpcomingEvents from "../../components/upcomingEvents/UpcomingEvents";
-import RandomEvent from "../../components/randomEvent/RandomEvent";
+import EventCards from "../../components/eventCards/EventCards";
 import SeeAllArrow from "../../assets/images/seeall_arrow.svg";
 import { useNavigate } from "react-router-dom";
 import { useEventFetchContext } from "../../context/eventFetchContext";
 import { useEffect, useState } from "react";
+import { useLocationFetchContext } from "../../context/locationFetchContext";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 
 const Home = ({ authorization, userProfileInfo }) => {
 
     const { fetchEventData, setFetchEventData } = useEventFetchContext();
+    const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
     const [getUserLocation, setGetUserLocation] = useState("")
     const [saveUserLocation, setSaveUserLocation] = useState("")
     const [hideClassForDropdown, setHideClassForDropdown] = useState("hide")
@@ -41,9 +43,9 @@ const Home = ({ authorization, userProfileInfo }) => {
     getEventData();
     }, []);
 
-    // console.log(userProfileInfo);
+    console.log(userProfileInfo);
     // console.log(userProfileInfo.userAddress);
-    // console.log(fetchEventData);
+    console.log(fetchEventData);
 
 // ==================== getting user location ===============================
 
@@ -92,12 +94,15 @@ const Home = ({ authorization, userProfileInfo }) => {
         setHideClassForDropdown("hide")
     }
 
+    useEffect(() => {
+        setSaveUserLocation(getUserLocation)
+        setFetchLocationData(getUserLocation)
+    },[getUserLocation])
+
     const hideStateSelectionAgain = () => {
         setHideClassForDropdown("hide")
     }
-
-// =================== location and location modal ===========================
-
+    // =================== location and location modal ===========================
     useEffect(() => {
         setSaveUserLocation(getUserLocation)
     },[getUserLocation])
@@ -114,7 +119,26 @@ const Home = ({ authorization, userProfileInfo }) => {
     const forwardToSeeAllNearby = () => {
         navigate("/search")
     }
-    console.log(saveUserLocation);
+
+    // =============== Random event picker =====================================
+    const randomNumberEvent = Math.floor((Math.random() * fetchEventData?.length)+1)
+    const randomEvent = fetchEventData[randomNumberEvent]
+    const inputDate = new Date(randomEvent?.eventDate);
+
+    const day = inputDate.getDate();
+    const month = inputDate.getMonth() + 1; // Monate werden von 0 bis 11 gezählt, daher fügen wir 1 hinzu
+    const year = inputDate.getFullYear();
+    const hours = inputDate.getHours();
+    const minutes = inputDate.getMinutes();
+
+    // Formatierung der Daten und Zeit
+    const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
+    const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} Uhr`;
+
+    // Gesamtes formatiertes Datum und Zeit
+    const formattedDateTime = `${formattedDate} ${formattedTime}`;
+
+
     return (
         <div className="homeContainer">
             <header className="headerHome">
@@ -125,11 +149,11 @@ const Home = ({ authorization, userProfileInfo }) => {
                         <img src={DropdownArrow} alt="arrowIcon" />
                     </div>
                     <div onClick={() => hideStateSelectionAgain()} className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}>
-                        <div className={`dropdownAddressMenu`}>
+                        <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
                             <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections DeinStandortTag`}>Dein Standort: {getUserLocation}</p>
                             {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
                                 <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
-                            ))}
+                                ))}
                         </div>
                     </div>
                     <h3 className="showCurrentLocation">{saveUserLocation}</h3>
@@ -154,7 +178,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                 </label>
             </div>
             <NearbyEvents/>
-            <RandomEvent Date="3RD Jun - Sun - 8:00 PM" Title="Music Evening" State="Miami" checked="true"/>
+            <EventCards Date={formattedDateTime} Title={randomEvent?.title} State={randomEvent?.eventAddress.province} checked=""/>
             <div className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}>
                 <div className="LocationModelWindow">
                     <p>Keine Standortdaten gefunden.</p>
