@@ -3,8 +3,42 @@ import Nav from "../../components/nav/Nav";
 import editIcon from "../../assets/images/profileimage_edit.svg";
 import "./UserProfile.scss";
 import profilePicTest from "../../assets/images/profile-pic-test.jpg";
+import { useEventFetchContext } from "../../context/eventFetchContext";
+import { useEffect } from "react";
+import { backendUrl } from "../../api";
+import locationPinGrey from "../../assets/images/Map Pin_grey.svg";
+import locationPinPurple from "../../assets/images/Location_Pin_purple.svg";
 
-const UserProfile = () => {
+const UserProfile = ({ authorization, userProfileInfo }) => {
+  const { fetchEventData, setFetchEventData } = useEventFetchContext();
+
+  useEffect(() => {
+    async function fetchUserProfileInfo() {
+      try {
+        const users = await fetch(`${backendUrl}/api/v1/user`, {
+          headers: { authorization },
+        });
+        const { result, success, error, message } = await users.json();
+        if (!success) throw new Error(error);
+        return setFetchEventData(result);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchUserProfileInfo();
+  }, []);
+
+  console.log("fetchEventData: ", fetchEventData);
+
+  // breakpoint function for address
+  // (if address breaks to a second line --> add class 'break-point' to break right before zip code)
+  // ===============================================
+  const addressField = document.body.querySelector("#address").offsetHeight;
+  const zipAndCityField = document.body.querySelector("#zipAndCity");
+  if (addressField > 24) {
+    zipAndCityField.classList.add("break-point");
+  }
+
   return (
     <section className="user-profile-wrapper">
       <h2>John Brown</h2>
@@ -16,12 +50,12 @@ const UserProfile = () => {
       {/* follow */}
       <article className="follow-container">
         <div className="follow-block">
-          <p>300</p>
+          <p>{fetchEventData?.userDetails?.following.length}</p>
           <p className="text-light">Gefolgt</p>
         </div>
         <div className="line"></div>
         <div className="follow-block">
-          <p>50</p>
+          <p>{fetchEventData?.userDetails?.follower.length}</p>
           <p className="text-light">Follower</p>
         </div>
       </article>
@@ -29,28 +63,37 @@ const UserProfile = () => {
       <BtnOutlined text="edit profile" icon={editIcon} />
 
       {/* About */}
-      <article className="about-container">
+      <article className="user-profile-item-container">
         <h3>Über mich</h3>
-        <p className="text-light">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum quasi,
-          perferendis dolores beatae illum provident minima, quae sint sapiente
-          ipsa deserunt molestias dolorum ipsam. Quidem aliquam velit repellat
-          iste architecto.
-        </p>
+        <p className="text-light">{fetchEventData?.userDetails?.bio}</p>
       </article>
 
       {/* Interests */}
-      <article className="interests-wrapper">
+      <article className="user-profile-item-container">
         <h3>Interessen</h3>
-        {/* Interests grid */}
         <div className="interests-items-container">
-          <p className="interests-item">Konzerte</p>
-          <p className="interests-item">Kunst</p>
-          <p className="interests-item">Filme</p>
-          <p className="interests-item">Music</p>
-          <p className="interests-item">Web-Entwicklung</p>
-          <p className="interests-item">Raumfahrt</p>
-          <p className="interests-item">Comedy</p>
+          {fetchEventData?.userDetails?.interests.map((item) => (
+            <p className="interests-item">{item}</p>
+          ))}
+        </div>
+      </article>
+
+      <article className="user-profile-item-container">
+        <h3>Anschrift</h3>
+        <div className="address-wrapper">
+          <img src={locationPinPurple} alt="" />
+          <div className="address-container">
+            <p id="address">
+              Gothaer Str. 34,{" "}
+              <span className="" id="zipAndCity">
+                33211 Schwabing
+              </span>
+            </p>
+
+            {/* no address */}
+            {/* <p className="no-address">Keine Anschrift hinterlegt</p> */}
+            <p>Bayern</p>
+          </div>
         </div>
       </article>
 

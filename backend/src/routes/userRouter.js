@@ -21,4 +21,9 @@ export const userRouter = express
         doJwtAuth,
         UserController.patchEventToRegisteredEventsListCtrl
     )
-    .get("/:hostId", doJwtAuth, UserController.getHostDetailsCtrl);
+    .get("/:hostId", doJwtAuth, UserController.getHostDetailsCtrl)
+    .patch(
+        "/update-wishlist/:eventId",
+        doJwtAuth,
+        UserController.patchRemoveEventFromWishlistCtrl
+    );

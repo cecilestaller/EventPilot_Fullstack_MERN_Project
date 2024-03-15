@@ -19,7 +19,7 @@ export async function addEventToRegisteredEventsList(
         // event not fully booked yet --> 1) update Event: userId will be added to registeredGuests Array of Event
         const newRegisteredGuests = [
             ...foundEvent.registeredGuests,
-            foundUser._id,
+            { userId: foundUser._id, profilePicURL: foundUser.profilePicURL },
         ];
 
         const filterEvent = { _id: foundEvent._id };

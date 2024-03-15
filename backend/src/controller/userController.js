@@ -102,6 +102,21 @@ export const patchEventToWishlistCtrl = catchAsync(
     { message: "Could not add event to wishlist" }
 );
 
+// ===== REMOVE Event from wishlist =====
+export const patchRemoveEventFromWishlistCtrl = catchAsync(
+    async (req, res) => {
+        const authenticatedUserId = req.verifiedUserClaims.sub;
+        const eventId = req.params.eventId;
+
+        const result = await UserService.removeEventFromWishlist(
+            authenticatedUserId,
+            eventId
+        );
+        res.status(200).json({ success: true, result });
+    },
+    { message: "Could not remove event from wishlist" }
+);
+
 // ====== Add event to registered events list =======
 export const patchEventToRegisteredEventsListCtrl = catchAsync(
     async (req, res) => {

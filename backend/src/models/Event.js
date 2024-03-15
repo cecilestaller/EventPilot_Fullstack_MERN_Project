@@ -29,7 +29,13 @@ const eventSchema = new mongoose.Schema(
         },
         description: { type: String, required: true },
         maxGuests: { type: Number, required: true },
-        registeredGuests: [{ type: mongoose.Types.ObjectId }],
+        registeredGuests: [
+            {
+                userId: { type: mongoose.Types.ObjectId },
+                profilePicURL: { type: String },
+                _id: false,
+            },
+        ],
         wishlistCounter: [{ type: mongoose.Types.ObjectId }],
         isCancelled: { type: Boolean, default: false },
         fullyBooked: { type: Boolean, default: false },

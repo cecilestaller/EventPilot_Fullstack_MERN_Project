@@ -18,7 +18,7 @@
         }
     }
 
-    // Follow
+    // Follower - Following
     .follow-container {
         margin: 0 auto;
         padding-top: 24px;
@@ -45,13 +45,7 @@
         margin: 1.7rem auto;
     }
 
-    .text-light {
-        font-weight: 100;
-        color: var(--secondary-text-color);
-        line-height: 25px;
-    }
-
-    .interests-wrapper {
+    .user-profile-item-container {
         margin-block: 18px;
 
         .interests-items-container {
@@ -73,5 +67,36 @@
                 border-radius: 5px;
             }
         }
+
+        .address-wrapper {
+            padding-block: 8px;
+            display: flex;
+            align-items: start;
+            gap: 24px;
+
+            .address-container {
+                p {
+                    margin-bottom: 4px;
+
+                    .break-point::before {
+                        content: "hiddentext";
+                        font-size: 0;
+                        display: block;
+                        line-height: 0;
+                    }
+                }
+                .no-address {
+                    padding-bottom: 8px;
+                    font-weight: 100;
+                    color: var(--secondary-text-color);
+                }
+            }
+        }
+    }
+
+    .text-light {
+        font-weight: 100;
+        color: var(--secondary-text-color);
+        line-height: 25px;
     }
 }
