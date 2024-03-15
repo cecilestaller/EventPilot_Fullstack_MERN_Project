@@ -1,5 +1,6 @@
 import "./AddEvent.scss";
-import { useState } from "react";
+import Nav from "../../components/nav/Nav";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api/index";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
@@ -23,6 +24,7 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [maxGuests, setMaxGuests] = useState("");
+  const [hideEntranceAnimation, setHideEntranceAnimation] = useState("")
 
   const navigate = useNavigate();
 
@@ -84,6 +86,12 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
     // hier können wir dann zum angelegten event springen
     // navigate("/eventDetail");
   };
+
+  // =============== Entrance anmiation ====================
+  useEffect(() => {
+    setTimeout(() => {
+      setHideEntranceAnimation("hide")}, 600)
+  },[])
 
   return (
     <div className="addevent__wrapper">
@@ -260,6 +268,12 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
         </div>
       </form>
       <BtnSubmit text="Add Event" onClick={handleSubmit} />
+      <Nav highlight="addEvent"/>
+      {/* Entrance animation divs */}
+      <div className={`AddEventEntranceTransition ${hideEntranceAnimation}`}>
+        <div className="AddEventEntranceTransitionEffectPurple"></div>
+        <div className="AddEventEntranceTransitionEffectWhite"></div>
+      </div>
     </div>
   );
 };
