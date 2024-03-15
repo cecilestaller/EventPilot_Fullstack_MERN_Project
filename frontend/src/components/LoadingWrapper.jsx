@@ -31,7 +31,6 @@ const LoadingWrapper = ({
           headers: { authorization },
         });
         const { success, result, error } = await response.json();
-        console.log(result);
         await saveUserProfileInfo(result);
 
         setIsLoading(false);

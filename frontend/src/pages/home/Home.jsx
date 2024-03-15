@@ -154,7 +154,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                 </label>
             </div>
             <NearbyEvents/>
-            <RandomEvent/>
+            <RandomEvent Date="3RD Jun - Sun - 8:00 PM" Title="Music Evening" State="Miami" checked="true"/>
             <div className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}>
                 <div className="LocationModelWindow">
                     <p>Keine Standortdaten gefunden.</p>

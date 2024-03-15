@@ -1,1 +1,114 @@
-// AddEvent styling
+.addevent__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 7%;
+  padding-top: 8px;
+  padding-bottom: 24px;
+  position: relative;
+
+  .addevent_header {
+    display: flex;
+    justify-content: space-between;
+    animation: AddEventOpacity 0.3s linear;
+    animation-delay: 0.5s;
+
+    .addevent_header-titel {
+      font-size: 2em;
+      color: var(--main-akcent-color);
+      font-weight: 500;
+
+      .addevent_header-title-span {
+        color: var(--main-focus-color);
+      }
+    }
+  }
+
+  .addevent_form {
+    border-radius: 8px;
+    margin-top: 32px;
+    margin-bottom: 20px;
+    animation: AddEventOpacity 0.3s linear;
+    animation-delay: 0.5s;
+
+    .addevent_heading {
+      margin-bottom: 30px;
+      font-size: 1.6em;
+      font-weight: 500;
+    }
+
+    .addevent_input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+
+      .addevent_input-icon {
+        padding-right: 16px;
+      }
+
+      .addevent_input {
+        border: none;
+        font-size: 1em;
+        font-weight: 100;
+        outline: none;
+        width: 100%;
+
+        &::placeholder {
+          color: var(--icon-standard-color);
+          font-weight: 100;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  .AddEventEntranceTransition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-bg-color);
+    .AddEventEntranceTransitionEffectPurple {
+      position: absolute;
+      top: 88vh;
+      left: calc(50% - 22.5px);
+      width: 45px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--main-akcent-color);
+      animation: onLoad 0.8s linear;
+    }
+    .AddEventEntranceTransitionEffectWhite {
+      position: absolute;
+      top: 88vh;
+      left: calc(50% - 22.5px);
+      width: 45px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--main-bg-color);
+      animation: onLoad 0.4s linear;
+      animation-delay: 0.3s;
+    }
+  }
+}
+
+@keyframes onLoad {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 50;
+  }
+}
+
+@keyframes AddEventOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

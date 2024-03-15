@@ -1,0 +1,27 @@
+.btn-outlined {
+    margin-block: 1.5rem;
+    width: 154px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background-color: transparent;
+    border: solid 1.5px var(--main-akcent-color);
+    border-radius: 10px;
+    font-family: "Inter";
+    color: var(--main-akcent-color);
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 100;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 22px;
+    }
+    span {
+    }
+}

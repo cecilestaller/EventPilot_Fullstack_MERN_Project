@@ -1,6 +1,5 @@
 import "./AddEvent.scss";
-import Nav from "../../components/nav/Nav";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api/index";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
@@ -12,7 +11,7 @@ import mapIcon from "../../assets/images/Map Pin_grey.svg";
 import compasIcon from "../../assets/images/compass_grey.svg";
 
 const AddEvent = ({ authorization, userProfileInfo }) => {
-  const [eventPicURL, setEventPicURL] = useState(null);
+  const [eventPicURL, setEventPicURL] = useState("");
   const [title, setTitle] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [country, setCountry] = useState("");
@@ -24,7 +23,6 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [maxGuests, setMaxGuests] = useState("");
-  const [hideEntranceAnimation, setHideEntranceAnimation] = useState("")
 
   const navigate = useNavigate();
 
@@ -38,45 +36,12 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
       description,
       maxGuests,
     };
-
-    const formData = new FormData();
-    formData.append("image", eventPicURL, eventPicURL.name);
-
-    fetch(backendUrl + "/api/v1/files/upload", {
+    console.log(eventData);
+    fetch(backendUrl + `/api/v1/events/`, {
       method: "POST",
-      body: formData,
-      headers: { authorization },
+      body: JSON.stringify(eventData),
+      headers: { "Content-Type": "application/json", authorization },
     })
-      .then((res) => res.json())
-      .then(({ success, result, error, message }) => {
-        if (success) return result.filename;
-        else {
-          console.log({ message });
-          throw error;
-        }
-      })
-      .then((uploadFilename) =>
-        fetch(backendUrl + `/api/v1/events/`, {
-          method: "POST",
-          body: JSON.stringify({
-            eventPicURL: uploadFilename,
-            title,
-            eventDate,
-            eventAddress: {
-              country,
-              city,
-              zip,
-              street,
-              province,
-              locationInfo,
-            },
-            category,
-            description,
-            maxGuests,
-          }),
-          headers: { "Content-Type": "application/json", authorization },
-        })
-      )
       .then((res) => res.json())
       .then(({ success, result, error, message }) => {
         console.log({ success, result, error, message });
@@ -86,12 +51,6 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
     // hier können wir dann zum angelegten event springen
     // navigate("/eventDetail");
   };
-
-  // =============== Entrance anmiation ====================
-  useEffect(() => {
-    setTimeout(() => {
-      setHideEntranceAnimation("hide")}, 600)
-  },[])
 
   return (
     <div className="addevent__wrapper">
@@ -114,7 +73,8 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
             name="file"
             className="addevent_input"
             type="file"
-            onChange={(e) => setEventPicURL(e.target.files[0])}
+            value={eventPicURL}
+            onChange={(e) => setEventPicURL(e.target.value)}
           />
         </div>
 
@@ -268,12 +228,6 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
         </div>
       </form>
       <BtnSubmit text="Add Event" onClick={handleSubmit} />
-      <Nav highlight="addEvent"/>
-      {/* Entrance animation divs */}
-      <div className={`AddEventEntranceTransition ${hideEntranceAnimation}`}>
-        <div className="AddEventEntranceTransitionEffectPurple"></div>
-        <div className="AddEventEntranceTransitionEffectWhite"></div>
-      </div>
     </div>
   );
 };

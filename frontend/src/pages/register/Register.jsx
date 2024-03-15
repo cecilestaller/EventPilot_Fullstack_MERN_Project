@@ -16,6 +16,7 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ const Register = () => {
   };
 
   const registerUser = () => {
+    setIsLoading(true);
     if (!name || !email || !password) {
       setErrorMessage("Fülle bitte alle Felder aus!");
       return;
@@ -40,20 +42,21 @@ const Register = () => {
     })
       .then((res) => res.json())
       .then(({ success, result, message }) => {
-        if (!success) return setErrorMessage(message || "Registration failed");
-        setSuccessMessage("Accounted created, welcome!");
+        if (!success)
+          return setErrorMessage(message || "Registrierung fehlgeschlagen");
+        setSuccessMessage(
+          `Willkommen, ${name}! Wir leiten dich zum Login weiter...`
+        );
 
         setErrorMessage("");
-        setName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
+        // setName("");
+        // setEmail("");
+        // setPassword("");
+        // setConfirmPassword("");
 
-        // setTimeout(() => navigate("/login"), 2000);
-        // navigate("/login");
+        setTimeout(() => navigate("/login"), 3000);
       });
   };
-
   return (
     <>
       <div className="register__wrapper">
@@ -122,7 +125,11 @@ const Register = () => {
         </div>
         <p className="register_success-message">{successMessage}</p>
         <p className="register_error-message">{errorMessage}</p>
-        <BtnSubmit text="Account erstellen" onClick={registerUser} />
+        <BtnSubmit
+          text={isLoading ? "Lädt..." : "Account erstellen"}
+          onClick={registerUser}
+          disabled={isLoading}
+        />
         <p className="register_sign-in-prompt">
           Du hast bereits einen Account?
           <Link className="register_link" to="/login">
