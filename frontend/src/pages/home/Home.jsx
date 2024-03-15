@@ -9,6 +9,7 @@ import SeeAllArrow from "../../assets/images/seeall_arrow.svg";
 import { useNavigate } from "react-router-dom";
 import { useEventFetchContext } from "../../context/eventFetchContext";
 import { useEffect, useState } from "react";
+import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 
 const Home = ({ authorization, userProfileInfo }) => {
 
@@ -16,7 +17,7 @@ const Home = ({ authorization, userProfileInfo }) => {
     const [getUserLocation, setGetUserLocation] = useState("")
     const [saveUserLocation, setSaveUserLocation] = useState("")
     const [hideClassForDropdown, setHideClassForDropdown] = useState("hide")
-    const [zwischenspeicher, setZwischenspeicher] = useState("")
+    const [showLocationUnavailableModal, setShowLocationUnavailableModal] = useState("hide")
     const navigate = useNavigate();
 
   // ============ fetching events and save into context ==================
@@ -58,7 +59,8 @@ const Home = ({ authorization, userProfileInfo }) => {
                     const { latitude, longitude } = position.coords;
                     await setLocation({ latitude, longitude });
                     if (location?.latitude === null || location?.longitude === null) {
-                        alert("Konnte Adressdaten nicht abrufen")
+                        setShowLocationUnavailableModal("")
+                        setGetUserLocation("Berlin") //Setting default state to Berlin if no location data can be obtained
                     } else {
                         // ==================== getting address via nominatim API ===========================
                         const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
@@ -87,11 +89,22 @@ const Home = ({ authorization, userProfileInfo }) => {
 
     const changeLocationInfo = (province) => {
         setSaveUserLocation(province) //changes location value displayed
+        setHideClassForDropdown("hide")
     }
+
+    const hideStateSelectionAgain = () => {
+        setHideClassForDropdown("hide")
+    }
+
+// =================== location and location modal ===========================
 
     useEffect(() => {
         setSaveUserLocation(getUserLocation)
     },[getUserLocation])
+
+    const closeLocationUnavailableModal = () => {
+        setShowLocationUnavailableModal("hide")
+    }
 
     // ========= function of "Alle zeigen" in "Anstehende Events" ===================
     const forwardToSeeAllUpcoming = () => {
@@ -106,16 +119,18 @@ const Home = ({ authorization, userProfileInfo }) => {
         <div className="homeContainer">
             <header className="headerHome">
                 <img className="logo" src={Logo} alt="logoIcon" />
-                <div className="locationContainer">
-                    <div className="locationDropdownContainer" onClick={() => locationDropdownMenu()}>
+                <div className="locationContainer" onClick={() => locationDropdownMenu()}>
+                    <div className="locationDropdownContainer" >
                         <p className="locationTitle">Standort</p>
                         <img src={DropdownArrow} alt="arrowIcon" />
                     </div>
-                    <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
-                        <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections`}>Dein Standort: {getUserLocation}</p>
-                        {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
-                            <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
-                        ))}
+                    <div onClick={() => hideStateSelectionAgain()} className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}>
+                        <div className={`dropdownAddressMenu`}>
+                            <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections DeinStandortTag`}>Dein Standort: {getUserLocation}</p>
+                            {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
+                                <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
+                            ))}
+                        </div>
                     </div>
                     <h3 className="showCurrentLocation">{saveUserLocation}</h3>
                 </div>
@@ -139,7 +154,15 @@ const Home = ({ authorization, userProfileInfo }) => {
                 </label>
             </div>
             <NearbyEvents/>
-            <RandomEvent/>
+            <RandomEvent Date="3RD Jun - Sun - 8:00 PM" Title="Music Evening" State="Miami" checked="true"/>
+            <div className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}>
+                <div className="LocationModelWindow">
+                    <p>Keine Standortdaten gefunden.</p>
+                    <p>Beim nächsten Appstart Browsereinstellungen für Standortgenehmigung prüfen.</p>
+                    <p>Default Standort: Berlin</p>
+                    <BtnSubmit text="Weiter" onClick={() => closeLocationUnavailableModal()}/>
+                </div>
+            </div>
             <Nav highlight="explore"/>
         </div>
     );
