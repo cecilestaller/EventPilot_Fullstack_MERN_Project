@@ -1,1 +1,149 @@
 // Event Detail Page styling
+a {
+    text-decoration: none;
+    color: inherit;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+
+.eventDetail-wrapper {
+    padding-bottom: 14vh;
+    font-family: "Inter";
+    text-align: left;
+
+    .eventDetail-User-wrapper {
+        .eventDetail-hero-wrap {
+            position: relative;
+            margin-bottom: 16px;
+            height: 220px;
+            .eventDetail-header-wrap {
+                padding: 16px 24px;
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                position: absolute;
+                color: white;
+
+                .eventDetails-hl {
+                    font-weight: 300;
+                    width: 75%;
+                    font-size: 1.5rem;
+                    justify-self: flex-start;
+                    -webkit-text-stroke-width: 0.5px;
+                    -webkit-text-stroke-color: black;
+                }
+                .bookMark {
+                    width: 36px;
+                }
+            }
+            .eventPic {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            .eventDetails-registered-box-wrap {
+                position: absolute;
+                bottom: -8%;
+                left: 12.5%;
+                padding: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 75%;
+                background-color: var(--main-bg-color);
+                border-radius: 8px;
+                box-shadow: 0px 0px 10px 0.5px #668be9;
+                .registered-box-text {
+                    color: #668be9;
+                    font-size: 0.9375rem;
+                    font-weight: 500;
+                }
+            }
+        }
+        .eventDetails-info-wrap {
+            padding: 16px;
+            .eventDetails-eventTitle {
+                text-align: left;
+                color: var(--main-text-color);
+                font-size: 2.1rem;
+                font-weight: 100;
+                margin-bottom: 16px;
+            }
+            .eventDetails-date-wrap {
+                display: flex;
+                gap: 4px;
+                margin-bottom: 16px;
+                .eventDetails-dateInfo-wrap {
+                    .eventDetails-h3 {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        line-height: 18px;
+                        color: var(--main-text-color);
+                    }
+                }
+            }
+
+            .eventDetails-address-wrap {
+                display: flex;
+                gap: 4px;
+                margin-bottom: 16px;
+                .eventDetails-addressInfo-wrap {
+                    .eventDetails-h3 {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        line-height: 18px;
+                        color: var(--main-text-color);
+                    }
+                    .eventDetails-p {
+                        font-weight: 200;
+                        font-size: 0.75rem;
+                        color: #747688;
+                    }
+                }
+            }
+            a {
+                // max-width: 100%;
+                .eventDetail-hostInfoBox {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    gap: 4px;
+                    .eventDetails-hostPic {
+                        width: 18%;
+                        border-radius: 8px;
+                        .eventDetail-hostInfo-wrap {
+                            .eventDetails-h4 {
+                                color: var(--main-text-color);
+                                font-family: Inter;
+                                font-size: 15px;
+                                font-weight: 200;
+                                line-height: 25px;
+                            }
+                            .eventDetails-p {
+                                font-weight: 200;
+                                font-size: 0.75rem;
+                                color: #747688;
+                            }
+                        }
+                    }
+                }
+            }
+            .eventDetails-h5 {
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 34px;
+                color: var(--main-text-color);
+            }
+            p {
+                color: var(--main-text-color);
+                font-size: 1rem;
+                font-weight: 100;
+                line-height: 28px;
+            }
+        }
+    }
+}
