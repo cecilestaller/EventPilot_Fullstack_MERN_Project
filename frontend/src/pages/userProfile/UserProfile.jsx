@@ -7,7 +7,7 @@ import { useEventFetchContext } from "../../context/eventFetchContext";
 import { useEffect } from "react";
 import { backendUrl } from "../../api";
 import locationPinGrey from "../../assets/images/Map Pin_grey.svg";
-import locationPinPurple from "../../assets/images/Location Pin_purple.svg";
+import locationPinPurple from "../../assets/images/Location_Pin_purple.svg";
 
 const UserProfile = ({ authorization, userProfileInfo }) => {
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
