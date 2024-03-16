@@ -19,7 +19,7 @@
                 color: white;
 
                 .eventDetails-hl {
-                    font-weight: 300;
+                    font-weight: 400;
                     width: 75%;
                     font-size: 1.5rem;
                     justify-self: flex-start;
@@ -61,13 +61,16 @@
                 color: var(--main-text-color);
                 font-size: 2.1rem;
                 font-weight: 100;
-                margin-bottom: 16px;
+                margin-bottom: 12px;
             }
             .eventDetails-date-wrap {
                 display: flex;
-                gap: 4px;
+                gap: 12px;
                 margin-bottom: 16px;
                 .eventDetails-dateInfo-wrap {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
                     .eventDetails-h3 {
                         font-size: 1rem;
                         font-weight: 500;
@@ -79,9 +82,12 @@
 
             .eventDetails-address-wrap {
                 display: flex;
-                gap: 4px;
+                gap: 12px;
                 margin-bottom: 16px;
                 .eventDetails-addressInfo-wrap {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
                     .eventDetails-h3 {
                         font-size: 1rem;
                         font-weight: 500;
@@ -102,16 +108,23 @@
                     display: flex;
                     width: 100%;
                     align-items: center;
-                    gap: 4px;
+                    gap: 12px;
+                    transition: 0.2s;
+                    &:hover {
+                        background-color: #b2a3ec97;
+                        border-radius: 8px;
+                    }
                     .eventDetails-hostPic {
-                        width: 18%;
+                        width: 15%;
                         border-radius: 8px;
                         .eventDetail-hostInfo-wrap {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
                             .eventDetails-h4 {
                                 color: var(--main-text-color);
-                                font-family: Inter;
                                 font-size: 15px;
-                                font-weight: 200;
+                                font-weight: 400;
                                 line-height: 25px;
                             }
                             .eventDetails-p {
@@ -133,7 +146,7 @@
             p {
                 color: var(--main-text-color);
                 font-size: 1rem;
-                font-weight: 100;
+                font-weight: 200;
                 line-height: 28px;
             }
         }
