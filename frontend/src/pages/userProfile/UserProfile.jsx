@@ -4,13 +4,19 @@ import editIcon from "../../assets/images/profileimage_edit.svg";
 import "./UserProfile.scss";
 import profilePicTest from "../../assets/images/profile-pic-test.jpg";
 import { useEventFetchContext } from "../../context/eventFetchContext";
-import { useEffect } from "react";
+import { useLocationFetchContext } from "../../context/locationFetchContext";
+import { useEffect, useRef, useState } from "react";
 import { backendUrl } from "../../api";
 import locationPinGrey from "../../assets/images/Map Pin_grey.svg";
 import locationPinPurple from "../../assets/images/Location_Pin_purple.svg";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = ({ authorization, userProfileInfo }) => {
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
+  const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
+  const zipAndCityRef = useRef(null);
+  const [isUserAdressEmpty, setIsUserAddressEmpty] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUserProfileInfo() {
@@ -20,7 +26,10 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
         });
         const { result, success, error, message } = await users.json();
         if (!success) throw new Error(error);
-        return setFetchEventData(result);
+        setFetchEventData(result);
+        setIsUserAddressEmpty(
+          Object.keys(result?.userDetails?.userAddress ?? {}).length === 0
+        );
       } catch (error) {
         console.log(error);
       }
@@ -29,19 +38,24 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
   }, []);
 
   console.log("fetchEventData: ", fetchEventData);
+  console.log("fetchLocationData:", fetchLocationData);
+
+  const goToEditPage = () => {
+    navigate("/profile/edit");
+  };
 
   // breakpoint function for address
   // (if address breaks to a second line --> add class 'break-point' to break right before zip code)
   // ===============================================
-  const addressField = document.body.querySelector("#address").offsetHeight;
-  const zipAndCityField = document.body.querySelector("#zipAndCity");
-  if (addressField > 24) {
-    zipAndCityField.classList.add("break-point");
-  }
+  useEffect(() => {
+    if (zipAndCityRef.current?.offsetHeight > 24) {
+      zipAndCityRef.current.classList.add("break-point");
+    }
+  }, [fetchEventData]);
 
   return (
     <section className="user-profile-wrapper">
-      <h2>John Brown</h2>
+      <h2>{fetchEventData?.userDetails?.userName}</h2>
       {/* profile image */}
       <div className="profile-pic-container">
         <img className="clip" src={profilePicTest} alt="" />
@@ -60,7 +74,11 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
         </div>
       </article>
       {/* edit button */}
-      <BtnOutlined text="edit profile" icon={editIcon} />
+      <BtnOutlined
+        text="Profil Bearbeiten"
+        icon={editIcon}
+        onClick={goToEditPage}
+      />
 
       {/* About */}
       <article className="user-profile-item-container">
@@ -78,21 +96,42 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
         </div>
       </article>
 
+      {/* Address */}
       <article className="user-profile-item-container">
         <h3>Anschrift</h3>
         <div className="address-wrapper">
-          <img src={locationPinPurple} alt="" />
-          <div className="address-container">
-            <p id="address">
-              Gothaer Str. 34,{" "}
-              <span className="" id="zipAndCity">
-                33211 Schwabing
-              </span>
-            </p>
+          <div className="location-pin-container">
+            <img
+              src={isUserAdressEmpty ? locationPinGrey : locationPinPurple}
+              alt=""
+              className={isUserAdressEmpty ? "location-pin-adjust" : ""}
+            />
+          </div>
 
-            {/* no address */}
-            {/* <p className="no-address">Keine Anschrift hinterlegt</p> */}
-            <p>Bayern</p>
+          <div className="address-container">
+            {isUserAdressEmpty ? (
+              <>
+                <p className="text-light">Keine Anschrift hinterlegt</p>
+                <p>{fetchLocationData}</p>
+              </>
+            ) : (
+              <>
+                <p id="address">
+                  {fetchEventData?.userDetails?.userAddress?.street ?? (
+                    <p className="text-light">Keine Straße hinterlegt</p>
+                  )}{" "}
+                  <span ref={zipAndCityRef} id="zipAndCity">
+                    {fetchEventData?.userDetails?.userAddress?.zip ?? (
+                      <p className="text-light">Keine PLZ hinterlegt</p>
+                    )}{" "}
+                    {fetchEventData?.userDetails?.userAddress?.city ?? (
+                      <p className="text-light">Keine Stadt hinterlegt</p>
+                    )}
+                  </span>
+                </p>
+                <p>{fetchLocationData}</p>
+              </>
+            )}
           </div>
         </div>
       </article>
