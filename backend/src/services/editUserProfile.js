@@ -1,34 +1,41 @@
 import { User } from "../models/index.js";
 
+// userService.js
+
 export async function editUserProfile(authenticatedUserId, userProfileInfo) {
-  //   const foundUser = await User.findById(authenticatedUserId);
-  //   if (!foundUser) throw new Error("User doesn't exist");
+  try {
+    // Prüfen, ob im userProfileInfo gelöschte Interessen vorhanden sind
+    const { deletedInterests, ...updatedProfileInfo } = userProfileInfo;
 
-  const filter = { _id: authenticatedUserId };
-  const update = {
-    userName: userProfileInfo.userName,
-    profilePicURL: userProfileInfo.profilePicURL,
-    userAddress: {
-      city: userProfileInfo.userAddress?.city,
-      zip: userProfileInfo.userAddress?.zip,
-      province: userProfileInfo.userAddress?.province,
-      country: userProfileInfo.userAddress?.country,
-    },
-    bio: userProfileInfo.bio,
-    interests: userProfileInfo.interests,
-  };
+    // Falls gelöschte Interessen vorhanden sind, entferne sie aus dem Benutzerprofil
+    if (deletedInterests && deletedInterests.length > 0) {
+      const user = await User.findById(authenticatedUserId);
+      if (!user) throw new Error("User not found");
 
-  const updatedUserProfile = await User.findOneAndUpdate(filter, update, {
-    new: true,
-  });
+      // Entferne die gelöschten Interessen aus dem Benutzerprofil
+      updatedProfileInfo.interests = user.interests.filter(
+        (interest) => !deletedInterests.includes(interest)
+      );
+    }
 
-  return userToProfileInfo(updatedUserProfile);
+    // Führe die Aktualisierung des Benutzerprofils durch
+    const updatedUser = await User.findByIdAndUpdate(
+      authenticatedUserId,
+      updatedProfileInfo,
+      { new: true }
+    );
+
+    return userToProfileInfo(updatedUser);
+  } catch (error) {
+    // throw new Error("Could not update user profile");
+    console.log("Failed to update profile info: ", error);
+  }
 }
 
 function userToProfileInfo({
   _id,
   userName,
-  userAddress,
+  userAddress: { street, zip, city, province },
   profilePicURL,
   bio,
   interests,
@@ -36,7 +43,7 @@ function userToProfileInfo({
   return {
     _id,
     userName,
-    userAddress,
+    userAddress: { street, zip, city, province },
     profilePicURL,
     bio,
     interests,
