@@ -1,8 +1,8 @@
 import "./EventDetails.scss";
-import art from "../../assets/images/eventDefaultPics/art.jpg";
-import concert from "../../assets/images/eventDefaultPics/crowdConcert.jpg";
+import art from "../../assets/images/eventDefaultPics/artPic.jpg";
+import concert from "../../assets/images/eventDefaultPics/micPic.jpg";
 import movie from "../../assets/images/eventDefaultPics/crowdMovie.jpg";
-import sport from "../../assets/images/eventDefaultPics/crowdSport.jpg";
+import sport from "../../assets/images/eventDefaultPics/sportPic.jpg";
 import food from "../../assets/images/eventDefaultPics/food.jpg";
 import komet from "../../assets/images/eventDefaultPics/komet.jpg";
 import comedy from "../../assets/images/eventDefaultPics/loughComedy.jpg";
@@ -26,13 +26,15 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
     const [userIsHost, setUserIsHost] = useState(false);
     const [eventDetails, setEventDetails] = useState({});
     const [eventIsFavorite, setEventIsFavorite] = useState(false); // ! TODO: check if Event is in userWishlist!
+    const [userRegistered, setUserRegistered] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const [defaultPic, setDefaultPic] = useState();
     const [edit, setEdit] = useState(false);
     const [fullyBooked, setFullyBooked] = useState(false);
     const [isCancelled, setIsCancelled] = useState(false);
-    // console.log(eventId);
-    console.log(userProfileInfo);
+
+    console.log("userProfileInfo: ", userProfileInfo);
 
     useEffect(() => {
         async function fetchEventDetails() {
@@ -73,6 +75,20 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                     setEventDetails(result);
                 } else {
                     setEventDetails(result);
+                    // check if user already registered || has event on wishlist
+                    if (userProfileInfo?.userWishlist?.includes(eventId)) {
+                        setEventIsFavorite(true);
+                    }
+                    if (userProfileInfo?.registeredEvents?.includes(eventId)) {
+                        setUserRegistered(true);
+                    }
+                }
+                // check if event ist cancelled || fullyBooked
+                if (result?.eventDetails?.isCancelled) {
+                    setIsCancelled(true);
+                }
+                if (result?.eventDetails?.fullyBooked) {
+                    setFullyBooked(true);
                 }
             } catch (error) {
                 console.log(error);
@@ -83,11 +99,9 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
 
     console.log("userIsHost: ", userIsHost);
     console.log(eventDetails);
-    console.log(eventDetails?.eventDetails?.eventDate);
 
-    // ====== Format the Date ======
+    // -------- Format the Date ----------------
     const inputDate = new Date(eventDetails?.eventDetails?.eventDate);
-
     const monthNames = [
         "Jan",
         "Feb",
@@ -102,19 +116,71 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
         "Nov",
         "Dez",
     ];
-
     const day = inputDate.getDate();
     const month = monthNames[inputDate.getMonth()]; // Monate werden von 0 bis 11 gezählt, daher fügen wir 1 hinzu
     const year = inputDate.getFullYear();
     const hours = inputDate.getHours();
     const minutes = inputDate.getMinutes();
-
     // Formatierung der Daten und Zeit
     const formattedDate = `${day < 10 ? "0" : ""}${day}. ${month}, ${year}`;
     const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes} Uhr`;
 
-    // Gesamtes formatiertes Datum und Zeit
-    // const formattedDateTime = `${formattedDate} ${formattedTime}`;
+    // -------- ADD Event to Wishlist FETCH ------------
+    async function addEventToWishlist() {
+        try {
+            const response = await fetch(
+                `${backendUrl}/api/v1/user/wishlist/${eventId}`,
+                {
+                    method: "PATCH",
+                    headers: { authorization },
+                }
+            );
+            const { success, result, error } = await response.json();
+            setEventIsFavorite(true);
+            // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function removeEventFromWishlist() {
+        try {
+            const response = await fetch(
+                `${backendUrl}/api/v1/user/update-wishlist/${eventId}`,
+                {
+                    method: "PATCH",
+                    headers: { authorization },
+                }
+            );
+            const { success, result, error } = await response.json();
+            setEventIsFavorite(false);
+            // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // --------- REGISTER for Event FETCH ----------------
+
+    async function registerForEvent() {
+        try {
+            const response = await fetch(
+                `${backendUrl}/api/v1/user/register/${eventId}`,
+                {
+                    method: "PATCH",
+                    headers: { authorization },
+                }
+            );
+            const { success, result, error } = await response.json();
+            setUserRegistered(true);
+            setSuccessMessage(
+                "Du hast dich erfolgreich für das Event registriert."
+            );
+            // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -151,12 +217,14 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                         src={fullBookmark}
                                         alt="fullBookmark"
                                         className="bookMark"
+                                        onClick={removeEventFromWishlist}
                                     />
                                 ) : (
                                     <img
                                         src={emptyBookmark}
                                         alt="emptyBookmark"
                                         className="bookMark"
+                                        onClick={addEventToWishlist}
                                     />
                                 )}
                             </div>
@@ -169,7 +237,13 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                 alt="eventPic"
                                 className="eventPic"
                             />
-                            <div className="eventDetails-registered-box-wrap">
+                            <div
+                                className={
+                                    fullyBooked || isCancelled
+                                        ? "hide"
+                                        : "eventDetails-registered-box-wrap"
+                                }
+                            >
                                 <div className="registered-box-profilePics"></div>
                                 <p className="registered-box-text">
                                     {eventDetails?.amountRegisteredGuests} User
@@ -181,6 +255,28 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                             <h2 className="eventDetails-eventTitle">
                                 {eventDetails?.eventDetails?.title}
                             </h2>
+                            {isCancelled ? (
+                                <p
+                                    style={{
+                                        color: "red",
+                                        padding: "4px 12px 8px 12px",
+                                        fontWeight: "500",
+                                    }}
+                                >
+                                    EVENT ABGESAGT
+                                </p>
+                            ) : null}
+                            {fullyBooked ? (
+                                <p
+                                    style={{
+                                        color: "red",
+                                        padding: "4px 12px 8px 12px",
+                                        fontWeight: "500",
+                                    }}
+                                >
+                                    EVENT AUSGEBUCHT
+                                </p>
+                            ) : null}
                             <div className="eventDetails-date-wrap">
                                 <img src={DateIcon} alt="calendar" />
 
@@ -250,8 +346,16 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                 Event Beschreibung
                             </h5>
                             <p>{eventDetails?.eventDetails?.description}</p>
+                            <p style={{ color: "green", padding: "12px" }}>
+                                {successMessage}
+                            </p>
                         </article>
-                        <BtnSubmit text="REGISTRIEREN" />
+                        {userRegistered || fullyBooked || isCancelled ? null : (
+                            <BtnSubmit
+                                text="REGISTRIEREN"
+                                onClick={registerForEvent}
+                            />
+                        )}
                     </section>
                 )}
             </section>
