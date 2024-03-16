@@ -10,12 +10,13 @@ import textIcon from "../../assets/images/textblock_icon.svg";
 import personIcon from "../../assets/images/Profile.svg";
 import mapIcon from "../../assets/images/Map Pin_grey.svg";
 import compasIcon from "../../assets/images/compass_grey.svg";
+import fileIcon from "../../assets/images/add_plus_white.svg";
 
-const AddEvent = ({ authorization, userProfileInfo }) => {
+const AddEvent = ({ authorization }) => {
   const [eventPicURL, setEventPicURL] = useState(null);
   const [title, setTitle] = useState("");
   const [eventDate, setEventDate] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("Deutschland");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [street, setStreet] = useState("");
@@ -24,20 +25,12 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [maxGuests, setMaxGuests] = useState("");
-  const [hideEntranceAnimation, setHideEntranceAnimation] = useState("")
+  const [hideEntranceAnimation, setHideEntranceAnimation] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    // event.preventDefault();
-    const eventData = {
-      title,
-      eventDate,
-      eventAddress: { country, city, zip, street, province, locationInfo },
-      category,
-      description,
-      maxGuests,
-    };
+    event.preventDefault();
 
     const formData = new FormData();
     formData.append("image", eventPicURL, eventPicURL.name);
@@ -84,19 +77,20 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
       .catch((error) => console.log(error));
 
     // hier können wir dann zum angelegten event springen
-    // navigate("/eventDetail");
+    // navigate(`/eventdetails/::id`)
   };
 
   // =============== Entrance anmiation ====================
   useEffect(() => {
     setTimeout(() => {
-      setHideEntranceAnimation("hide")}, 600)
-  },[])
+      setHideEntranceAnimation("hide");
+    }, 600);
+  }, []);
 
   return (
     <div className="addevent__wrapper">
       <div className="addevent_header">
-        <img src={backArrow} alt="Zurück" onClick={() => navigate("/home")} />
+        <img src={backArrow} alt="Zurück" onClick={() => navigate(-1)} />
         <p className="addevent_header-titel">
           Add <span className="addevent_header-title-span">Event</span>
         </p>
@@ -104,19 +98,6 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
       </div>
       <form className="addevent_form" onSubmit={handleSubmit}>
         <p className="addevent_heading">Neues Event</p>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
-            <img src="" alt="" />
-          </span>
-          <label htmlFor="file">Event-Bild</label>
-          <input
-            name="file"
-            className="addevent_input"
-            type="file"
-            onChange={(e) => setEventPicURL(e.target.files[0])}
-          />
-        </div>
 
         <div className="addevent_input-group">
           <span className="addevent_input-icon">
@@ -145,84 +126,6 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
 
         <div className="addevent_input-group">
           <span className="addevent_input-icon">
-            <img src={mapIcon} alt="" />
-          </span>
-          <input
-            className="addevent_input"
-            type="text"
-            placeholder="Land"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-          />
-        </div>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
-            <img src={mapIcon} alt="" />
-          </span>
-          <input
-            className="addevent_input"
-            type="text"
-            placeholder="Stadt"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </div>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
-            <img src={mapIcon} alt="" />
-          </span>
-          <input
-            className="addevent_input"
-            type="text"
-            placeholder="PLZ"
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-          />
-        </div>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
-            <img src={mapIcon} alt="" />
-          </span>
-          <input
-            className="addevent_input"
-            type="text"
-            placeholder="Straße"
-            value={street}
-            onChange={(e) => setStreet(e.target.value)}
-          />
-        </div>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
-            <img src={mapIcon} alt="" />
-          </span>
-          <input
-            className="addevent_input"
-            type="text"
-            placeholder="Ort"
-            value={province}
-            onChange={(e) => setProvince(e.target.value)}
-          />
-        </div>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
-            <img src={mapIcon} alt="" />
-          </span>
-          <input
-            className="addevent_input"
-            type="text"
-            placeholder="Location Info"
-            value={locationInfo}
-            onChange={(e) => setLocationInfo(e.target.value)}
-          />
-        </div>
-
-        <div className="addevent_input-group">
-          <span className="addevent_input-icon">
             <img src={compasIcon} alt="" />
           </span>
           <select
@@ -230,7 +133,9 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="">Kategorie</option>
+            <option className="option" value="">
+              Kategorie
+            </option>
             <option value="music">Music</option>
             <option value="art">Art</option>
             <option value="sport">Sport</option>
@@ -243,15 +148,111 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
         </div>
 
         <div className="addevent_input-group">
-          <span className="addevent_input-icon">
+          <span className="addevent_input-icon addevent_input-icon-top">
             <img src={textIcon} alt="" />
           </span>
           <textarea
-            className="addevent_input"
+            className="addevent_input addevent_input-textarea"
+            rows={8}
             placeholder="Beschreibung"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+        </div>
+
+        <div className="addevent_input-group">
+          <span className="addevent_input-icon">
+            <img src={mapIcon} alt="" />
+          </span>
+          <input
+            className="addevent_input"
+            type="text"
+            placeholder="Veranstaltungsort"
+            value={locationInfo}
+            onChange={(e) => setLocationInfo(e.target.value)}
+          />
+        </div>
+
+        <div className="addevent_input-group-adress">
+          {/* <div className="addevent_input-group-adress-field">
+            <span className="addevent_input-icon">
+              <img src={mapIcon} alt="" />
+            </span>
+            <input
+              className="addevent_input"
+              type="text"
+              placeholder="Land"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+          </div> */}
+
+          <div className="addevent_input-group-adress-field">
+            <span className="addevent_input-icon">
+              <img src={mapIcon} alt="" />
+            </span>
+            <input
+              className="addevent_input"
+              type="text"
+              placeholder="Straße"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+          </div>
+
+          <div className="addevent_input-group-adress-field">
+            <span className="addevent_input-icon">
+              <img src={mapIcon} alt="" />
+            </span>
+            <input
+              className="addevent_input"
+              type="text"
+              placeholder="Stadt"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <span className="addevent_input-icon">
+              <img src={mapIcon} alt="" />
+            </span>
+            <input
+              className="addevent_input"
+              type="text"
+              placeholder="PLZ"
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+            />
+          </div>
+
+          <div className="addevent_input-group-adress-field">
+            <span className="addevent_input-icon">
+              <img src={compasIcon} alt="" />
+            </span>
+            <select
+              className="addevent_input"
+              value={province}
+              onChange={(e) => setProvince(e.target.value)}
+            >
+              <option value="">Bundesland</option>
+              <option value="baden-württemberg">Baden-Württemberg</option>
+              <option value="bayern">Bayern</option>
+              <option value="berlin">Berlin</option>
+              <option value="brandenburg">Brandenburg</option>
+              <option value="bremen">Bremen</option>
+              <option value="hamburg">Hamburg</option>
+              <option value="hessen">Hessen</option>
+              <option value="mecklenburg-vorpommern">
+                Mecklenburg-Vorpommern
+              </option>
+              <option value="niedersachsen">Niedersachsen</option>
+              <option value="nordrhein-westfalen">Nordrhein-Westfalen</option>
+              <option value="rheinland-pfalz">Rheinland-Pfalz</option>
+              <option value="saarland">Saarland</option>
+              <option value="sachsen">Sachsen</option>
+              <option value="sachsen-anhalt">Sachsen-Anhalt</option>
+              <option value="schleswig-holstein">Schleswig-Holstein</option>
+              <option value="thüringen">Thüringen</option>
+            </select>
+          </div>
         </div>
 
         <div className="addevent_input-group">
@@ -266,9 +267,24 @@ const AddEvent = ({ authorization, userProfileInfo }) => {
             onChange={(e) => setMaxGuests(e.target.value)}
           />
         </div>
+
+        <label className="addevent_input-group">
+          <img src={fileIcon} alt="" />
+          <span className="addevent_input-file-text">
+            Klicke hier um ein Bild hochzuladen
+          </span>
+          <input
+            name="file"
+            id="real-file"
+            hidden
+            className="addevent_input-file"
+            type="file"
+            onChange={(e) => setEventPicURL(e.target.files[0])}
+          />
+        </label>
       </form>
-      <BtnSubmit text="Add Event" onClick={handleSubmit} />
-      <Nav highlight="addEvent"/>
+      <BtnSubmit text="Event anlegen" onClick={handleSubmit} />
+      <Nav highlight="addEvent" />
       {/* Entrance animation divs */}
       <div className={`AddEventEntranceTransition ${hideEntranceAnimation}`}>
         <div className="AddEventEntranceTransitionEffectPurple"></div>
