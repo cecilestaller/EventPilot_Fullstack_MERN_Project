@@ -1,9 +1,140 @@
-// Event Detail Page styling
+.eventDetails-h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 18px;
+    color: var(--main-text-color);
+}
+.eventDetails-Info-Flex-wrap {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    .eventDetails-innerBox-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .eventDetails-h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 18px;
+            color: var(--main-text-color);
+        }
+        .eventDetails-p {
+            font-weight: 200;
+            font-size: 0.85rem;
+            color: #747688;
+        }
+    }
+}
+
 .eventDetail-wrapper {
     padding-bottom: 14vh;
     font-family: "Inter";
     text-align: left;
-
+    // ======== Styling der HOST-EventDetail-Page ======
+    .eventDetail-Host-wrapper {
+        .eventDetail-hero-wrap {
+            position: relative;
+            height: 150px;
+            .eventDetail-header-wrap {
+                padding: 16px 24px;
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                position: absolute;
+                color: white;
+                .eventDetails-hl {
+                    font-weight: 400;
+                    width: 75%;
+                    font-size: 1.5rem;
+                    justify-self: flex-start;
+                    -webkit-text-stroke-width: 0.5px;
+                    -webkit-text-stroke-color: black;
+                }
+            }
+            .eventPic {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .eventDetails-info-wrap {
+            padding: 16px;
+            .eventDetails-eventTitle {
+                text-align: left;
+                color: var(--main-text-color);
+                font-size: 2.1rem;
+                font-weight: 100;
+                margin-bottom: 12px;
+            }
+            .eventDetails-eventInfosForHost {
+                padding-inline: 8px;
+                margin-bottom: 12px;
+                .flex-div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-right: 56px;
+                    &:nth-of-type(1) {
+                        margin-top: 8px;
+                    }
+                }
+            }
+            .hostDetails-link {
+                color: inherit;
+                text-decoration: none;
+                .eventDetail-hostInfoBox {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    gap: 12px;
+                    transition: 0.2s;
+                    &:hover {
+                        background-color: #b2a3ec97;
+                        border-radius: 8px;
+                    }
+                    .eventDetails-hostPic {
+                        width: 15%;
+                        border-radius: 8px;
+                        .eventDetail-hostInfo-wrap {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
+                            .eventDetails-h4 {
+                                color: var(--main-text-color);
+                                font-size: 15px;
+                                font-weight: 400;
+                                line-height: 25px;
+                            }
+                            .eventDetails-p {
+                                font-weight: 200;
+                                font-size: 0.75rem;
+                                color: #747688;
+                            }
+                        }
+                    }
+                }
+            }
+            .eventDetails-h5 {
+                margin-top: 20px;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 34px;
+                color: var(--main-text-color);
+            }
+            p {
+                color: var(--main-text-color);
+                font-size: 1rem;
+                font-weight: 200;
+                line-height: 28px;
+            }
+        }
+        .btn-outlined {
+            margin-inline: auto;
+            width: 90%;
+        }
+    }
+    // ======== Styling der USER-EventDetail-Page ======
     .eventDetail-User-wrapper {
         .eventDetail-hero-wrap {
             position: relative;
@@ -28,6 +159,9 @@
                 }
                 .bookMark {
                     width: 36px;
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
             .eventPic {
@@ -63,44 +197,7 @@
                 font-weight: 100;
                 margin-bottom: 12px;
             }
-            .eventDetails-date-wrap {
-                display: flex;
-                gap: 12px;
-                margin-bottom: 16px;
-                .eventDetails-dateInfo-wrap {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    .eventDetails-h3 {
-                        font-size: 1rem;
-                        font-weight: 500;
-                        line-height: 18px;
-                        color: var(--main-text-color);
-                    }
-                }
-            }
 
-            .eventDetails-address-wrap {
-                display: flex;
-                gap: 12px;
-                margin-bottom: 16px;
-                .eventDetails-addressInfo-wrap {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    .eventDetails-h3 {
-                        font-size: 1rem;
-                        font-weight: 500;
-                        line-height: 18px;
-                        color: var(--main-text-color);
-                    }
-                    .eventDetails-p {
-                        font-weight: 200;
-                        font-size: 0.75rem;
-                        color: #747688;
-                    }
-                }
-            }
             .hostDetails-link {
                 color: inherit;
                 text-decoration: none;
