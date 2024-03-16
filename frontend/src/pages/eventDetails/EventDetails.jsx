@@ -220,7 +220,10 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                     </p>
                                 </div>
                             </div>
-                            <Link to={`/host/${eventDetails?.host?._id}`}>
+                            <Link
+                                to={`/host/${eventDetails?.host?._id}`}
+                                className="hostDetails-link"
+                            >
                                 <div className="eventDetail-hostInfoBox">
                                     <img
                                         src={

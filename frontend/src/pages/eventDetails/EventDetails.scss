@@ -1,13 +1,4 @@
 // Event Detail Page styling
-a {
-    text-decoration: none;
-    color: inherit;
-}
-img {
-    display: block;
-    max-width: 100%;
-}
-
 .eventDetail-wrapper {
     padding-bottom: 14vh;
     font-family: "Inter";
@@ -104,8 +95,9 @@ img {
                     }
                 }
             }
-            a {
-                // max-width: 100%;
+            .hostDetails-link {
+                color: inherit;
+                text-decoration: none;
                 .eventDetail-hostInfoBox {
                     display: flex;
                     width: 100%;
