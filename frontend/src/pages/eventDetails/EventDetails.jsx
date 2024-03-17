@@ -54,6 +54,8 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
     const [description, setDescription] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
 
+    console.log(userProfileInfo);
+
     useEffect(() => {
         async function fetchEventDetails() {
             try {
@@ -94,7 +96,12 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                 } else {
                     setEventDetails(result);
                     // check if user already registered || has event on wishlist
-                    if (userProfileInfo?.userWishlist?.includes(eventId)) {
+                    if (
+                        userProfileInfo?.userWishlist?.includes(eventId) ||
+                        userProfileInfo?.userDetails?.userWishlist?.includes(
+                            eventId
+                        )
+                    ) {
                         setEventIsFavorite(true);
                     }
                     if (userProfileInfo?.registeredEvents?.includes(eventId)) {
@@ -708,13 +715,6 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                                         eventDetails
                                                             ?.eventDetails
                                                             ?.eventAddress
-                                                            ?.province
-                                                    }
-                                                    ,{" "}
-                                                    {
-                                                        eventDetails
-                                                            ?.eventDetails
-                                                            ?.eventAddress
                                                             ?.country
                                                     }
                                                 </p>
@@ -911,11 +911,6 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                         {
                                             eventDetails?.eventDetails
                                                 ?.eventAddress?.city
-                                        }
-                                        ,{" "}
-                                        {
-                                            eventDetails?.eventDetails
-                                                ?.eventAddress?.province
                                         }
                                         ,{" "}
                                         {
