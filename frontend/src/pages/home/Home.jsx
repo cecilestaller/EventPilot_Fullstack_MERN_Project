@@ -43,7 +43,7 @@ const Home = ({ authorization, userProfileInfo }) => {
     getEventData();
     }, []);
 
-    console.log(userProfileInfo);
+    // console.log(userProfileInfo);
     // console.log(userProfileInfo.userAddress);
     console.log(fetchEventData);
 
@@ -121,23 +121,34 @@ const Home = ({ authorization, userProfileInfo }) => {
     }
 
     // =============== Random event picker =====================================
-    const randomNumberEvent = Math.floor((Math.random() * fetchEventData?.length)+1)
-    const randomEvent = fetchEventData[randomNumberEvent]
-    const inputDate = new Date(randomEvent?.eventDate);
+    const [randomNumberEvent, setRandomNumberEvent] = useState(null);
 
-    const day = inputDate.getDate();
-    const month = inputDate.getMonth() + 1; // Monate werden von 0 bis 11 gezählt, daher fügen wir 1 hinzu
-    const year = inputDate.getFullYear();
-    const hours = inputDate.getHours();
-    const minutes = inputDate.getMinutes();
-
-    // Formatierung der Daten und Zeit
-    const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
-    const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} Uhr`;
-
-    // Gesamtes formatiertes Datum und Zeit
-    const formattedDateTime = `${formattedDate} ${formattedTime}`;
-
+    useEffect(() => {
+        if (randomNumberEvent === null) {
+            const randomNum = Math.floor((Math.random() * fetchEventData.length) + 1);
+            setRandomNumberEvent(randomNum);
+        }
+    }, [fetchEventData, randomNumberEvent]);
+    
+    // Access random event if random number is generated
+    const randomEvent = randomNumberEvent !== null ? fetchEventData[randomNumberEvent] : null;
+    
+    // If random event is available, format its date and time
+    let formattedDateTime = null;
+    if (randomEvent) {
+        const inputDate = new Date(randomEvent.eventDate);
+        const day = inputDate.getDate();
+        const month = inputDate.getMonth() + 1; // Months are 0-indexed, so we add 1
+        const year = inputDate.getFullYear();
+        const hours = inputDate.getHours();
+        const minutes = inputDate.getMinutes();
+        
+        // Format the date and time
+        const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
+        const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} Uhr`;
+        
+        formattedDateTime = `${formattedDate} ${formattedTime}`;
+    }
 
     return (
         <div className="homeContainer">
@@ -149,7 +160,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                         <img src={DropdownArrow} alt="arrowIcon" />
                     </div>
                     <div onClick={() => hideStateSelectionAgain()} className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}>
-                        <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
+                        <div className={`dropdownAddressMenu`}>
                             <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections DeinStandortTag`}>Dein Standort: {getUserLocation}</p>
                             {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
                                 <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
@@ -160,7 +171,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                 </div>
                 {/* Element emptyDivForFlexSpace is invisible and only used to properly center  locationDropdownContainer */}
                 <div className="emptyDivForFlexSpace">
-                    <img className="logo" style={{visibility: "hidden"}} src={Logo} alt="logoIcon" />
+                    <img className="logo" src={Logo} alt="logoIcon" />
                 </div>
                 {/* ===================================================================================================== */}
             </header>
@@ -170,14 +181,15 @@ const Home = ({ authorization, userProfileInfo }) => {
                     Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
                 </label>
             </div>
-            <UpcomingEvents/>
+            <UpcomingEvents selectedLocation={saveUserLocation}/>
             <div className="NearbyTitleContainer">
                 <p className="titleOfConponent">In deiner Nähe</p>
                 <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllNearby()}>
                     Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
                 </label>
             </div>
-            <NearbyEvents/>
+            <NearbyEvents selectedLocation={saveUserLocation}/>
+            <p className="titleOfRandomConponent">Überrasch mich!</p>
             <EventCards Date={formattedDateTime} Title={randomEvent?.title} State={randomEvent?.eventAddress.province} checked=""/>
             <div className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}>
                 <div className="LocationModelWindow">
