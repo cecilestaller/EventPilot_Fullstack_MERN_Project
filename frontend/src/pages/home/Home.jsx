@@ -13,6 +13,7 @@ import { useLocationFetchContext } from "../../context/locationFetchContext";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 
 const Home = ({ authorization, userProfileInfo }) => {
+  console.log(userProfileInfo?.userDetails);
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
   const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
   const [getUserLocation, setGetUserLocation] = useState("");
@@ -168,7 +169,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                     Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
                 </label>
             </div>
-            <UpcomingEvents selectedLocation={saveUserLocation}/>
+            <UpcomingEvents selectedLocation={saveUserLocation } userProfileInfo={userProfileInfo} authorization={authorization}/>
             <div className="NearbyTitleContainer">
                 <p className="titleOfConponent">In deiner Nähe</p>
                 <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllNearby()}>
