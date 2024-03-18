@@ -23,35 +23,34 @@ const EventCards = ({
     userProfileInfo,
     authorization,
 }) => {
-    // const [checkBookmarkCheck, setCheckBookmarkCheck] = useState(BookmarkEmpty);
-    const [eventIsFavorite, setEventIsFavorite] = useState(false);
+    const [eventIsFavorite, setEventIsFavorite] = useState(null);
     const [defaultPic, setDefaultPic] = useState();
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (category === "comedy") {
-            setDefaultPic(comedy);
-        } else if (category === "sport") {
-            setDefaultPic(sport);
-        } else if (category === "art") {
-            setDefaultPic(art);
-        } else if (category === "music") {
-            setDefaultPic(concert);
-        } else if (category === "food") {
-            setDefaultPic(food);
-        } else if (category === "movie") {
-            setDefaultPic(movie);
-        } else if (category === "literature" || category === "others") {
-            setDefaultPic(komet);
+        function check() {
+            if (category === "comedy") {
+                setDefaultPic(comedy);
+            } else if (category === "sport") {
+                setDefaultPic(sport);
+            } else if (category === "art") {
+                setDefaultPic(art);
+            } else if (category === "music") {
+                setDefaultPic(concert);
+            } else if (category === "food") {
+                setDefaultPic(food);
+            } else if (category === "movie") {
+                setDefaultPic(movie);
+            } else if (category === "literature" || category === "others") {
+                setDefaultPic(komet);
+            }
+            if (userProfileInfo?.userDetails?.userWishlist?.includes(eventId)) {
+                setEventIsFavorite(true);
+            } else {
+                setEventIsFavorite(false);
+            }
         }
-        if (userProfileInfo?.userDetails?.userWishlist?.includes(eventId)) {
-            setEventIsFavorite(true);
-        }
-        // if (checked === "true") {
-        //     setCheckBookmarkCheck(BookmarkFull);
-        // } else {
-        //     setCheckBookmarkCheck(BookmarkEmpty);
-        // }
+        check();
     }, [eventPicURL]);
 
     // -------- ADD Event to Wishlist FETCH ------------
@@ -144,7 +143,7 @@ const EventCards = ({
                     </div>
                 </div>
                 <div className="EventCardsBookmarkContainer">
-                    {eventIsFavorite ? (
+                    {eventIsFavorite === true ? (
                         <img
                             src={BookmarkFull}
                             alt="fullBookmark"
