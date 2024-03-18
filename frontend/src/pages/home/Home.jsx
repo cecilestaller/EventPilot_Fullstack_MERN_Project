@@ -169,7 +169,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                     Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
                 </label>
             </div>
-            <UpcomingEvents selectedLocation={saveUserLocation}/>
+            <UpcomingEvents selectedLocation={saveUserLocation } userProfileInfo={userProfileInfo} authorization={authorization}/>
             <div className="NearbyTitleContainer">
                 <p className="titleOfConponent">In deiner Nähe</p>
                 <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllNearby()}>

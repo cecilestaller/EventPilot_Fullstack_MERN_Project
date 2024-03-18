@@ -15,18 +15,20 @@ import komet from "../../assets/images/eventDefaultPics/komet.jpg";
 import comedy from "../../assets/images/eventDefaultPics/loughComedy.jpg";
 import { backendUrl } from "../../api";
 
-const UpcomingEvents = ({userProfileInfo}) => {
+const UpcomingEvents = ({userProfileInfo, authorization}) => {
 
     const { fetchEventData, setFetchEventData } = useEventFetchContext();
     const [filteredEvents, setFilteredEvents] = useState([])
     const [defaultPicEvent1, setDefaultPicEvent1] = useState("")
     const [defaultPicEvent2, setDefaultPicEvent2] = useState("")
     const [defaultPicEvent3, setDefaultPicEvent3] = useState("")
+    const [settingBookmak1, setSettingBookmark1] = useState(BookmarkEmpty)
+    const [settingBookmak2, setSettingBookmark2] = useState(BookmarkEmpty)
+    const [settingBookmak3, setSettingBookmark3] = useState(BookmarkEmpty)
     const navigate = useNavigate()
     const currentDate = new Date();
 
-console.log(userProfileInfo);
-    
+// ============================= set default images of events ===========================================
     useEffect(() => {
         setFilteredEvents(
             fetchEventData.filter(fetchEventData => new Date(fetchEventData?.eventDate) > currentDate) // Keep only dates in the future
@@ -82,20 +84,117 @@ console.log(userProfileInfo);
             }
         },[fetchEventData])
 
+    // ============= check wishlist of user ===========================
+    
+    // console.log(userProfileInfo?.userDetails?.userWishlist);
+    // console.log(filteredEvents[0]._id);
+
+    useEffect(() => {
+        const findEventInWishlist1 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[0]?._id);
+        const findEventInWishlist2 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[1]?._id);
+        const findEventInWishlist3 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[2]?._id);
+
+        if (findEventInWishlist1.length === 0) {
+            setSettingBookmark1(BookmarkEmpty)
+        } else {
+            setSettingBookmark1(BookmarkFull)
+        }
+
+        if (findEventInWishlist2.length === 0) {
+            setSettingBookmark2(BookmarkEmpty)
+        } else {
+            setSettingBookmark2(BookmarkFull)
+        }
+
+        if (findEventInWishlist3.length === 0) {
+            setSettingBookmark3(BookmarkEmpty)
+        } else {
+            setSettingBookmark3(BookmarkFull)
+        }
+},[userProfileInfo])
+
+    // -------- ADD Event to Wishlist FETCH ------------
+    const addEventToWishlist =  async(eventId, num) => {
+        // console.log("click");
+        try {
+            const response = await fetch(
+                `${backendUrl}/api/v1/user/wishlist/${eventId}`,
+                {
+                    method: "PATCH",
+                    headers: { authorization },
+                }
+            );
+            const { success, result, error } = await response.json();
+            if (num === 1) {
+                setSettingBookmark1(BookmarkFull)
+            }
+            if (num === 2) {
+                setSettingBookmark2(BookmarkFull)
+            }
+            if (num === 3) {
+                setSettingBookmark3(BookmarkFull)
+            }
+            // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // -------- REMOVE Event from Wishlist FETCH ------------
+    const removeEventFromWishlist = async(eventId, num) => {
+        // console.log("click");
+        try {
+            const response = await fetch(
+                `${backendUrl}/api/v1/user/update-wishlist/${eventId}`,
+                {
+                    method: "PATCH",
+                    headers: { authorization },
+                }
+            );
+            const { success, result, error } = await response.json();
+            if (num === 1) {
+                setSettingBookmark1(BookmarkEmpty)
+            }
+            if (num === 2) {
+                setSettingBookmark2(BookmarkEmpty)
+            }
+            if (num === 3) {
+                setSettingBookmark3(BookmarkEmpty)
+            }            // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+// ======================== navigation course =====================
 const navigateToDetails = (id) => {
     navigate(`/events/${id}`)
 }
 
     return (
         <div className="UpcomingContainer">
-            <article className="UpcomingSingleEventContainer" key={filteredEvents[0]?._id} onClick={() => navigateToDetails(filteredEvents[0]._id)}>
-                <div className="ImageAndIconContainer">
-                    <img className="BookmarkIcon" src={BookmarkEmpty} alt="" />
-                    <img className="EventImage" src={filteredEvents[0]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[0].eventPicURL}` : defaultPicEvent1} alt="" />
+            <article className="UpcomingSingleEventContainer" key={filteredEvents[0]?._id} >
+                <div  className="ImageAndIconContainer">
+                    {settingBookmak1 === BookmarkFull ? (
+                        <img
+                            src={BookmarkFull}
+                            alt="fullBookmark"
+                            className="BookmarkIcon"
+                            onClick={() => removeEventFromWishlist(filteredEvents[0]._id, 1)}
+                        />
+                    ) : (
+                        <img
+                            src={BookmarkEmpty}
+                            alt="emptyBookmark"
+                            className="BookmarkIcon"
+                            onClick={() => addEventToWishlist(filteredEvents[0]._id, 1)}
+                        />
+                    )}
+                    <img className="EventImage" onClick={() => navigateToDetails(filteredEvents[0]._id)} src={filteredEvents[0]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[0].eventPicURL}` : defaultPicEvent1} alt="" />
                     <div className="EventDateIcon">{new Date(filteredEvents[0]?.eventDate).toLocaleDateString('de-DE', { day: '2-digit', month: 'short' })}</div>
                 </div>
-                <p className="EventTitle">{filteredEvents[0]?.title}</p>
-                <div className="EventCardBottomDetailsContainer">
+                <p onClick={() => navigateToDetails(filteredEvents[0]._id)} className="EventTitle">{filteredEvents[0]?.title}</p>
+                <div onClick={() => navigateToDetails(filteredEvents[0]._id)} className="EventCardBottomDetailsContainer">
                     <div className="EventCardRegisteredInfo">
                         <img className="RegisteredUserFirstImage" src={filteredEvents[0]?.registeredGuests[0]?.profilePicURL ? `${backendUrl}/download/${filteredEvents[0]?.registeredGuests[0].profilePicURL}` : defaultProfilePic} alt="" />
                         <img className="RegisteredUserSecondImage" src={filteredEvents[0]?.registeredGuests[1]?.profilePicURL ? `${backendUrl}/download/${filteredEvents[0]?.registeredGuests[1].profilePicURL}` : defaultProfilePic} alt="" />
@@ -108,14 +207,28 @@ const navigateToDetails = (id) => {
                     </div>
                 </div>
             </article>
-            <article className="UpcomingSingleEventContainer" key={filteredEvents[1]?._id} onClick={() => navigateToDetails(filteredEvents[1]._id)}>
+            <article className="UpcomingSingleEventContainer" key={filteredEvents[1]?._id} >
                 <div className="ImageAndIconContainer">
-                    <img className="BookmarkIcon" src={BookmarkEmpty} alt="" />
-                    <img className="EventImage" src={filteredEvents[1]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[1].eventPicURL}` : defaultPicEvent2} alt="" />
+                {settingBookmak2 === BookmarkFull ? (
+                        <img
+                            src={BookmarkFull}
+                            alt="fullBookmark"
+                            className="BookmarkIcon"
+                            onClick={() => removeEventFromWishlist(filteredEvents[0]._id, 2)}
+                        />
+                    ) : (
+                        <img
+                            src={BookmarkEmpty}
+                            alt="emptyBookmark"
+                            className="BookmarkIcon"
+                            onClick={() => addEventToWishlist(filteredEvents[0]._id, 2)}
+                        />
+                    )}
+                    <img onClick={() => navigateToDetails(filteredEvents[1]._id)} className="EventImage" src={filteredEvents[1]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[1].eventPicURL}` : defaultPicEvent2} alt="" />
                     <div className="EventDateIcon">{new Date(filteredEvents[1]?.eventDate).toLocaleDateString('de-DE', { day: '2-digit', month: 'short' })}</div>
                 </div>
-                <p className="EventTitle">{filteredEvents[1]?.title}</p>
-                <div className="EventCardBottomDetailsContainer">
+                <p onClick={() => navigateToDetails(filteredEvents[1]._id)} className="EventTitle">{filteredEvents[1]?.title}</p>
+                <div onClick={() => navigateToDetails(filteredEvents[1]._id)} className="EventCardBottomDetailsContainer">
                     <div className="EventCardRegisteredInfo">
                         <img className="RegisteredUserFirstImage" src={filteredEvents[1]?.registeredGuests[0]?.profilePicURL ? `${backendUrl}/download/${filteredEvents[1]?.registeredGuests[0].profilePicURL}` : defaultProfilePic} alt="" />
                         <img className="RegisteredUserSecondImage" src={filteredEvents[1]?.registeredGuests[1]?.profilePicURL ? `${backendUrl}/download/${filteredEvents[1]?.registeredGuests[1].profilePicURL}` : defaultProfilePic} alt="" />
@@ -128,14 +241,28 @@ const navigateToDetails = (id) => {
                     </div>
                 </div>
             </article>
-            <article className="UpcomingSingleEventContainer" key={filteredEvents[2]?._id} onClick={() => navigateToDetails(filteredEvents[2]._id)}>
+            <article className="UpcomingSingleEventContainer" key={filteredEvents[2]?._id} >
                 <div className="ImageAndIconContainer">
-                    <img className="BookmarkIcon" src={BookmarkEmpty} alt="" />
-                    <img className="EventImage" src={filteredEvents[2]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[2].eventPicURL}` : defaultPicEvent3} alt="" />
+                {settingBookmak3 === BookmarkFull ? (
+                        <img
+                            src={BookmarkFull}
+                            alt="fullBookmark"
+                            className="BookmarkIcon"
+                            onClick={() => removeEventFromWishlist(filteredEvents[0]._id, 3)}
+                        />
+                    ) : (
+                        <img
+                            src={BookmarkEmpty}
+                            alt="emptyBookmark"
+                            className="BookmarkIcon"
+                            onClick={() => addEventToWishlist(filteredEvents[0]._id, 3)}
+                        />
+                    )}
+                    <img onClick={() => navigateToDetails(filteredEvents[2]._id)} className="EventImage" src={filteredEvents[2]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[2].eventPicURL}` : defaultPicEvent3} alt="" />
                     <div className="EventDateIcon">{new Date(filteredEvents[2]?.eventDate).toLocaleDateString('de-DE', { day: '2-digit', month: 'short' })}</div>
                 </div>
-                <p className="EventTitle">{filteredEvents[2]?.title}</p>
-                <div className="EventCardBottomDetailsContainer">
+                <p onClick={() => navigateToDetails(filteredEvents[2]._id)} className="EventTitle">{filteredEvents[2]?.title}</p>
+                <div onClick={() => navigateToDetails(filteredEvents[2]._id)} className="EventCardBottomDetailsContainer">
                     <div className="EventCardRegisteredInfo">
                         <img className="RegisteredUserFirstImage" src={filteredEvents[2]?.registeredGuests[0]?.profilePicURL ? `${backendUrl}/download/${filteredEvents[2]?.registeredGuests[0].profilePicURL}` : defaultProfilePic} alt="" />
                         <img className="RegisteredUserSecondImage" src={filteredEvents[2]?.registeredGuests[1]?.profilePicURL ? `${backendUrl}/download/${filteredEvents[2]?.registeredGuests[1].profilePicURL}` : defaultProfilePic} alt="" />
