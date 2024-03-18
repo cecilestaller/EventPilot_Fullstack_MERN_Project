@@ -165,7 +165,7 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
 
 // ======================== navigation course =====================
 const navigateToDetails = (id) => {
-    navigate(`/events/${id}`)
+    navigate(`/eventdetails/${id}`)
 }
 
     return (
