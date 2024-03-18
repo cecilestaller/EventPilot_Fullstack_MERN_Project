@@ -1,1 +1,25 @@
 // Liked-Events styling
+.likedEvents-wrapper {
+    padding-bottom: 15vh;
+    .likedEvents-button-wrapper {
+        margin: 24px 36px;
+        text-align: center;
+        background-color: rgba(93, 62, 222, 0.5);
+        padding: 4px;
+        border-radius: 10px;
+        .likedEvents-button {
+            padding: 12px 20px;
+            margin: 4px;
+            border: none;
+            background-color: rgba(167, 151, 230, 0.5);
+            border-radius: 10px;
+            color: white;
+            font-family: "Inter";
+            font-size: 0.9375rem;
+            font-weight: 300;
+        }
+        .active {
+            background-color: #876afd;
+        }
+    }
+}
