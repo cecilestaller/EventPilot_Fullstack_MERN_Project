@@ -17,6 +17,8 @@ import { patchEditEventCtrl } from "./eventController.js";
 import { postNewReviewCtrl } from "./reviewController.js";
 import { getHostDetailsCtrl } from "./userController.js";
 import { patchRemoveEventFromWishlistCtrl } from "./userController.js";
+import { getUserWishlistCtrl } from "./userController.js";
+import { getUserRegisteredEventsCtrl } from "./userController.js";
 
 export const UserController = {
     postSignUpUserCtrl,
@@ -29,6 +31,8 @@ export const UserController = {
     patchEventToRegisteredEventsListCtrl,
     getHostDetailsCtrl,
     patchRemoveEventFromWishlistCtrl,
+    getUserWishlistCtrl,
+    getUserRegisteredEventsCtrl,
 };
 
 export const EventController = {

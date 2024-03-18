@@ -47,6 +47,6 @@ export async function getUserProfileInfo(authenticatedUserId) {
             eventsHostedByUser: foundEvents,
         };
     } else {
-        return sanitizedUser;
+        return { userDetails: sanitizedUser };
     }
 }
