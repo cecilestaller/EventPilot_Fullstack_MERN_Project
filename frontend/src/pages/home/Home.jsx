@@ -176,7 +176,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                     Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
                 </label>
             </div>
-            <NearbyEvents selectedLocation={saveUserLocation}/>
+            <NearbyEvents selectedLocation={saveUserLocation} userProfileInfo={userProfileInfo} authorization={authorization}/>
             <p className="titleOfRandomConponent">Überrasch mich!</p>
             <EventCards 
               unformatedDate={randomEvent?.eventDate} 

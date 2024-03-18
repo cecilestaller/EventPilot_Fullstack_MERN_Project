@@ -85,9 +85,6 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
         },[fetchEventData])
 
     // ============= check wishlist of user ===========================
-    
-    // console.log(userProfileInfo?.userDetails?.userWishlist);
-    // console.log(filteredEvents[0]._id);
 
     useEffect(() => {
         const findEventInWishlist1 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[0]?._id);
@@ -214,14 +211,14 @@ const navigateToDetails = (id) => {
                             src={BookmarkFull}
                             alt="fullBookmark"
                             className="BookmarkIcon"
-                            onClick={() => removeEventFromWishlist(filteredEvents[0]._id, 2)}
+                            onClick={() => removeEventFromWishlist(filteredEvents[1]._id, 2)}
                         />
                     ) : (
                         <img
                             src={BookmarkEmpty}
                             alt="emptyBookmark"
                             className="BookmarkIcon"
-                            onClick={() => addEventToWishlist(filteredEvents[0]._id, 2)}
+                            onClick={() => addEventToWishlist(filteredEvents[1]._id, 2)}
                         />
                     )}
                     <img onClick={() => navigateToDetails(filteredEvents[1]._id)} className="EventImage" src={filteredEvents[1]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[1].eventPicURL}` : defaultPicEvent2} alt="" />
@@ -248,14 +245,14 @@ const navigateToDetails = (id) => {
                             src={BookmarkFull}
                             alt="fullBookmark"
                             className="BookmarkIcon"
-                            onClick={() => removeEventFromWishlist(filteredEvents[0]._id, 3)}
+                            onClick={() => removeEventFromWishlist(filteredEvents[2]._id, 3)}
                         />
                     ) : (
                         <img
                             src={BookmarkEmpty}
                             alt="emptyBookmark"
                             className="BookmarkIcon"
-                            onClick={() => addEventToWishlist(filteredEvents[0]._id, 3)}
+                            onClick={() => addEventToWishlist(filteredEvents[2]._id, 3)}
                         />
                     )}
                     <img onClick={() => navigateToDetails(filteredEvents[2]._id)} className="EventImage" src={filteredEvents[2]?.eventPicURL ? `${backendUrl}/download/${filteredEvents[2].eventPicURL}` : defaultPicEvent3} alt="" />
