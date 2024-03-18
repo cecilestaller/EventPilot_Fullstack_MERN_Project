@@ -751,36 +751,41 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                                 </h5>
                                             </div>
                                         </div>
-                                        <Link
-                                            to={`/host/${eventDetails?.host?._id}`}
-                                            className="hostDetails-link"
-                                        >
-                                            <div className="eventDetail-hostInfoBox">
-                                                <img
-                                                    src={
+
+                                        <div className="eventDetail-hostInfoBox">
+                                            <img
+                                                src={
+                                                    eventDetails?.host
+                                                        ?.profilePicURL
+                                                        ? `${backendUrl}/download/${eventDetails.host.profilePicURL}`
+                                                        : picDummy
+                                                }
+                                                alt="hostProfilePic"
+                                                className="eventDetails-hostPic"
+                                            />
+                                            <div className="eventDetail-hostInfo-wrap">
+                                                <h4 className="eventDetails-h4">
+                                                    {
                                                         eventDetails?.host
-                                                            ?.profilePicURL
-                                                            ? `${backendUrl}/download/${eventDetails.host.profilePicURL}`
-                                                            : picDummy
-                                                    }
-                                                    alt="hostProfilePic"
-                                                    className="eventDetails-hostPic"
-                                                />
-                                                <div className="eventDetail-hostInfo-wrap">
-                                                    <h4 className="eventDetails-h4">
-                                                        {
-                                                            eventDetails?.host
-                                                                ?.userName
-                                                        }{" "}
-                                                    </h4>
-                                                    <p className="eventDetails-p">
-                                                        Organisator:in
-                                                    </p>
-                                                    {/* ! STAR Ratin */}
-                                                </div>
-                                                {/* <button className="follow">Follow</button> */}
+                                                            ?.userName
+                                                    }{" "}
+                                                </h4>
+                                                <p className="eventDetails-p">
+                                                    Organisator:in
+                                                </p>
                                             </div>
-                                        </Link>
+                                            <button
+                                                className="eventDetails-host-button"
+                                                onClick={() =>
+                                                    navigate(
+                                                        `/host/${eventDetails?.host?._id}`
+                                                    )
+                                                }
+                                            >
+                                                PROFIL ANSEHEN
+                                            </button>
+                                        </div>
+
                                         <h5 className="eventDetails-h5">
                                             Event Beschreibung
                                         </h5>
@@ -919,32 +924,37 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                     </p>
                                 </div>
                             </div>
-                            <Link
-                                to={`/host/${eventDetails?.host?._id}`}
-                                className="hostDetails-link"
-                            >
-                                <div className="eventDetail-hostInfoBox">
-                                    <img
-                                        src={
-                                            eventDetails?.host?.profilePicURL
-                                                ? `${backendUrl}/download/${eventDetails.host.profilePicURL}`
-                                                : picDummy
-                                        }
-                                        alt="hostProfilePic"
-                                        className="eventDetails-hostPic"
-                                    />
-                                    <div className="eventDetail-hostInfo-wrap">
-                                        <h4 className="eventDetails-h4">
-                                            {eventDetails?.host?.userName}{" "}
-                                        </h4>
-                                        <p className="eventDetails-p">
-                                            Organisator:in
-                                        </p>
-                                        {/* ! STAR Ratin */}
-                                    </div>
-                                    {/* <button className="follow">Follow</button> */}
+
+                            <div className="eventDetail-hostInfoBox">
+                                <img
+                                    src={
+                                        eventDetails?.host?.profilePicURL
+                                            ? `${backendUrl}/download/${eventDetails.host.profilePicURL}`
+                                            : picDummy
+                                    }
+                                    alt="hostProfilePic"
+                                    className="eventDetails-hostPic"
+                                />
+                                <div className="eventDetail-hostInfo-wrap">
+                                    <h4 className="eventDetails-h4">
+                                        {eventDetails?.host?.userName}{" "}
+                                    </h4>
+                                    <p className="eventDetails-p">
+                                        Organisator:in
+                                    </p>
                                 </div>
-                            </Link>
+                                <button
+                                    className="eventDetails-host-button"
+                                    onClick={() =>
+                                        navigate(
+                                            `/host/${eventDetails?.host?._id}`
+                                        )
+                                    }
+                                >
+                                    PROFIL ANSEHEN
+                                </button>
+                            </div>
+
                             <h5 className="eventDetails-h5">
                                 Event Beschreibung
                             </h5>
