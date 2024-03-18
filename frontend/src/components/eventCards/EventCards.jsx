@@ -10,14 +10,13 @@ import food from "../../assets/images/eventDefaultPics/food.jpg";
 import komet from "../../assets/images/eventDefaultPics/komet.jpg";
 import comedy from "../../assets/images/eventDefaultPics/loughComedy.jpg";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api";
 
 const EventCards = ({
-    Date,
+    unformatedDate,
     Title,
     State,
-    checked,
     eventId,
     category,
     eventPicURL,
@@ -27,6 +26,7 @@ const EventCards = ({
     // const [checkBookmarkCheck, setCheckBookmarkCheck] = useState(BookmarkEmpty);
     const [eventIsFavorite, setEventIsFavorite] = useState(false);
     const [defaultPic, setDefaultPic] = useState();
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (category === "comedy") {
@@ -41,7 +41,7 @@ const EventCards = ({
             setDefaultPic(food);
         } else if (category === "movie") {
             setDefaultPic(movie);
-        } else if (category === "literature" || "others") {
+        } else if (category === "literature" || category === "others") {
             setDefaultPic(komet);
         }
         if (
@@ -55,7 +55,7 @@ const EventCards = ({
         // } else {
         //     setCheckBookmarkCheck(BookmarkEmpty);
         // }
-    }, []);
+    }, [eventPicURL]);
 
     // -------- ADD Event to Wishlist FETCH ------------
     async function addEventToWishlist() {
@@ -92,25 +92,43 @@ const EventCards = ({
             console.log(error);
         }
     }
+    
+    // =============== formatting Date ======================
+    let formattedDateTime = null;
+    if (unformatedDate) {
+        const inputDate = new Date(unformatedDate);
+        const day = inputDate.getDate();
+        const month = inputDate.getMonth() + 1; // Months are 0-indexed, so we add 1
+        const year = inputDate.getFullYear();
+        const hours = inputDate.getHours();
+        const minutes = inputDate.getMinutes();
+        
+        // Format the date and time
+        const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
+        const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} Uhr`;
+        
+        formattedDateTime = `${formattedDate} ${formattedTime}`;
+    }
+
+    const navigateToDetails = () => {
+        navigate(`/eventdetails/${eventId}`)
+    }
 
     return (
         <>
-            <Link
-                to={`/eventdetails/${eventId}`}
-                className="EventCard-Link-wrap"
-            >
                 <article className="EventCardsContainer">
                     <img
+                        onClick={() => navigateToDetails()}
                         src={
                             eventPicURL
                                 ? `${backendUrl}/download/${eventPicURL}`
                                 : defaultPic
                         }
                         alt="eventPic"
-                        className="eventPic"
+                        className="EventCardsPic"
                     />
-                    <div className="EventCardsDetails">
-                        <p className="EventCardsDateTag">{Date}</p>
+                    <div onClick={() => navigateToDetails()} className="EventCardsDetails">
+                        <p className="EventCardsDateTag">{formattedDateTime}</p>
                         <p className="EventCardsTitleTag">{Title}</p>
                         <div className="EventCardsLocationIconContainer">
                             <img
@@ -141,7 +159,6 @@ const EventCards = ({
                         )}
                     </div>
                 </article>
-            </Link>
         </>
     );
 };

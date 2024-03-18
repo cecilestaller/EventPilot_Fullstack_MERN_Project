@@ -18,8 +18,7 @@ const Home = ({ authorization, userProfileInfo }) => {
   const [getUserLocation, setGetUserLocation] = useState("");
   const [saveUserLocation, setSaveUserLocation] = useState("");
   const [hideClassForDropdown, setHideClassForDropdown] = useState("hide");
-  const [showLocationUnavailableModal, setShowLocationUnavailableModal] =
-    useState("hide");
+  const [showLocationUnavailableModal, setShowLocationUnavailableModal] = useState("hide");
   const navigate = useNavigate();
 
   // ============ fetching events and save into context ==================
@@ -122,124 +121,82 @@ const Home = ({ authorization, userProfileInfo }) => {
     navigate("/search");
   };
 
-  // =============== Random event picker =====================================
-  const randomNumberEvent = Math.floor(
-    Math.random() * fetchEventData?.length + 1
-  );
-  const randomEvent = fetchEventData[randomNumberEvent];
-  const inputDate = new Date(randomEvent?.eventDate);
+    // =============== Random event picker =====================================
+    const [randomNumberEvent, setRandomNumberEvent] = useState(null);
 
-  const day = inputDate.getDate();
-  const month = inputDate.getMonth() + 1; // Monate werden von 0 bis 11 gezählt, daher fügen wir 1 hinzu
-  const year = inputDate.getFullYear();
-  const hours = inputDate.getHours();
-  const minutes = inputDate.getMinutes();
+    useEffect(() => {
+        if (randomNumberEvent === null) {
+            const randomNum = Math.floor((Math.random() * fetchEventData.length) + 1);
+            setRandomNumberEvent(randomNum);
+        }
+    }, [fetchEventData, randomNumberEvent]);
+    
+    // Access random event if random number is generated
+    const randomEvent = randomNumberEvent !== null ? fetchEventData[randomNumberEvent] : null;
+    
+    // If random event is available, format its date and time
 
-  // Formatierung der Daten und Zeit
-  const formattedDate = `${day < 10 ? "0" : ""}${day}.${
-    month < 10 ? "0" : ""
-  }${month}.${year}`;
-  const formattedTime = `${hours}:${minutes < 10 ? "0" : ""}${minutes} Uhr`;
 
-  // Gesamtes formatiertes Datum und Zeit
-  const formattedDateTime = `${formattedDate} ${formattedTime}`;
-
-  return (
-    <div className="homeContainer">
-      <header className="headerHome">
-        <img className="logo" src={Logo} alt="logoIcon" />
-        <div
-          className="locationContainer"
-          onClick={() => locationDropdownMenu()}
-        >
-          <div className="locationDropdownContainer">
-            <p className="locationTitle">Standort</p>
-            <img src={DropdownArrow} alt="arrowIcon" />
-          </div>
-          <div
-            onClick={() => hideStateSelectionAgain()}
-            className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}
-          >
-            <div className={`dropdownAddressMenu ${hideClassForDropdown}`}>
-              <p
-                onClick={() => changeLocationInfo(getUserLocation)}
-                className={`HomeDropdownSelections DeinStandortTag`}
-              >
-                Dein Standort: {getUserLocation}
-              </p>
-              {Array.from(
-                new Set(
-                  fetchEventData.map((event) => event.eventAddress.province)
-                )
-              ).map((province) => (
-                <p
-                  onClick={() => changeLocationInfo(province)}
-                  className={`HomeDropdownSelections`}
-                  key={province}
-                >
-                  {province}
-                </p>
-              ))}
+    return (
+        <div className="homeContainer">
+            <header className="headerHome">
+                <img className="logo" src={Logo} alt="logoIcon" />
+                <div className="locationContainer" onClick={() => locationDropdownMenu()}>
+                    <div className="locationDropdownContainer" >
+                        <p className="locationTitle">Standort</p>
+                        <img src={DropdownArrow} alt="arrowIcon" />
+                    </div>
+                    <div onClick={() => hideStateSelectionAgain()} className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}>
+                        <div className={`dropdownAddressMenu`}>
+                            <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections DeinStandortTag`}>Dein Standort: {getUserLocation}</p>
+                            {Array.from(new Set(fetchEventData?.map(event => event.eventAddress.province))).map(province => (
+                                <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
+                                ))}
+                        </div>
+                    </div>
+                    <h3 className="showCurrentLocation">{saveUserLocation}</h3>
+                </div>
+                {/* Element emptyDivForFlexSpace is invisible and only used to properly center  locationDropdownContainer */}
+                <div className="emptyDivForFlexSpace">
+                    <img className="logo" src={Logo} alt="logoIcon" />
+                </div>
+                {/* ===================================================================================================== */}
+            </header>
+            <div className="UpcomingTitleContainer">
+                <p className="titleOfConponent">Anstehende Events</p>
+                <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllUpcoming()}>
+                    Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
+                </label>
             </div>
-          </div>
-          <h3 className="showCurrentLocation">{saveUserLocation}</h3>
+            <UpcomingEvents selectedLocation={saveUserLocation}/>
+            <div className="NearbyTitleContainer">
+                <p className="titleOfConponent">In deiner Nähe</p>
+                <label className="seeAllTextAndIcon" onClick={() => forwardToSeeAllNearby()}>
+                    Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
+                </label>
+            </div>
+            <NearbyEvents selectedLocation={saveUserLocation}/>
+            <p className="titleOfRandomConponent">Überrasch mich!</p>
+            <EventCards 
+              unformatedDate={randomEvent?.eventDate} 
+              Title={randomEvent?.title} 
+              State={randomEvent?.eventAddress.province} 
+              eventId={randomEvent?._id} 
+              category={randomEvent?.category} 
+              eventPicURL={randomEvent?.eventPicURL} 
+              userProfileInfo={userProfileInfo} 
+              authorization={authorization}/>
+            <div className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}>
+                <div className="LocationModelWindow">
+                    <p>Keine Standortdaten gefunden.</p>
+                    <p>Beim nächsten Appstart Browsereinstellungen für Standortgenehmigung prüfen.</p>
+                    <p>Default Standort: Berlin</p>
+                    <BtnSubmit text="Weiter" onClick={() => closeLocationUnavailableModal()}/>
+                </div>
+            </div>
+            <Nav highlight="explore"/>
         </div>
-        {/* Element emptyDivForFlexSpace is invisible and only used to properly center  locationDropdownContainer */}
-        <div className="emptyDivForFlexSpace">
-          <img
-            className="logo"
-            style={{ visibility: "hidden" }}
-            src={Logo}
-            alt="logoIcon"
-          />
-        </div>
-        {/* ===================================================================================================== */}
-      </header>
-      <div className="UpcomingTitleContainer">
-        <p className="titleOfConponent">Anstehende Events</p>
-        <label
-          className="seeAllTextAndIcon"
-          onClick={() => forwardToSeeAllUpcoming()}
-        >
-          Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
-        </label>
-      </div>
-      <UpcomingEvents />
-      <div className="NearbyTitleContainer">
-        <p className="titleOfConponent">In deiner Nähe</p>
-        <label
-          className="seeAllTextAndIcon"
-          onClick={() => forwardToSeeAllNearby()}
-        >
-          Alle zeigen <img src={SeeAllArrow} alt="seeAllIcon" />
-        </label>
-      </div>
-      <NearbyEvents />
-      <EventCards
-        Date={formattedDateTime}
-        Title={randomEvent?.title}
-        State={randomEvent?.eventAddress.province}
-        checked=""
-      />
-      <div
-        className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}
-      >
-        <div className="LocationModelWindow">
-          <p>Keine Standortdaten gefunden.</p>
-          <p>
-            Beim nächsten Appstart Browsereinstellungen für Standortgenehmigung
-            prüfen.
-          </p>
-          <p>Default Standort: Berlin</p>
-          <BtnSubmit
-            text="Weiter"
-            onClick={() => closeLocationUnavailableModal()}
-          />
-        </div>
-      </div>
-      <Nav highlight="explore" />
-    </div>
-  );
+    );
 };
 
 export default Home;

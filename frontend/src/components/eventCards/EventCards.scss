@@ -1,6 +1,3 @@
-.EventCard-Link-wrap {
-    text-decoration: none;
-    color: inherit;
     .EventCardsContainer {
         display: flex;
         padding: 8px;
@@ -14,18 +11,19 @@
         z-index: 0;
         .EventCardsPic {
             border-radius: 8px;
+            width: 35%;
         }
         .EventCardsDetails {
             position: relative;
             padding: 8px;
             .EventCardsDateTag {
                 color: var(--main-akcent-color);
-                font-size: 12px;
+                font-size: 0.75em;
                 font-weight: 600;
                 margin-bottom: 5px;
             }
             .EventCardsTitleTag {
-                font-size: 18px;
+                font-size: 0.875em;
                 font-weight: 600;
             }
             .EventCardsLocationIconContainer {
@@ -38,7 +36,7 @@
                     width: 12px;
                 }
                 .EventCardsLocationIconText {
-                    font-size: 13px;
+                    font-size: 0.813em;
                     font-weight: 100;
                 }
             }
@@ -55,6 +53,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 5;
         }
     }
-}
+
