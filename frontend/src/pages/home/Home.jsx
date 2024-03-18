@@ -13,112 +13,113 @@ import { useLocationFetchContext } from "../../context/locationFetchContext";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 
 const Home = ({ authorization, userProfileInfo }) => {
-
-    const { fetchEventData, setFetchEventData } = useEventFetchContext();
-    const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
-    const [getUserLocation, setGetUserLocation] = useState("")
-    const [saveUserLocation, setSaveUserLocation] = useState("")
-    const [hideClassForDropdown, setHideClassForDropdown] = useState("hide")
-    const [showLocationUnavailableModal, setShowLocationUnavailableModal] = useState("hide")
-    const navigate = useNavigate();
+  const { fetchEventData, setFetchEventData } = useEventFetchContext();
+  const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
+  const [getUserLocation, setGetUserLocation] = useState("");
+  const [saveUserLocation, setSaveUserLocation] = useState("");
+  const [hideClassForDropdown, setHideClassForDropdown] = useState("hide");
+  const [showLocationUnavailableModal, setShowLocationUnavailableModal] = useState("hide");
+  const navigate = useNavigate();
 
   // ============ fetching events and save into context ==================
-    useEffect(() => {
-        const getEventData = async () => {
-        try {
-            const response = await fetch(`http://localhost:3333/api/v1/events`, {
-                headers: { authorization },
-            });
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            } else {
-                const { success, result, error, message } = await response.json();
-                setFetchEventData(result);
-                return;
-            }
-        } catch (error) {
-            console.error("Error fetching data: ", error);
+  useEffect(() => {
+    const getEventData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3333/api/v1/events`, {
+          headers: { authorization },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        } else {
+          const { success, result, error, message } = await response.json();
+          setFetchEventData(result);
+          return;
         }
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
     };
     getEventData();
-    }, []);
+  }, []);
 
-    // console.log(userProfileInfo);
-    // console.log(userProfileInfo.userAddress);
-    console.log(fetchEventData);
+  // console.log(userProfileInfo);
+  // console.log(userProfileInfo.userAddress);
+  // console.log(fetchEventData);
 
-// ==================== getting user location ===============================
+  // ==================== getting user location ===============================
 
-    const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null);
 
-    useEffect(() => {
-        const getLocation = async () => {
-            try {
-                if (navigator.geolocation) {
-                    const position = await new Promise((resolve, reject) => {
-                        navigator.geolocation.getCurrentPosition(resolve, reject);
-                    });
-                    const { latitude, longitude } = position.coords;
-                    await setLocation({ latitude, longitude });
-                    if (location?.latitude === null || location?.longitude === null) {
-                        setShowLocationUnavailableModal("")
-                        setGetUserLocation("Berlin") //Setting default state to Berlin if no location data can be obtained
-                    } else {
-                        // ==================== getting address via nominatim API ===========================
-                        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
-                        if (!response.ok) {
-                            throw new Error("Error fetching address");
-                        }
-                        const data = await response.json();
-                        // console.log("Adresse:", data.address);
-                        setGetUserLocation(data.address.state);
-                        // setSaveUserLocation(getUserLocation)
-                    }
-                } else {
-                    throw new Error("Geolocation is not supported by Browser.");
-                }
-            } catch (error) {
-                console.error("Error getting location: ", error);
+  useEffect(() => {
+    const getLocation = async () => {
+      try {
+        if (navigator.geolocation) {
+          const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+          const { latitude, longitude } = position.coords;
+          await setLocation({ latitude, longitude });
+          if (location?.latitude === null || location?.longitude === null) {
+            setShowLocationUnavailableModal("");
+            setGetUserLocation("Berlin"); //Setting default state to Berlin if no location data can be obtained
+          } else {
+            // ==================== getting address via nominatim API ===========================
+            const response = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+            );
+            if (!response.ok) {
+              throw new Error("Error fetching address");
             }
-        };
-        getLocation();
-    }, []);
+            const data = await response.json();
+            // console.log("Adresse:", data.address);
+            setGetUserLocation(data.address.state);
+            // setSaveUserLocation(getUserLocation)
+          }
+        } else {
+          throw new Error("Geolocation is not supported by Browser.");
+        }
+      } catch (error) {
+        console.error("Error getting location: ", error);
+      }
+    };
+    getLocation();
+  }, []);
 
-    // ==================== dropdown menu function ==============================
-    const locationDropdownMenu = () => {
-        setHideClassForDropdown(hideClassForDropdown === "hide" ? "" : "hide")
-    }
+  // ==================== dropdown menu function ==============================
+  const locationDropdownMenu = () => {
+    setHideClassForDropdown(hideClassForDropdown === "hide" ? "" : "hide");
+  };
 
-    const changeLocationInfo = (province) => {
-        setSaveUserLocation(province) //changes location value displayed
-        setHideClassForDropdown("hide")
-    }
+  const changeLocationInfo = (province) => {
+    setSaveUserLocation(province); //changes location value displayed
+    setHideClassForDropdown("hide");
+  };
 
-    useEffect(() => {
-        setSaveUserLocation(getUserLocation)
-        setFetchLocationData(getUserLocation)
-    },[getUserLocation])
+  useEffect(() => {
+    setSaveUserLocation(getUserLocation);
+    setFetchLocationData(getUserLocation);
+  }, [getUserLocation]);
 
-    const hideStateSelectionAgain = () => {
-        setHideClassForDropdown("hide")
-    }
-    // =================== location and location modal ===========================
-    useEffect(() => {
-        setSaveUserLocation(getUserLocation)
-    },[getUserLocation])
+  const hideStateSelectionAgain = () => {
+    setHideClassForDropdown("hide");
+  };
+  // =================== location and location modal ===========================
+  useEffect(() => {
+    setSaveUserLocation(getUserLocation);
+  }, [getUserLocation]);
 
-    const closeLocationUnavailableModal = () => {
-        setShowLocationUnavailableModal("hide")
-    }
+  const closeLocationUnavailableModal = () => {
+    setShowLocationUnavailableModal("hide");
+  };
 
-    // ========= function of "Alle zeigen" in "Anstehende Events" ===================
-    const forwardToSeeAllUpcoming = () => {
-        navigate("/search")
-    }
-    // ========= function of "Alle zeigen" in "In der Nähe" ===================
-    const forwardToSeeAllNearby = () => {
-        navigate("/search")
-    }
+  // ========= function of "Alle zeigen" in "Anstehende Events" ===================
+  const forwardToSeeAllUpcoming = () => {
+    navigate("/search");
+  };
+  // ========= function of "Alle zeigen" in "In der Nähe" ===================
+  const forwardToSeeAllNearby = () => {
+    navigate("/search");
+  };
 
     // =============== Random event picker =====================================
     const [randomNumberEvent, setRandomNumberEvent] = useState(null);
@@ -134,21 +135,7 @@ const Home = ({ authorization, userProfileInfo }) => {
     const randomEvent = randomNumberEvent !== null ? fetchEventData[randomNumberEvent] : null;
     
     // If random event is available, format its date and time
-    let formattedDateTime = null;
-    if (randomEvent) {
-        const inputDate = new Date(randomEvent.eventDate);
-        const day = inputDate.getDate();
-        const month = inputDate.getMonth() + 1; // Months are 0-indexed, so we add 1
-        const year = inputDate.getFullYear();
-        const hours = inputDate.getHours();
-        const minutes = inputDate.getMinutes();
-        
-        // Format the date and time
-        const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
-        const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} Uhr`;
-        
-        formattedDateTime = `${formattedDate} ${formattedTime}`;
-    }
+
 
     return (
         <div className="homeContainer">
@@ -162,7 +149,7 @@ const Home = ({ authorization, userProfileInfo }) => {
                     <div onClick={() => hideStateSelectionAgain()} className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}>
                         <div className={`dropdownAddressMenu`}>
                             <p onClick={() => changeLocationInfo(getUserLocation)} className={`HomeDropdownSelections DeinStandortTag`}>Dein Standort: {getUserLocation}</p>
-                            {Array.from(new Set(fetchEventData.map(event => event.eventAddress.province))).map(province => (
+                            {Array.from(new Set(fetchEventData?.map(event => event.eventAddress.province))).map(province => (
                                 <p onClick={() => changeLocationInfo(province)} className={`HomeDropdownSelections`} key={province}>{province}</p>
                                 ))}
                         </div>
@@ -190,7 +177,15 @@ const Home = ({ authorization, userProfileInfo }) => {
             </div>
             <NearbyEvents selectedLocation={saveUserLocation}/>
             <p className="titleOfRandomConponent">Überrasch mich!</p>
-            <EventCards Date={formattedDateTime} Title={randomEvent?.title} State={randomEvent?.eventAddress.province} checked=""/>
+            <EventCards 
+              unformatedDate={randomEvent?.eventDate} 
+              Title={randomEvent?.title} 
+              State={randomEvent?.eventAddress.province} 
+              eventId={randomEvent?._id} 
+              category={randomEvent?.category} 
+              eventPicURL={randomEvent?.eventPicURL} 
+              userProfileInfo={userProfileInfo} 
+              authorization={authorization}/>
             <div className={`homeLocationUnavailableModel ${showLocationUnavailableModal}`}>
                 <div className="LocationModelWindow">
                     <p>Keine Standortdaten gefunden.</p>

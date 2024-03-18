@@ -1,12 +1,12 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
-    font-family: "Inter";
-    src: url("./assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-VariableFont_slnt\,wght.ttf");
 }
 
 :root {
@@ -14,10 +14,12 @@
     --main-focus-color: #00ecaa;
     --: #44abd4;
     --: #668be9;
+
     --unfocused-element-color: #777bf3;
     --botton-color: #876afd;
     --: #7254ee;
     --main-akcent-color: #5d3ede;
+    --main-accent-color-alpha: #5d3ede4d;
     --main-text-color: ##120d26;
     --: #ffb21c;
     --icon-standard-color: #848484;
@@ -26,9 +28,9 @@
 }
 
 body {
-    font-family: "Inter";
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
+  font-family: "Inter";
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 // =======================
@@ -36,35 +38,39 @@ body {
 // =======================
 
 h1 {
-    font-size: 35px;
-    font-weight: 100;
-    line-height: normal;
-    color: var(--main-text-color);
+  font-size: 35px;
+  font-weight: 100;
+  line-height: normal;
+  color: var(--main-text-color);
 }
 
 h2 {
-    font-size: 24px;
-    text-align: center;
-    line-height: normal;
-    font-weight: 500;
-    color: var(--main-text-color);
+  font-size: 24px;
+  text-align: center;
+  line-height: normal;
+  font-weight: 500;
+  color: var(--main-text-color);
 }
 
 h3 {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 34px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 34px;
 }
 
 h4 {
-    font-size: 16px;
-    font-weight: 100;
-    text-transform: uppercase;
-    letter-spacing: 0.16px;
-    line-height: normal;
-    text-align: center;
+  font-size: 16px;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.16px;
+  line-height: normal;
+  text-align: center;
 }
 
 .hide {
-    display: none !important;
+  display: none !important;
+}
+
+.block {
+  display: block;
 }

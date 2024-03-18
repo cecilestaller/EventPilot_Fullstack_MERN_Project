@@ -1,56 +1,59 @@
-.EventCardsContainer {
-    display: flex;
-    padding:8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius:16px;
-    width: 327px;
-    height: 112px;
-    background-color: var(--main-bg-color);
-    position: relative;
-    margin: 0 auto;
-    z-index: 0;
-    .EventCardsPic {
-        border-radius: 8px;
-    }
-    .EventCardsDetails {
-        position: relative;
-        padding: 8px;
-        .EventCardsDateTag {
-            color: var(--main-akcent-color);
-            font-size: 0.75em;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        .EventCardsTitleTag {
-            font-size: 1.125em;
-            font-weight: 600;
-        }
-        .EventCardsLocationIconContainer {
-            bottom: 8px;
-            position: absolute;
-            display: flex;
-            gap: 5px;
-            align-items: center;
-            .EventCardsLocationIcon {
-                width: 12px;
-            }
-            .EventCardsLocationIconText {
-                font-size: 0.813em;
-                font-weight: 100;
-            }
-        }
-    }
-    .EventCardsBookmarkContainer {
-        width: 36px;
-        height: 36px;
-        background-color: var(--main-bg-color);
-        box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
-        border-radius: 8px 8px 8px 8px;
-        position: absolute;
-        top: 8px;
-        right: 8px;
+    .EventCardsContainer {
         display: flex;
-        align-items:center;
-        justify-content: center;
+        padding: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        width: 327px;
+        height: 112px;
+        background-color: var(--main-bg-color);
+        position: relative;
+        margin: 0 auto;
+        z-index: 0;
+        .EventCardsPic {
+            border-radius: 8px;
+            width: 35%;
+        }
+        .EventCardsDetails {
+            position: relative;
+            padding: 8px;
+            .EventCardsDateTag {
+                color: var(--main-akcent-color);
+                font-size: 0.75em;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+            .EventCardsTitleTag {
+                font-size: 0.875em;
+                font-weight: 600;
+            }
+            .EventCardsLocationIconContainer {
+                bottom: 8px;
+                position: absolute;
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                .EventCardsLocationIcon {
+                    width: 12px;
+                }
+                .EventCardsLocationIconText {
+                    font-size: 0.813em;
+                    font-weight: 100;
+                }
+            }
+        }
+        .EventCardsBookmarkContainer {
+            width: 36px;
+            height: 36px;
+            background-color: var(--main-bg-color);
+            box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px 8px 8px 8px;
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
     }
-}
+
