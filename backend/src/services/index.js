@@ -15,6 +15,8 @@ import { editEvent } from "./editEvent.js";
 import { addReview } from "./addReview.js";
 import { getHostProfileDetails } from "./getHostProfileDetails.js";
 import { removeEventFromWishlist } from "./removeEventFromWishlist.js";
+import { getUserWishlist } from "./getUserWishlist.js";
+import { getUserRegisteredEvents } from "./getUserRegisteredEvents.js";
 
 export const UserService = {
     signUpUser,
@@ -27,6 +29,8 @@ export const UserService = {
     addEventToRegisteredEventsList,
     getHostProfileDetails,
     removeEventFromWishlist,
+    getUserWishlist,
+    getUserRegisteredEvents,
 };
 
 export const EventService = {
