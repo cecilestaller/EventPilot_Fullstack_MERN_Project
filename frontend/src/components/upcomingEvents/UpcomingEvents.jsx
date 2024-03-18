@@ -15,9 +15,7 @@ import komet from "../../assets/images/eventDefaultPics/komet.jpg";
 import comedy from "../../assets/images/eventDefaultPics/loughComedy.jpg";
 import { backendUrl } from "../../api";
 
-const UpcomingEvents = () => {
-
-    
+const UpcomingEvents = ({userProfileInfo}) => {
 
     const { fetchEventData, setFetchEventData } = useEventFetchContext();
     const [filteredEvents, setFilteredEvents] = useState([])
@@ -27,13 +25,14 @@ const UpcomingEvents = () => {
     const navigate = useNavigate()
     const currentDate = new Date();
 
-
+console.log(userProfileInfo);
     
     useEffect(() => {
         setFilteredEvents(
             fetchEventData.filter(fetchEventData => new Date(fetchEventData?.eventDate) > currentDate) // Keep only dates in the future
             .sort((a, b) => new Date(a.date) - new Date(b.date))
             )
+
             if (filteredEvents[0]?.category === "comedy") {
                 setDefaultPicEvent1(comedy);
             } else if (filteredEvents[0]?.category === "sport") {
@@ -49,6 +48,7 @@ const UpcomingEvents = () => {
             } else if (filteredEvents[0]?.category === "literature" || "others") {
                 setDefaultPicEvent1(komet);
             }
+
             if (filteredEvents[1]?.category === "comedy") {
                 setDefaultPicEvent2(comedy);
             } else if (filteredEvents[1]?.category === "sport") {
@@ -64,6 +64,7 @@ const UpcomingEvents = () => {
             } else if (filteredEvents[1]?.category === "literature" || "others") {
                 setDefaultPicEvent2(komet);
             }
+
             if (filteredEvents[2]?.category === "comedy") {
                 setDefaultPicEvent3(comedy);
             } else if (filteredEvents[2]?.category === "sport") {
@@ -80,38 +81,13 @@ const UpcomingEvents = () => {
                 setDefaultPicEvent3(komet);
             }
         },[fetchEventData])
-        
-        // console.log(filteredEvents[5].registeredGuests);
-        
-        // check category of event to decide which defaultPic
 
 const navigateToDetails = (id) => {
     navigate(`/events/${id}`)
-    // console.log(event); //is event id
 }
+
     return (
         <div className="UpcomingContainer">
-        {/* {filteredEvents.slice(0, 3).map((event) => ( */}
-            {/* <article className="UpcomingSingleEventContainer" key={event._id} onClick={() => navigateToDetails(event._id)}>
-                <div className="ImageAndIconContainer">
-                    <img className="BookmarkIcon" src={BookmarkEmpty} alt="" />
-                    <img className="EventImage" src={event.eventPicURL ? `${backendUrl}/download/${event.eventPicURL}` : defaultPicEvent1} alt="" />
-                    <div className="EventDateIcon">{new Date(event.eventDate).toLocaleDateString('de-DE', { day: '2-digit', month: 'short' })}</div>
-                </div>
-                <p className="EventTitle">{event.title}</p>
-                <div className="EventCardBottomDetailsContainer">
-                    <div className="EventCardRegisteredInfo">
-                        <img className="RegisteredUserFirstImage" src={event.registeredGuests[0]?.profilePicURL ? `${backendUrl}/download/${event.registeredGuests[0].profilePicURL}` : defaultProfilePic} alt="" />
-                        <img className="RegisteredUserSecondImage" src={event.registeredGuests[1]?.profilePicURL ? `${backendUrl}/download/${event.registeredGuests[1].profilePicURL}` : defaultProfilePic} alt="" />
-                        <img className="RegisteredUserThirdImage" src={event.registeredGuests[2]?.profilePicURL ? `${backendUrl}/download/${event.registeredGuests[2].profilePicURL}` : defaultProfilePic} alt="" />
-                        <p className="RegisteredUserAmout">{event.registeredGuests?.length > 99 ? '99+' : (event.registeredGuests?.length || "0")}</p>
-                    </div>
-                    <div className="LocationInfo">
-                        <img className="LocationPinIcon" src={LocationIcon} alt="" />
-                        <p className="locationState">{event.eventAddress.province}</p>
-                    </div>
-                </div>
-            </article> */}
             <article className="UpcomingSingleEventContainer" key={filteredEvents[0]?._id} onClick={() => navigateToDetails(filteredEvents[0]._id)}>
                 <div className="ImageAndIconContainer">
                     <img className="BookmarkIcon" src={BookmarkEmpty} alt="" />

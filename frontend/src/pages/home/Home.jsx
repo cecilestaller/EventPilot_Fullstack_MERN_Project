@@ -13,6 +13,7 @@ import { useLocationFetchContext } from "../../context/locationFetchContext";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 
 const Home = ({ authorization, userProfileInfo }) => {
+  console.log(userProfileInfo?.userDetails);
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
   const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
   const [getUserLocation, setGetUserLocation] = useState("");
