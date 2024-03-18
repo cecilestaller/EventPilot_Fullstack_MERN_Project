@@ -97,7 +97,6 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                     setEventDetails(result);
                     // check if user already registered || has event on wishlist
                     if (
-                        userProfileInfo?.userWishlist?.includes(eventId) ||
                         userProfileInfo?.userDetails?.userWishlist?.includes(
                             eventId
                         )
