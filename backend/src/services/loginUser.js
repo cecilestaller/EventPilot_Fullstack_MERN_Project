@@ -52,7 +52,7 @@ export async function loginUser({ email, password }) {
 
     if (foundEvents.length > 0 && foundReviews.length > 0) {
         return {
-            user: sanitizedUser,
+            userDetails: sanitizedUser,
             eventsHostedByUser: foundEvents,
             reviews: foundReviews,
             avgStarsOfHost: Number(hostStarAvg.toFixed(2)),
@@ -60,11 +60,14 @@ export async function loginUser({ email, password }) {
         };
     } else if (foundEvents.length > 0 && foundReviews.length === 0) {
         return {
-            user: sanitizedUser,
+            userDetails: sanitizedUser,
             eventsHostedByUser: foundEvents,
             tokens: { accessToken, refreshToken },
         };
     } else {
-        return { user: sanitizedUser, tokens: { accessToken, refreshToken } };
+        return {
+            userDetails: sanitizedUser,
+            tokens: { accessToken, refreshToken },
+        };
     }
 }
