@@ -26,7 +26,7 @@ const EventCards = ({
     // const [checkBookmarkCheck, setCheckBookmarkCheck] = useState(BookmarkEmpty);
     const [eventIsFavorite, setEventIsFavorite] = useState(false);
     const [defaultPic, setDefaultPic] = useState();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (category === "comedy") {
@@ -44,10 +44,7 @@ const EventCards = ({
         } else if (category === "literature" || category === "others") {
             setDefaultPic(komet);
         }
-        if (
-            userProfileInfo?.userWishlist?.includes(eventId) ||
-            userProfileInfo?.userDetails?.userWishlist?.includes(eventId)
-        ) {
+        if (userProfileInfo?.userDetails?.userWishlist?.includes(eventId)) {
             setEventIsFavorite(true);
         }
         // if (checked === "true") {
@@ -92,7 +89,7 @@ const EventCards = ({
             console.log(error);
         }
     }
-    
+
     // =============== formatting Date ======================
     let formattedDateTime = null;
     if (unformatedDate) {
@@ -102,63 +99,68 @@ const EventCards = ({
         const year = inputDate.getFullYear();
         const hours = inputDate.getHours();
         const minutes = inputDate.getMinutes();
-        
+
         // Format the date and time
-        const formattedDate = `${day < 10 ? '0' : ''}${day}.${month < 10 ? '0' : ''}${month}.${year}`;
-        const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} Uhr`;
-        
+        const formattedDate = `${day < 10 ? "0" : ""}${day}.${
+            month < 10 ? "0" : ""
+        }${month}.${year}`;
+        const formattedTime = `${hours}:${
+            minutes < 10 ? "0" : ""
+        }${minutes} Uhr`;
+
         formattedDateTime = `${formattedDate} ${formattedTime}`;
     }
 
     const navigateToDetails = () => {
-        navigate(`/eventdetails/${eventId}`)
-    }
+        navigate(`/eventdetails/${eventId}`);
+    };
 
     return (
         <>
-                <article className="EventCardsContainer">
-                    <img
-                        onClick={() => navigateToDetails()}
-                        src={
-                            eventPicURL
-                                ? `${backendUrl}/download/${eventPicURL}`
-                                : defaultPic
-                        }
-                        alt="eventPic"
-                        className="EventCardsPic"
-                    />
-                    <div onClick={() => navigateToDetails()} className="EventCardsDetails">
-                        <p className="EventCardsDateTag">{formattedDateTime}</p>
-                        <p className="EventCardsTitleTag">{Title}</p>
-                        <div className="EventCardsLocationIconContainer">
-                            <img
-                                className="EventCardsLocationIcon"
-                                src={LocationIcon}
-                                alt="loactionPinIcon"
-                            />
-                            <p className="EventCardsLocationIconText">
-                                {State}
-                            </p>
-                        </div>
+            <article className="EventCardsContainer">
+                <img
+                    onClick={() => navigateToDetails()}
+                    src={
+                        eventPicURL
+                            ? `${backendUrl}/download/${eventPicURL}`
+                            : defaultPic
+                    }
+                    alt="eventPic"
+                    className="EventCardsPic"
+                />
+                <div
+                    onClick={() => navigateToDetails()}
+                    className="EventCardsDetails"
+                >
+                    <p className="EventCardsDateTag">{formattedDateTime}</p>
+                    <p className="EventCardsTitleTag">{Title}</p>
+                    <div className="EventCardsLocationIconContainer">
+                        <img
+                            className="EventCardsLocationIcon"
+                            src={LocationIcon}
+                            alt="loactionPinIcon"
+                        />
+                        <p className="EventCardsLocationIconText">{State}</p>
                     </div>
-                    <div className="EventCardsBookmarkContainer">
-                        {eventIsFavorite ? (
-                            <img
-                                src={BookmarkFull}
-                                alt="fullBookmark"
-                                className="bookMark"
-                                onClick={removeEventFromWishlist}
-                            />
-                        ) : (
-                            <img
-                                src={BookmarkEmpty}
-                                alt="emptyBookmark"
-                                className="bookMark"
-                                onClick={addEventToWishlist}
-                            />
-                        )}
-                    </div>
-                </article>
+                </div>
+                <div className="EventCardsBookmarkContainer">
+                    {eventIsFavorite ? (
+                        <img
+                            src={BookmarkFull}
+                            alt="fullBookmark"
+                            className="bookMark"
+                            onClick={removeEventFromWishlist}
+                        />
+                    ) : (
+                        <img
+                            src={BookmarkEmpty}
+                            alt="emptyBookmark"
+                            className="bookMark"
+                            onClick={addEventToWishlist}
+                        />
+                    )}
+                </div>
+            </article>
         </>
     );
 };
