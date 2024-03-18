@@ -145,3 +145,24 @@ export const getHostDetailsCtrl = catchAsync(
     },
     { message: "Could not retrieve Host Details" }
 );
+
+// ====== Get User Wishlist ==========
+export const getUserWishlistCtrl = catchAsync(
+    async (req, res) => {
+        const authenticatedUserId = req.verifiedUserClaims.sub;
+        const result = await UserService.getUserWishlist(authenticatedUserId);
+        res.status(200).json({ success: true, result });
+    },
+    { message: "Could not retrieve Events on Wishlist of User" }
+);
+
+export const getUserRegisteredEventsCtrl = catchAsync(
+    async (req, res) => {
+        const authenticatedUserId = req.verifiedUserClaims.sub;
+        const result = await UserService.getUserRegisteredEvents(
+            authenticatedUserId
+        );
+        res.status(200).json({ success: true, result });
+    },
+    { message: "Could not retrieve Events User is registered for" }
+);
