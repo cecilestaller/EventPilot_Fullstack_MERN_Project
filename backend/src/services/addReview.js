@@ -11,6 +11,7 @@ export async function addReview(authenticatedUserId, hostId, reviewInfo) {
         ...reviewInfo,
         userId: foundUser._id,
         hostId: foundHost._id,
+        reviewerName: foundUser.userName,
     });
 
     return newReview;
