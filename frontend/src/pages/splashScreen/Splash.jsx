@@ -6,9 +6,12 @@ import logo from "../../assets/images/Logo.svg";
 const Splash = () => {
     const navigate = useNavigate();
 
-    setTimeout(() => {
-        navigate("/login");
-    }, 2000);
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            navigate("/login");
+        }, 2000);
+        return () => clearTimeout(timeout);
+    }, []);
 
     return (
         <div>
