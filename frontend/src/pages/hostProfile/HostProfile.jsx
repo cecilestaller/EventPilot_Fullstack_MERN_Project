@@ -118,10 +118,10 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                                 className="backArrow"
                             />
                             <p className="eventDetails-hl">
-                                Review {hostDetails?.hostDetails?.userName}
+                                Bewerte {hostDetails?.hostDetails?.userName}
                             </p>
                         </div>
-                        <div className="profile-pic-container">
+                        <div className="profile-Hostpic-container">
                             <img
                                 className="clip"
                                 src={
