@@ -54,8 +54,6 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
     const [description, setDescription] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
 
-    console.log(userProfileInfo);
-
     useEffect(() => {
         async function fetchEventDetails() {
             try {

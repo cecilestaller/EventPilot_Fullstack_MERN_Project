@@ -5,10 +5,12 @@ import { backendUrl } from "../../api";
 import backArrow from "../../assets/images/arrow_back.svg";
 import picDummy from "../../assets/images/eventDefaultPics/picDummy.png";
 import BtnOutlined from "../../components/btnOutlined/BtnOutlined";
+import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 import emptyStar from "../../assets/images/empzy_purple_star.svg";
 import fullStar from "../../assets/images/full_grey_star.svg";
 import EventCards from "../../components/eventCards/EventCards";
 import Nav from "../../components/nav/Nav";
+import Rating from "@mui/material/Rating";
 
 const HostProfile = ({ authorization, userProfileInfo }) => {
     const { hostId } = useParams();
@@ -16,6 +18,11 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
     const [showEvents, setShowEvents] = useState(false);
     const [showAboutMe, setShowAboutMe] = useState(false);
     const [showReviews, setShowReviews] = useState(false);
+    const [writeReview, setWriteReview] = useState(false);
+    const [value, setValue] = useState(0);
+    const [reviewContent, setReviewContent] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     const [errorMessageAbout, setErrorMessageAbout] = useState(
         "Der/ die Organisator:in hat noch keine Infos über sich geteilt"
     );
@@ -23,7 +30,6 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
         "Der/ die Organisator:in wurde noch nicht bewertet"
     );
     const navigate = useNavigate();
-    console.log(hostId);
 
     useEffect(() => {
         async function fetchHostDetails() {
@@ -36,10 +42,7 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                 );
                 const { success, result, error, message } =
                     await response.json();
-                if (!success)
-                    setErrorMessageLiked(
-                        "Du hast noch keine Events gespeichert"
-                    );
+                if (!success) throw error;
                 setHostDetails(result);
                 setShowEvents(true);
             } catch (error) {
@@ -48,7 +51,7 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
         }
 
         fetchHostDetails();
-    }, []);
+    }, [successMessage]);
 
     function showAboutMeFunc() {
         setShowAboutMe(true);
@@ -67,143 +70,270 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
         setShowEvents(false);
         setShowReviews(true);
     }
-    console.log(hostDetails);
+
+    // -------- ADD new REVIEW fetch ---------
+    async function addNewReview(e) {
+        e.preventDefault();
+        try {
+            const response = await fetch(
+                `${backendUrl}/api/v1/review/${hostId}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization,
+                    },
+                    body: JSON.stringify({
+                        stars: value,
+                        text: reviewContent,
+                    }),
+                }
+            );
+            const { success, result, error, message } = await response.json();
+            if (!success)
+                setErrorMessage(
+                    error.message ||
+                        "Die Bewertung konnt nicht abgeschickt werden"
+                );
+            setValue(0);
+            setReviewContent("");
+            setSuccessMessage("Deine Bewertung wurde erfolgreich abgeschickt.");
+            setTimeout(() => {
+                setWriteReview(false);
+            }, 1500);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <>
             <section className="hostDetails-wrapper">
-                <div className="eventDetail-header-wrap">
-                    <img
-                        src={backArrow}
-                        alt="back arrow"
-                        onClick={() => navigate(-1)}
-                        className="backArrow"
-                    />
-                    <p className="eventDetails-hl">
-                        {hostDetails?.hostDetails?.userName}
-                    </p>
-                </div>
-                <div className="profile-pic-container">
-                    <img
-                        className="clip"
-                        src={
-                            hostDetails?.hostDetails?.profilePicURL
-                                ? `${backendUrl}/download/${hostDetails.hostDetails.profilePicURL}`
-                                : picDummy
-                        }
-                        alt=""
-                    />
-                </div>
-                <BtnOutlined text="ORGANISATOR:IN BEWERTEN" icon={emptyStar} />
-                <div className="hostProfile-button-wrapper">
-                    <button
-                        className={
-                            showAboutMe
-                                ? "hostProfile-button active-button"
-                                : "hostProfile-button"
-                        }
-                        onClick={showAboutMeFunc}
-                    >
-                        ÜBER MICH
-                    </button>
-                    <button
-                        className={
-                            showEvents
-                                ? "hostProfile-button active-button"
-                                : "hostProfile-button"
-                        }
-                        onClick={showEventsFunc}
-                    >
-                        EVENTS
-                    </button>
-                    <button
-                        className={
-                            showReviews
-                                ? "hostProfile-button active-button"
-                                : "hostProfile-button"
-                        }
-                        onClick={showReviewsFunc}
-                    >
-                        BEWERTUNGEN
-                    </button>
-                </div>
-                {showEvents &&
-                    hostDetails?.allEventsOfHost?.map((singleEvent) => (
-                        <EventCards
-                            Title={singleEvent?.title}
-                            unformatedDate={singleEvent?.eventDate}
-                            State={singleEvent?.eventAddress?.province}
-                            eventId={singleEvent?._id}
-                            key={singleEvent?._id}
-                            eventPicURL={singleEvent?.eventPicURL}
-                            userProfileInfo={userProfileInfo}
-                            authorization={authorization}
-                            category={singleEvent?.category}
-                        />
-                    ))}
-                {showAboutMe ? (
-                    hostDetails?.hostDetails?.bio ? (
+                {writeReview ? (
+                    <section className="hostDetails-reviewHostForm-wrap">
+                        <div className="hostDetails-reviewHeader-wrap">
+                            <img
+                                src={backArrow}
+                                alt="back arrow"
+                                onClick={() => setWriteReview(false)}
+                                className="backArrow"
+                            />
+                            <p className="eventDetails-hl">
+                                Review {hostDetails?.hostDetails?.userName}
+                            </p>
+                        </div>
+                        <div className="profile-pic-container">
+                            <img
+                                className="clip"
+                                src={
+                                    hostDetails?.hostDetails?.profilePicURL
+                                        ? `${backendUrl}/download/${hostDetails.hostDetails.profilePicURL}`
+                                        : picDummy
+                                }
+                                alt=""
+                            />
+                        </div>
                         <p
                             style={{
-                                color: "#747688",
-                                padding: "4px 12px 8px 12px",
-                                fontWeight: "300",
-                                textAlign: "center",
-                            }}
-                        >
-                            {hostDetails?.hostDetails?.bio}
-                        </p>
-                    ) : (
-                        <p
-                            style={{
-                                color: "grey",
+                                color: "green",
                                 padding: "4px 12px 8px 12px",
                                 fontWeight: "500",
                                 textAlign: "center",
                             }}
                         >
-                            {errorMessageAbout}
+                            {successMessage}
                         </p>
-                    )
-                ) : null}
+                        <form className="reviewHost-form">
+                            <div className="rating-div">
+                                <Rating
+                                    name="simple-controlled"
+                                    value={value}
+                                    onChange={(event, newValue) => {
+                                        setValue(newValue);
+                                    }}
+                                    size="large"
+                                    sx={{
+                                        color: "#00ecaa",
+                                        fontSize: "48px",
+                                    }}
+                                />
+                            </div>
 
-                {showReviews ? (
-                    hostDetails?.allReviewsAboutHost?.length > 0 ? (
-                        hostDetails?.allReviewsAboutHost.map((singleReview) => (
-                            <article
-                                key={singleReview._id}
-                                className="hostDetails-review-wrap"
+                            <textarea
+                                className="reviewHost-textarea"
+                                rows={9}
+                                // cols={20}
+                                placeholder="Deine Bewertung"
+                                value={reviewContent}
+                                onChange={(e) =>
+                                    setReviewContent(e.target.value)
+                                }
+                            />
+                            <BtnSubmit text="SUBMIT" onClick={addNewReview} />
+                        </form>
+                        <p
+                            style={{
+                                color: "red",
+                                padding: "4px 12px 8px 12px",
+                                fontWeight: "500",
+                                textAlign: "center",
+                            }}
+                        >
+                            {errorMessage}
+                        </p>
+                    </section>
+                ) : (
+                    <section className="hostDetails-info-wrap">
+                        <div className="eventDetail-header-wrap">
+                            <img
+                                src={backArrow}
+                                alt="back arrow"
+                                onClick={() => navigate(-1)}
+                                className="backArrow"
+                            />
+                            <p className="eventDetails-hl">
+                                {hostDetails?.hostDetails?.userName}
+                            </p>
+                        </div>
+                        <div className="profile-pic-container">
+                            <img
+                                className="clip"
+                                src={
+                                    hostDetails?.hostDetails?.profilePicURL
+                                        ? `${backendUrl}/download/${hostDetails.hostDetails.profilePicURL}`
+                                        : picDummy
+                                }
+                                alt=""
+                            />
+                        </div>
+                        <BtnOutlined
+                            text="ORGANISATOR:IN BEWERTEN"
+                            icon={emptyStar}
+                            onClick={() => setWriteReview(!writeReview)}
+                        />
+                        <div className="hostProfile-button-wrapper">
+                            <button
+                                className={
+                                    showAboutMe
+                                        ? "hostProfile-button active-button"
+                                        : "hostProfile-button"
+                                }
+                                onClick={showAboutMeFunc}
                             >
-                                {singleReview.reviewerName ? (
-                                    <h3>{singleReview.reviewerName}</h3>
-                                ) : (
-                                    <h3>Event Besucher:in</h3>
-                                )}
-                                {/* STAR Rating einfügen! */}
+                                ÜBER MICH
+                            </button>
+                            <button
+                                className={
+                                    showEvents
+                                        ? "hostProfile-button active-button"
+                                        : "hostProfile-button"
+                                }
+                                onClick={showEventsFunc}
+                            >
+                                EVENTS
+                            </button>
+                            <button
+                                className={
+                                    showReviews
+                                        ? "hostProfile-button active-button"
+                                        : "hostProfile-button"
+                                }
+                                onClick={showReviewsFunc}
+                            >
+                                BEWERTUNGEN
+                            </button>
+                        </div>
+                        {showEvents &&
+                            hostDetails?.allEventsOfHost?.map((singleEvent) => (
+                                <EventCards
+                                    Title={singleEvent?.title}
+                                    unformatedDate={singleEvent?.eventDate}
+                                    State={singleEvent?.eventAddress?.province}
+                                    eventId={singleEvent?._id}
+                                    key={singleEvent?._id}
+                                    eventPicURL={singleEvent?.eventPicURL}
+                                    userProfileInfo={userProfileInfo}
+                                    authorization={authorization}
+                                    category={singleEvent?.category}
+                                />
+                            ))}
+                        {showAboutMe ? (
+                            hostDetails?.hostDetails?.bio ? (
                                 <p
                                     style={{
                                         color: "#747688",
-                                        // padding: "4px 12px 8px 12px",
+                                        padding: "4px 12px 8px 12px",
                                         fontWeight: "300",
-                                        textAlign: "left",
+                                        textAlign: "center",
                                     }}
                                 >
-                                    {singleReview.text}
+                                    {hostDetails?.hostDetails?.bio}
                                 </p>
-                            </article>
-                        ))
-                    ) : (
-                        <p
-                            style={{
-                                color: "grey",
-                                padding: "4px 12px 8px 12px",
-                                fontWeight: "500",
-                                textAlign: "center",
-                            }}
-                        >
-                            {errorMessageReview}
-                        </p>
-                    )
-                ) : null}
+                            ) : (
+                                <p
+                                    style={{
+                                        color: "grey",
+                                        padding: "4px 12px 8px 12px",
+                                        fontWeight: "500",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {errorMessageAbout}
+                                </p>
+                            )
+                        ) : null}
+
+                        {showReviews ? (
+                            hostDetails?.allReviewsAboutHost?.length > 0 ? (
+                                hostDetails?.allReviewsAboutHost.map(
+                                    (singleReview) => (
+                                        <article
+                                            key={singleReview._id}
+                                            className="hostDetails-review-wrap"
+                                        >
+                                            {singleReview.reviewerName ? (
+                                                <h3>
+                                                    {singleReview.reviewerName}
+                                                </h3>
+                                            ) : (
+                                                <h3>Event Besucher:in</h3>
+                                            )}
+                                            <Rating
+                                                name="read-only"
+                                                value={singleReview.stars}
+                                                readOnly
+                                                size="small"
+                                                sx={{
+                                                    color: "#00ecaa",
+                                                }}
+                                            />
+                                            <p
+                                                style={{
+                                                    color: "#747688",
+                                                    // padding: "4px 12px 8px 12px",
+                                                    fontWeight: "300",
+                                                    textAlign: "left",
+                                                }}
+                                            >
+                                                {singleReview.text}
+                                            </p>
+                                        </article>
+                                    )
+                                )
+                            ) : (
+                                <p
+                                    style={{
+                                        color: "grey",
+                                        padding: "4px 12px 8px 12px",
+                                        fontWeight: "500",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    {errorMessageReview}
+                                </p>
+                            )
+                        ) : null}
+                    </section>
+                )}
             </section>
             <Nav />
         </>
