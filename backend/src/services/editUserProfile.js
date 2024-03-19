@@ -5,7 +5,8 @@ import { User } from "../models/index.js";
 export async function editUserProfile(authenticatedUserId, userProfileInfo) {
   try {
     // Prüfen, ob im userProfileInfo gelöschte Interessen vorhanden sind
-    const { deletedInterests, ...updatedProfileInfo } = userProfileInfo;
+    const { deletedInterests, userAddress, ...updatedProfileInfo } =
+      userProfileInfo;
 
     // Falls gelöschte Interessen vorhanden sind, entferne sie aus dem Benutzerprofil
     if (deletedInterests && deletedInterests.length > 0) {
@@ -18,7 +19,11 @@ export async function editUserProfile(authenticatedUserId, userProfileInfo) {
       );
     }
 
-    // Führe die Aktualisierung des Benutzerprofils durch
+    if (userAddress) {
+      updatedProfileInfo.userAddress = userAddress;
+    }
+
+    // update user profile info
     const updatedUser = await User.findByIdAndUpdate(
       authenticatedUserId,
       updatedProfileInfo,
@@ -35,7 +40,7 @@ export async function editUserProfile(authenticatedUserId, userProfileInfo) {
 function userToProfileInfo({
   _id,
   userName,
-  userAddress: { street, zip, city, province },
+  userAddress: { zip, city, province },
   profilePicURL,
   bio,
   interests,
@@ -43,7 +48,7 @@ function userToProfileInfo({
   return {
     _id,
     userName,
-    userAddress: { street, zip, city, province },
+    userAddress: { zip, city, province },
     profilePicURL,
     bio,
     interests,

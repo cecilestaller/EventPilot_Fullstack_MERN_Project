@@ -15,14 +15,10 @@ import profileIcon from "../../assets/images/Profile.svg";
 import aboutIcon from "../../assets/images/textblock_icon.svg";
 import deleteIcon from "../../assets/images/x-icon.svg";
 import addIcon from "../../assets/images/plus.svg";
-import { useUserProfileInfoContext } from "../../context/userProfileInfoContext";
-import DropdownArrow from "../../assets/images/location_dropdown_arrow.svg";
 
 const EditUserProfile = ({ authorization, userProfileInfo }) => {
   const [userData, setUserData] = useState();
-  const { userProfileData, setUserProfileData } = useUserProfileInfoContext();
   const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
-  // const { fetchEventData, setFetchEventData } = useEventFetchContext();
   const [isUserAdressEmpty, setIsUserAddressEmpty] = useState(true);
   const navigate = useNavigate();
   const [userNameDefault, setUserNameDefault] = useState("");
@@ -31,115 +27,47 @@ const EditUserProfile = ({ authorization, userProfileInfo }) => {
   const [zipDefault, setZipDefault] = useState("");
   const [cityDefault, setCityDefault] = useState("");
   const [provinceDefault, setProvinceDefault] = useState("");
-  const [selectedProvince, setSelectedProvince] = useState("");
-  const [getUserLocation, setGetUserLocation] = useState("");
-  const [hideClassForDropdown, setHideClassForDropdown] = useState("hide");
-  const [saveUserLocation, setSaveUserLocation] = useState("");
 
-  const provinceArray = [
-    "Baden-Württemberg",
-    "Bayern",
-    "Berlin",
-    "Brandenburg",
-    "Bremen",
-    "Hamburg",
-    "Hessen",
-    "Mecklenburg-Vorpommern",
-    "Niedersachsen",
-    "Nordrhein-Westfalen",
-    "Rheinland-Pfalz",
-    "Saarland",
-    "Sachsen",
-    "Sachsen-Anhalt",
-    "Schleswig-Holstein",
-    "Thüringen",
-  ];
-
-  // console.log("fetchLocationData:", fetchLocationData);
-  console.log({ selectedProvince });
-  console.log({ provinceDefault });
+  console.log("fetchLocationData:", fetchLocationData);
 
   console.log("userProfileInfo.userDetails: ", userProfileInfo.userDetails);
 
   useEffect(() => {
     setIsUserAddressEmpty(
-      Object.keys(userProfileData?.userDetails?.userAddress ?? {}).length === 0
+      Object.keys(userProfileInfo?.userDetails?.userAddress ?? {}).length === 0
     );
-    setBioDefault(userProfileData?.userDetails?.bio);
-    setUserNameDefault(userProfileData?.userDetails?.userName);
-    setInterestUpdatedArray(userProfileData?.userDetails?.interests ?? []);
-    setZipDefault(userProfileData?.userDetails?.userAddress?.zip);
-    setCityDefault(userProfileData?.userDetails?.userAddress?.city);
-    setProvinceDefault(userProfileData?.userDetails?.userAddress?.province);
-  }, [userProfileData]);
-
-  // ==================== dropdown menu function ==============================
-  const locationDropdownMenu = () => {
-    setHideClassForDropdown(hideClassForDropdown === "hide" ? "" : "hide");
-  };
-
-  const changeLocationInfo = (province) => {
-    // setSaveUserLocation(province); //changes location value displayed
-    setSelectedProvince(province);
-    setHideClassForDropdown("hide");
-  };
-
-  useEffect(() => {
-    setSaveUserLocation(getUserLocation);
-    setFetchLocationData(getUserLocation);
-  }, [getUserLocation]);
-
-  const hideStateSelectionAgain = () => {
-    setHideClassForDropdown("hide");
-  };
+    setBioDefault(userProfileInfo?.userDetails?.bio);
+    setUserNameDefault(userProfileInfo?.userDetails?.userName);
+    setInterestUpdatedArray(userProfileInfo?.userDetails?.interests ?? []);
+    setZipDefault(userProfileInfo?.userDetails?.userAddress?.zip);
+    setCityDefault(userProfileInfo?.userDetails?.userAddress?.city);
+  }, [userProfileInfo]);
 
   const saveChanges = async () => {
     try {
       // Check if zip and city were deleted in frontend
       const zipAndCityDeleted = zipDefault === "" && cityDefault === "";
 
-      // Check if province was changed
-      const provinceChanged =
-        saveUserLocation !==
-        userProfileData?.userDetails?.userAddress?.province;
-
-      const profileDataChanged =
-        userNameDefault !== userProfileData.userDetails.userName ||
-        bioDefault !== userProfileData.userDetails.bio ||
-        zipDefault !== userProfileData.userDetails.userAddress.zip ||
-        cityDefault !== userProfileData.userDetails.userAddress.city ||
+      if (
+        userNameDefault !== userProfileInfo.userDetails.userName ||
+        bioDefault !== userProfileInfo.userDetails.bio ||
+        zipDefault !== userProfileInfo.userDetails.userAddress.zip ||
+        cityDefault !== userProfileInfo.userDetails.userAddress.city ||
+        // provinceDefault !== userProfileInfo.userDetails.userAddress.province ||
         interestUpdatedArray.length !==
-          userProfileData.userDetails.interests.length ||
-        saveUserLocation !==
-          userProfileData?.userDetails?.userAddress?.province;
-
-      if (profileDataChanged) {
-        // if (
-        //   userNameDefault !== userProfileData.userDetails.userName ||
-        //   bioDefault !== userProfileData.userDetails.bio ||
-        //   zipDefault !== userProfileData.userDetails.userAddress.zip ||
-        //   cityDefault !== userProfileData.userDetails.userAddress.city ||
-        //   provinceDefault !== userProfileData.userDetails.userAddress.province ||
-        //   interestUpdatedArray.length !==
-        //     userProfileData.userDetails.interests.length
-        // )
+          userProfileInfo.userDetails.interests.length
+      ) {
         // if zip and city were deleted, remove them from userAddress
-        const updatedUserAddress = {
-          zip: zipDefault,
-          city: cityDefault,
-          // province: selectedProvince,
-          province: saveUserLocation,
-        };
-        // const updatedUserAddress = zipAndCityDeleted
-        // ? { province: selectedProvince }
-        //   : { zip: zipDefault, city: cityDefault, province: selectedProvince };
+        const updatedUserAddress = zipAndCityDeleted
+          ? {}
+          : { zip: zipDefault, city: cityDefault };
 
         // save changes in database
         const response = await fetch(`${backendUrl}/api/v1/user/edit-profile`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            authorization: authorization,
+            Authorization: authorization,
           },
           body: JSON.stringify({
             userName: userNameDefault,
@@ -188,9 +116,9 @@ const EditUserProfile = ({ authorization, userProfileInfo }) => {
       case "city":
         setCityDefault(value);
         break;
-      // case "province":
-      //   setProvinceDefault(value);
-      //   break;
+      //   case "province":
+      //     setProvinceDefault(value);
+      //     break;
     }
   };
 
@@ -258,7 +186,7 @@ const EditUserProfile = ({ authorization, userProfileInfo }) => {
         <article className="user-profile-item-container">
           <h3>Interessen</h3>
           <div className="interests-items-container">
-            {userProfileData?.userDetails?.interests?.map((item, index) => (
+            {userProfileInfo?.userDetails?.interests?.map((item, index) => (
               <div key={index} className="interests-item">
                 <p>{item}</p>
                 <img src={deleteIcon} onClick={() => deleteInterest(index)} />
@@ -304,52 +232,36 @@ const EditUserProfile = ({ authorization, userProfileInfo }) => {
                       onChange={handleFormInputChange}
                     />
                   </div>
-                  {/* ============================= */}
-                  {/* NEU für Bundesland */}
-                  <div
-                    className="locationContainer"
-                    onClick={() => locationDropdownMenu()}
+                  <select
+                    name="provice"
+                    id="province"
+                    // value={provinceDefault}
+                    // onChange={handleFormInputChange}
                   >
-                    <div className="locationDropdownContainer">
-                      {/* <p className="locationTitle">Standort</p> */}
-                      <p className="showCurrentLocation">
-                        {selectedProvince
-                          ? selectedProvince
-                          : "Wähle dein Bundesland"}
-                        {/* {saveUserLocation
-                          ? saveUserLocation
-                          : "Wähle dein Bundesland"} */}
-                      </p>
-                      <img src={DropdownArrow} alt="arrowIcon" />
-                    </div>
-                    <div
-                      onClick={() => hideStateSelectionAgain()}
-                      className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}
-                    >
-                      <div className={`dropdownAddressMenu`}>
-                        <p
-                          onClick={() => changeLocationInfo(getUserLocation)}
-                          className={`HomeDropdownSelections DeinStandortTag`}
-                        >
-                          Wähle ein Bundesland: {getUserLocation}
-                        </p>
-                        {Array.from(
-                          provinceArray.map((province) => (
-                            <p
-                              onClick={() => changeLocationInfo(province)}
-                              className={`HomeDropdownSelections`}
-                              key={province}
-                            >
-                              {province}
-                            </p>
-                          ))
-                        )}
-                      </div>
-                    </div>
-                    {/* <p className="showCurrentLocation">{saveUserLocation}</p> */}
-                  </div>
-
-                  {/* ============================= */}
+                    <option value="Nordrhein-Westfalen">
+                      Nordrhein-Westfalen
+                    </option>
+                    <option value="Baden-Württemberg">Baden-Württemberg</option>
+                    <option value="Rheinland-Pfalz">Rheinland-Pfalz</option>
+                    <option value="Hessen">Hessen</option>
+                    <option value="Saarland">Saarland</option>
+                    <option value="Bayern">Bayern</option>
+                    <option value="Sachsen">Sachsen</option>
+                    <option value="Sachsen-Anhalt">Sachsen-Anhalt</option>
+                    <option value="Thüringen">Thüringen</option>
+                    <option value="Brandenburg">Brandenburg</option>
+                    <option value="Berlin">Berlin</option>
+                    <option value="Mecklenburg-Vorpommern">
+                      Mecklenburg-Vorpommern
+                    </option>
+                    <option value="Schleswig-Holstein">
+                      Schleswig-Holstein
+                    </option>
+                    <option value="Niedersachsen">Niedersachsen</option>
+                    <option value="Hamburg">Hamburg</option>
+                    <option value="Bremen">Bremen</option>
+                  </select>
+                  <p>{fetchLocationData}</p>
                 </>
               ) : (
                 <>
@@ -371,51 +283,35 @@ const EditUserProfile = ({ authorization, userProfileInfo }) => {
                       onChange={handleFormInputChange}
                     />
                   </div>
-                  {/* ============================= */}
-                  {/* NEU für Bundesland */}
-                  <div
-                    className="locationContainer"
-                    onClick={() => locationDropdownMenu()}
+                  <select
+                    name="provice"
+                    id="province"
+                    // value={provinceDefault}
+                    // onChange={handleFormInputChange}
                   >
-                    <div className="locationDropdownContainer">
-                      {/* <p className="locationTitle">Standort</p> */}
-                      <p className="showCurrentLocation">
-                        {selectedProvince
-                          ? selectedProvince
-                          : "Wähle dein Bundesland"}
-                        {/* {saveUserLocation
-                          ? saveUserLocation
-                          : "Wähle dein Bundesland"} */}
-                      </p>
-                      <img src={DropdownArrow} alt="arrowIcon" />
-                    </div>
-                    <div
-                      onClick={() => hideStateSelectionAgain()}
-                      className={`dropdownAddressMenuContainer ${hideClassForDropdown}`}
-                    >
-                      <div className={`dropdownAddressMenu`}>
-                        <p
-                          onClick={() => changeLocationInfo(getUserLocation)}
-                          className={`HomeDropdownSelections DeinStandortTag`}
-                        >
-                          Wähle ein Bundesland: {getUserLocation}
-                        </p>
-                        {Array.from(
-                          provinceArray.map((province) => (
-                            <p
-                              onClick={() => changeLocationInfo(province)}
-                              className={`HomeDropdownSelections`}
-                              key={province}
-                            >
-                              {province}
-                            </p>
-                          ))
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* ============================= */}
+                    <option value="Nordrhein-Westfalen">
+                      Nordrhein-Westfalen
+                    </option>
+                    <option value="Baden-Württemberg">Baden-Württemberg</option>
+                    <option value="Rheinland-Pfalz">Rheinland-Pfalz</option>
+                    <option value="Hessen">Hessen</option>
+                    <option value="Saarland">Saarland</option>
+                    <option value="Bayern">Bayern</option>
+                    <option value="Sachsen">Sachsen</option>
+                    <option value="Sachsen-Anhalt">Sachsen-Anhalt</option>
+                    <option value="Thüringen">Thüringen</option>
+                    <option value="Brandenburg">Brandenburg</option>
+                    <option value="Berlin">Berlin</option>
+                    <option value="Mecklenburg-Vorpommern">
+                      Mecklenburg-Vorpommern
+                    </option>
+                    <option value="Schleswig-Holstein">
+                      Schleswig-Holstein
+                    </option>
+                    <option value="Niedersachsen">Niedersachsen</option>
+                    <option value="Hamburg">Hamburg</option>
+                    <option value="Bremen">Bremen</option>
+                  </select>
                 </>
               )}
               {/* <p>

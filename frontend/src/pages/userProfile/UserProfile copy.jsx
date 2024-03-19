@@ -4,7 +4,6 @@ import editIcon from "../../assets/images/profileimage_edit.svg";
 import "./UserProfile.scss";
 import profilePicTest from "../../assets/images/profile-pic-test.jpg";
 import { useLocationFetchContext } from "../../context/locationFetchContext";
-import { useUserProfileInfoContext } from "../../context/userProfileInfoContext";
 import { useEffect, useRef, useState } from "react";
 import { backendUrl } from "../../api";
 import locationPinGrey from "../../assets/images/Map Pin_grey.svg";
@@ -12,7 +11,7 @@ import locationPinPurple from "../../assets/images/Location_Pin_purple.svg";
 import { useNavigate } from "react-router-dom";
 
 const UserProfile = ({ authorization, userProfileInfo }) => {
-  const { userProfileData, setUserProfileData } = useUserProfileInfoContext();
+  const [userData, setUserData] = useState();
   const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
   const zipAndCityRef = useRef(null);
   const [isUserAdressEmpty, setIsUserAddressEmpty] = useState(true);
@@ -26,7 +25,7 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
         });
         const { result, success, error, message } = await users.json();
         if (!success) throw new Error(error);
-        setUserProfileData(result);
+        setUserData(result);
         setIsUserAddressEmpty(
           Object.keys(result?.userDetails?.userAddress ?? {}).length === 0
         );
@@ -37,7 +36,7 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
     fetchUserData();
   }, []);
 
-  console.log({ userProfileData });
+  console.log("userData: ", userData);
   console.log("fetchLocationData:", fetchLocationData);
   console.log("userProfileInfo: ", userProfileInfo);
 
@@ -52,11 +51,11 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
     if (zipAndCityRef.current?.offsetHeight > 24) {
       zipAndCityRef.current.classList.add("break-point");
     }
-  }, [userProfileData]);
+  }, [userData]);
 
   return (
     <section className="user-profile-wrapper">
-      <h2>{userProfileData?.userDetails?.userName}</h2>
+      <h2>{userData?.userDetails?.userName}</h2>
       {/* profile image */}
       <div className="profile-pic-container">
         <img className="clip" src={profilePicTest} alt="" />
@@ -86,14 +85,14 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
       {/* About */}
       <article className="user-profile-item-container">
         <h3>Über mich</h3>
-        <p className="text-light">{userProfileData?.userDetails?.bio}</p>
+        <p className="text-light">{userData?.userDetails?.bio}</p>
       </article>
 
       {/* Interests */}
       <article className="user-profile-item-container">
         <h3>Interessen</h3>
         <div className="interests-items-container">
-          {userProfileData?.userDetails?.interests.map((item) => (
+          {userData?.userDetails?.interests.map((item) => (
             <p className="interests-item">{item}</p>
           ))}
         </div>
@@ -115,38 +114,34 @@ const UserProfile = ({ authorization, userProfileInfo }) => {
             {isUserAdressEmpty ? (
               <>
                 <p className="text-light">Keine Anschrift hinterlegt</p>
-                <p>
-                  {fetchLocationData
-                    ? fetchLocationData
-                    : "Kein Bundesland gewählt"}
-                </p>
+                <p>{fetchLocationData}</p>
               </>
             ) : (
               <>
                 <p ref={zipAndCityRef} id="zipAndCity">
-                  {userProfileData?.userDetails?.userAddress?.zip &&
-                  userProfileData?.userDetails?.userAddress?.city ? (
+                  {userData?.userDetails?.userAddress?.zip &&
+                  userData?.userDetails?.userAddress?.city ? (
                     <>
-                      {userProfileData.userDetails.userAddress.zip}
+                      {userData.userDetails.userAddress.zip}
                       <br />
-                      {userProfileData.userDetails.userAddress.city}
+                      {userData.userDetails.userAddress.city}
                     </>
                   ) : (
                     <>
-                      {!userProfileData?.userDetails?.userAddress?.zip &&
-                      userProfileData?.userDetails?.userAddress?.city ? (
+                      {!userData?.userDetails?.userAddress?.zip &&
+                      userData?.userDetails?.userAddress?.city ? (
                         <>
                           <span className="text-light">
                             Keine PLZ hinterlegt
                           </span>
                           <br />
-                          {userProfileData.userDetails.userAddress.city}
+                          {userData.userDetails.userAddress.city}
                         </>
                       ) : (
                         <>
-                          {userProfileData?.userDetails?.userAddress?.zip ? (
+                          {userData?.userDetails?.userAddress?.zip ? (
                             <>
-                              {userProfileData.userDetails.userAddress.zip}
+                              {userData.userDetails.userAddress.zip}
                               <br />
                               <span className="text-light">
                                 Keine Stadt hinterlegt
