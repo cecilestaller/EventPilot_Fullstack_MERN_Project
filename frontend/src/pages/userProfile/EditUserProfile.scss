@@ -1,4 +1,4 @@
-.user-profile-wrapper {
+.user-edit-profile-wrapper {
     padding: 7%;
     display: flex;
     flex-direction: column;
@@ -138,7 +138,7 @@
             // }
         }
 
-        .address-wrapper {
+        .edit-address-wrapper {
             padding: 1em;
             display: flex;
             align-items: start;
@@ -147,6 +147,10 @@
             box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
 
             .location-pin-container {
+                padding-top: 4px;
+            }
+
+            .address-container {
                 p {
                     margin-bottom: 4px;
 
@@ -157,15 +161,13 @@
                         line-height: 0;
                     }
                 }
-            }
 
-            .address-container {
                 input:nth-of-type(1) {
                     padding-top: 4px;
                 }
 
                 .zip-city-container {
-                    margin-block: 8px;
+                    margin-bottom: 8px;
                     display: flex;
                     align-items: center;
                     gap: 24px;
@@ -173,6 +175,72 @@
                     input:nth-of-type(1) {
                         flex-basis: 100px;
                         letter-spacing: 1px;
+                    }
+                }
+
+                .locationContainer {
+                    //         width: 175px;
+                    // display: flex;
+                    // flex-direction: column;
+                    // align-items: center;
+                    position: relative;
+
+                    .locationDropdownContainer {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 12px;
+
+                        .locationTitle {
+                            // font-size: 0.75em;
+                            // ======= Color change??????? ========
+                            font-weight: 100;
+                            margin-right: 3px;
+                        }
+                    }
+
+                    .dropdownAddressMenuContainer {
+                        z-index: 20;
+                        position: fixed;
+                        width: 100%;
+                        height: 100vh;
+                        top: -10px;
+                        left: 0;
+                        .dropdownAddressMenu {
+                            position: absolute;
+                            // top: 44px;
+                            // ====== Positionierung passt nicht ======
+                            bottom: 140px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 65%;
+                            // border: 2px solid var(--main-akcent-color);
+                            border-radius: 5px;
+                            // box-shadow: 5px 5px 15px black;
+                            display: flex;
+                            flex-direction: column;
+                            background-color: var(--main-bg-color);
+                            .HomeDropdownSelections {
+                                padding: 8px;
+                                // font-size: 0.75em;
+                                &:hover {
+                                    background-color: var(--main-akcent-color);
+                                    color: var(--button-text-color);
+                                }
+                            }
+                            .DeinStandortTag {
+                                // background-color: var(--unfocused-element-color);
+                                // color: var(--button-text-color);
+                                color: var(--main-text-color);
+                                font-size: 1rem;
+                                // font-family: "Inter"; // Funktioniert nicht!!!
+                                border-radius: 5px 5px 0 0;
+                            }
+                        }
+                    }
+
+                    .showCurrentLocation {
+                        color: var(--main-text-color);
+                        font-family: "Inter";
                     }
                 }
             }

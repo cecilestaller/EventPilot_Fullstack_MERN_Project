@@ -1,10 +1,8 @@
 .user-profile-wrapper {
-    // border: 3px solid palevioletred;
     padding: 7%;
 
     // Profile image
     .profile-pic-container {
-        // border: 3px solid green;
         margin-top: 8px;
         height: 124px;
         display: flex;
@@ -19,30 +17,30 @@
     }
 
     // Follower - Following
-    .follow-container {
-        margin: 0 auto;
-        padding-top: 24px;
-        width: 200px;
-        display: flex;
-        align-items: center;
-        text-align: center;
+    // .follow-container {
+    //     margin: 0 auto;
+    //     padding-top: 24px;
+    //     width: 200px;
+    //     display: flex;
+    //     align-items: center;
+    //     text-align: center;
 
-        .follow-block {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    //     .follow-block {
+    //         flex: 1;
+    //         display: flex;
+    //         flex-direction: column;
+    //         justify-content: center;
+    //     }
 
-        .line {
-            width: 1px;
-            height: 32px;
-            background-color: var(--secondary-text-color);
-        }
-    }
+    //     .line {
+    //         width: 1px;
+    //         height: 32px;
+    //         background-color: var(--secondary-text-color);
+    //     }
+    // }
 
     button {
-        margin: 1.7rem auto;
+        margin: 2.5rem auto;
     }
 
     .user-profile-item-container {
@@ -71,7 +69,7 @@
         .address-wrapper {
             padding-block: 8px;
             display: flex;
-            align-items: start;
+            align-items: center;
             gap: 24px;
 
             .location-pin-container {
