@@ -271,7 +271,7 @@ const AddEvent = ({ authorization }) => {
         <label className="addevent_input-group">
           <img src={fileIcon} alt="" />
           <span className="addevent_input-file-text">
-            Klicke hier um ein Bild hochzuladen
+            Füge ein Titelbild hinzu
           </span>
           <input
             name="file"

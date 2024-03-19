@@ -14,6 +14,7 @@ import HostProfile from "./pages/hostProfile/HostProfile";
 import LoadingWrapper from "./components/LoadingWrapper";
 import { EventFetchProvider } from "./context/eventFetchContext";
 import { LocationFetchProvider } from "./context/locationFetchContext";
+import { SearchTermProvider } from "./context/searchTermContext";
 import EditUserProfile from "./pages/userProfile/EditUserProfile";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <BrowserRouter>
         <EventFetchProvider>
           <LocationFetchProvider>
+            <SearchTermProvider>
             <Routes>
               <Route path="/" element={<Splash />} />
               <Route
@@ -160,6 +162,7 @@ function App() {
                 }
               />
             </Routes>
+            </SearchTermProvider>
           </LocationFetchProvider>
         </EventFetchProvider>
       </BrowserRouter>
