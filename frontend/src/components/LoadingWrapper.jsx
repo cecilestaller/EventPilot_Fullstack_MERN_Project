@@ -53,7 +53,7 @@ const LoadingWrapper = ({
     const location = useLocation();
 
     if (isLoading) {
-        return <div class="spinner"></div>;
+        return <div className="spinner"></div>;
     } else if (authorization) {
         return <>{children}</>;
     } else {
