@@ -31,21 +31,10 @@ export const postLoginUserCtrl = catchAsync(
 // ====== LOGOUT ======
 export const postLogoutUserCtrl = catchAsync(
     async (req, res) => {
-        const { refreshToken } = req.body;
-        if (!refreshToken) {
-            return res
-                .status(401)
-                .json({ success: false, message: "User not logged in" });
-        }
-
-        await UserService.logoutUser(refreshToken);
-
-        res.status(200).json({
-            success: true,
-            message: "User logged out successfully",
-        });
+        req.session.refreshToken = null;
+        res.json({ success: true });
     },
-    { message: "Could not logout user" }
+    { message: "Could not logout" }
 );
 
 // ====== REFRESHTOKEN =======
