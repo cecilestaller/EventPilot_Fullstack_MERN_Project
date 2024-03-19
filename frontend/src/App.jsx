@@ -14,7 +14,6 @@ import HostProfile from "./pages/hostProfile/HostProfile";
 import LoadingWrapper from "./components/LoadingWrapper";
 import { EventFetchProvider } from "./context/eventFetchContext";
 import { LocationFetchProvider } from "./context/locationFetchContext";
-import EditUserProfile from "./pages/userProfile/EditUserProfile";
 import { UserProfileInfoProvider } from "./context/userProfileInfoContext";
 
 function App() {

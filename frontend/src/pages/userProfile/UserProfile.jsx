@@ -315,17 +315,7 @@ const UserProfile = ({ authorization, userProfileInfo, onLogout }) => {
                             {userProfileData?.userDetails?.bio}
                         </p>
                     </article>
-                    {/* Interests */}
-                    <article className="user-profile-item-container">
-                        <h3>Interessen</h3>
-                        <div className="interests-items-container">
-                            {userProfileData?.userDetails?.interests.map(
-                                (item) => (
-                                    <p className="interests-item">{item}</p>
-                                )
-                            )}
-                        </div>
-                    </article>
+
                     {/* Address */}
                     <article className="user-profile-item-container">
                         <h3>Anschrift</h3>
