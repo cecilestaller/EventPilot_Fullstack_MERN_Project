@@ -14,7 +14,9 @@ import HostProfile from "./pages/hostProfile/HostProfile";
 import LoadingWrapper from "./components/LoadingWrapper";
 import { EventFetchProvider } from "./context/eventFetchContext";
 import { LocationFetchProvider } from "./context/locationFetchContext";
+import { SearchTermProvider } from "./context/searchTermContext";
 import { UserProfileInfoProvider } from "./context/userProfileInfoContext";
+// import EditUserProfile from "./pages/userProfile/EditUserProfile";
 
 function App() {
     const [authorization, setAuthorization] = useState(null);
@@ -25,7 +27,8 @@ function App() {
                 <EventFetchProvider>
                     <LocationFetchProvider>
                         <UserProfileInfoProvider>
-                            <Routes>
+                            <SearchTermProvider>
+                              <Routes>
                                 <Route path="/" element={<Splash />} />
                                 <Route
                                     path="/login"
@@ -116,7 +119,21 @@ function App() {
                                         </LoadingWrapper>
                                     }
                                 />
-
+                                <Route
+                                  path="/profile/edit"
+                                  element={
+                                    <LoadingWrapper
+                                      authorization={authorization}
+                                      saveAuthorization={(auth) => setAuthorization(auth)}
+                                      saveUserProfileInfo={(user) => setUserProfileInfo(user)}
+                                    >
+                                      {/* <EditUserProfile
+                                        authorization={authorization}
+                                        userProfileInfo={userProfileInfo}
+                                      /> */}
+                                    </LoadingWrapper>
+                                  }
+                                />
                                 <Route
                                     path="/addevent"
                                     element={
@@ -202,7 +219,8 @@ function App() {
                                     }
                                 />
                             </Routes>
-                        </UserProfileInfoProvider>
+                          </SearchTermProvider>
+                      </UserProfileInfoProvider>
                     </LocationFetchProvider>
                 </EventFetchProvider>
             </BrowserRouter>

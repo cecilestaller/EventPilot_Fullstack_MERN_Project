@@ -32,7 +32,7 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
     useEffect(() => {
         setFilteredEvents(
             fetchEventData.filter(fetchEventData => new Date(fetchEventData?.eventDate) > currentDate) // Keep only dates in the future
-            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate))
             )
 
             if (filteredEvents[0]?.category === "comedy") {

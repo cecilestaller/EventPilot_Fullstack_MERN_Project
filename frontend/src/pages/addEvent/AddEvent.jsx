@@ -26,6 +26,7 @@ const AddEvent = ({ authorization }) => {
     const [description, setDescription] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
     const [hideEntranceAnimation, setHideEntranceAnimation] = useState("");
+    const [dropdownHideState, setDropdownHideState] = useState("hide")
 
     const navigate = useNavigate();
 
@@ -91,6 +92,8 @@ const AddEvent = ({ authorization }) => {
         }, 600);
     }, []);
 
+
+    console.log(dropdownHideState);
     return (
         <div className="addevent__wrapper">
             <div className="addevent_header">
@@ -133,27 +136,22 @@ const AddEvent = ({ authorization }) => {
                     />
                 </div>
 
-                <div className="addevent_input-group">
+                <div onClick={() => setDropdownHideState("")} className="addevent_input-group">
                     <span className="addevent_input-icon">
                         <img src={compasIcon} alt="" />
                     </span>
-                    <select
-                        className="addevent_input"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    >
-                        <option className="option" value="">
-                            Kategorie
-                        </option>
-                        <option value="music">Music</option>
-                        <option value="art">Art</option>
-                        <option value="sport">Sport</option>
-                        <option value="food">Food</option>
-                        <option value="movie">Movie</option>
-                        <option value="comedy">Comedy</option>
-                        <option value="literature">Literature</option>
-                        <option value="others">Others</option>
-                    </select>
+                    <div className="addevent_input">
+                        <div className={`AddEventDropdownCategory ${dropdownHideState}`}>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="music">Musik</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="art">Kunst</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="sport">Sport</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="food">Essen</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="movie">Film</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="comedy">Komödie</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="literature">Literatur</p>
+                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="others">Sonstige</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="addevent_input-group">

@@ -6,16 +6,17 @@ import NearbyEvents from "../../components/nearbyEvents/NearbyEvents";
 import UpcomingEvents from "../../components/upcomingEvents/UpcomingEvents";
 import EventCards from "../../components/eventCards/EventCards";
 import SeeAllArrow from "../../assets/images/seeall_arrow.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEventFetchContext } from "../../context/eventFetchContext";
 import { useEffect, useState } from "react";
 import { useLocationFetchContext } from "../../context/locationFetchContext";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
+import { useSearchTermContext } from "../../context/searchTermContext";
 
 const Home = ({ authorization, userProfileInfo }) => {
-  console.log(userProfileInfo?.userDetails);
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
   const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
+  const { searchTerm, setSearchTerm } = useSearchTermContext();
   const [getUserLocation, setGetUserLocation] = useState("");
   const [saveUserLocation, setSaveUserLocation] = useState("");
   const [hideClassForDropdown, setHideClassForDropdown] = useState("hide");
@@ -33,7 +34,7 @@ const Home = ({ authorization, userProfileInfo }) => {
           throw new Error("Network response was not ok");
         } else {
           const { success, result, error, message } = await response.json();
-          setFetchEventData(result);
+          setFetchEventData(result.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate)));
           return;
         }
       } catch (error) {
@@ -115,10 +116,12 @@ const Home = ({ authorization, userProfileInfo }) => {
 
   // ========= function of "Alle zeigen" in "Anstehende Events" ===================
   const forwardToSeeAllUpcoming = () => {
+    setSearchTerm("upcoming")
     navigate("/search");
   };
   // ========= function of "Alle zeigen" in "In der Nähe" ===================
   const forwardToSeeAllNearby = () => {
+    setSearchTerm("nearby")
     navigate("/search");
   };
 

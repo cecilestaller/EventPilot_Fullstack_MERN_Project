@@ -1,0 +1,21 @@
+.BtnCategoryContainer {
+    display: flex;
+    align-items: center;
+    background-color: var(--unfocused-element-color);
+    border-radius: 8px;
+    padding: 8px;
+    gap: 5px;
+    overflow-x: scroll;
+    overflow: clip;
+    .BtnCategoryIcon{
+        width: 20px;
+        filter: invert(100%)
+    }
+    .BtnCategroyText {
+        color: var(--button-text-color);
+    }
+}
+
+.SearchButtonHighlight {
+    background-color: var(--main-focus-color);
+}

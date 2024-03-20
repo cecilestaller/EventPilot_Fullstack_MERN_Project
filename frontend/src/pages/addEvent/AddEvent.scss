@@ -14,11 +14,9 @@
 
     .addevent_header-titel {
       font-size: 2em;
-      color: var(--main-akcent-color);
       font-weight: 500;
 
       .addevent_header-title-span {
-        color: var(--main-focus-color);
       }
     }
   }
@@ -54,21 +52,40 @@
 
       .addevent_input-file-text {
         font-size: 1em;
-        color: var(--icon-standard-color);
         padding-left: 16px;
       }
 
       .addevent_input {
         border: none;
         font-size: 1em;
-        font-weight: 100;
+        font-weight: 300;
         outline: none;
         width: 100%;
+        font-family: "inter";
 
         &::placeholder {
-          color: var(--icon-standard-color);
           font-weight: 100;
-          opacity: 0.7;
+        }
+        .AddEventDropdownCategory {
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 65%;
+          border: 5px solid var(--main-akcent-color);
+          border-radius: 15px;
+          box-shadow: 5px 5px 15px black;
+          display: flex;
+          flex-direction: column;
+          background-color: var(--main-bg-color);
+          .AddEventPTagDropdown {
+            padding: 8px;
+            font-size: 0.75em;
+              &:hover {
+                background-color: var(--main-akcent-color);
+                color: var(--button-text-color);
+              }
+          }
         }
       }
     }

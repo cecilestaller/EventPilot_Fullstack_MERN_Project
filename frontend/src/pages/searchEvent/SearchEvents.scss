@@ -1,1 +1,119 @@
-// Search Events styling
+.SearchEventContainer {
+    margin-bottom: 100px;
+    .SearchHeader {
+        background-color: var(--main-akcent-color);
+        padding-inline: 7% ;
+        padding-top: 3%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 10px;
+        .SearchlocationContainer {
+            width: 175px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            .SearchlocationDropdownContainer {
+                display: flex;
+                .SearchlocationTitle {
+                    font-size: 0.75em;
+                    font-weight: 100;
+                    margin-right: 3px;
+                    color: var(--button-text-color);
+                }
+                .SearchArrowIcon {
+                    filter: brightness(200%)
+                }
+                .SearchEventsRefreshIcon {
+                    position: absolute;
+                    filter: invert(100%);
+                    top: 5px;
+                    right: -70px;
+                    width: 30px;
+                    z-index: 30;
+                    &:hover {
+                        animation: rotateOnce 1s infinite;
+                    }
+                }
+            }
+            .SearchdropdownAddressMenuContainer {
+                z-index: 20;
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                top: -10px;
+                left: 0;
+                .SearchdropdownAddressMenu {
+                    position: absolute;
+                    top: 44px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 65%;
+                    border: 5px solid var(--main-akcent-color);
+                    border-radius: 15px;
+                    box-shadow: 5px 5px 15px black;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: var(--main-bg-color);
+                    .SearchHomeDropdownSelections {
+                        padding: 8px;
+                        font-size: 0.75em;
+                        &:hover {
+                            background-color: var(--main-akcent-color);
+                            color: var(--button-text-color);
+                        }
+                    }
+                    .SearchDeinStandortTag {
+                        background-color: var(--unfocused-element-color);
+                        color: var(--button-text-color);
+                        border-radius: 9px 9px 0 0;
+                    }
+                }
+            }
+            .SearchsSowCurrentLocation {
+                color: var(--button-text-color);
+                font-size: 0.813em;
+            }
+        }
+        .SearchInputContainer {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            .searchEvent_input-icon {
+                filter: brightness(180%)
+            }
+            .pTagSearchEventDatePicker {
+                color: var(--button-text-color);
+            }
+            .searchEvent_input {
+                padding: 3px;
+                border-radius: 8px;
+                font-family: "inter";
+            }
+            .dateContainerSearchevents {
+                width: 90px;
+            }
+        }
+        .seachEventsIconContainer {
+            display: flex;
+            gap: 5px;
+            
+            .searchEventsIcons {
+                
+            }
+        }
+    }
+}
+
+@keyframes rotateOnce {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
