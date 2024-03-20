@@ -26,7 +26,7 @@ const AddEvent = ({ authorization }) => {
     const [description, setDescription] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
     const [hideEntranceAnimation, setHideEntranceAnimation] = useState("");
-    const [dropdownHideState, setDropdownHideState] = useState("hide");
+    // const [dropdownHideState, setDropdownHideState] = useState("hide");
 
     const navigate = useNavigate();
 
@@ -113,7 +113,7 @@ const AddEvent = ({ authorization }) => {
                         error.message ||
                             "Das Event konnte nicht bearbeitet werden"
                     );
-                console.log(result);
+                // console.log(result);
                 navigate(`/eventdetails/${result._id}`);
             } catch (error) {
                 console.log(error);
@@ -138,9 +138,6 @@ const AddEvent = ({ authorization }) => {
         }
     };
 
-    console.log(eventPicURL);
-    console.log(category);
-    console.log(dropdownHideState);
     return (
         <div className="addevent__wrapper">
             <div className="addevent_header">
@@ -183,92 +180,27 @@ const AddEvent = ({ authorization }) => {
                     />
                 </div>
 
-                <div
-                    onClick={() => toggleHideState()}
-                    className="addevent_input-group"
-                >
+                <div className="addevent_input-group">
                     <span className="addevent_input-icon">
                         <img src={compasIcon} alt="" />
                     </span>
-                    <p>{category ? category : "Kategorie"}</p>
-                    <div className="addevent_input">
-                        <div
-                            className={`AddEventDropdownCategory ${dropdownHideState}`}
-                        >
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("music");
-                                }}
-                                value="music"
-                            >
-                                Musik
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("art");
-                                }}
-                                value="art"
-                            >
-                                Kunst
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("sport");
-                                }}
-                                value="sport"
-                            >
-                                Sport
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("food");
-                                }}
-                                value="food"
-                            >
-                                Essen
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("movie");
-                                }}
-                                value="movie"
-                            >
-                                Film
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("comedy");
-                                }}
-                                value="comedy"
-                            >
-                                Komödie
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("literature");
-                                }}
-                                value="literature"
-                            >
-                                Literatur
-                            </p>
-                            <p
-                                className={`AddEventPTagDropdown`}
-                                onClick={() => {
-                                    setCategory("others");
-                                }}
-                                value="others"
-                            >
-                                Sonstige
-                            </p>
-                        </div>
-                    </div>
+                    <select
+                        className="addevent_input"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    >
+                        <option className="option" value="" disabled>
+                            Kategorie
+                        </option>
+                        <option value="music">Music</option>
+                        <option value="art">Art</option>
+                        <option value="sport">Sport</option>
+                        <option value="food">Food</option>
+                        <option value="movie">Movie</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="literature">Literature</option>
+                        <option value="others">Others</option>
+                    </select>
                 </div>
 
                 <div className="addevent_input-group">
