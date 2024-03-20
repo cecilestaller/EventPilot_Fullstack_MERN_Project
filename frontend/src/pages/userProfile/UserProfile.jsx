@@ -311,7 +311,7 @@ const UserProfile = ({ authorization, userProfileInfo, onLogout }) => {
                     {/* About */}
                     <article className="user-profile-item-container">
                         <h3>Über mich</h3>
-                        <p className="text-light">
+                        <p className="text-light aboutMe">
                             {userProfileData?.userDetails?.bio}
                         </p>
                     </article>
