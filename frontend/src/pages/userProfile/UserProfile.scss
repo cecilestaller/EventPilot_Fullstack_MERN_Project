@@ -1,10 +1,26 @@
-.user-profile-wrapper {
-    // border: 3px solid palevioletred;
+.user-edit-profile-wrapper {
     padding: 7%;
+    padding-bottom: 15vh;
+    display: flex;
+    flex-direction: column;
+
+    // Arrow back & Title
+    .top-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .arrow-back {
+            width: 22px;
+        }
+
+        p {
+            visibility: hidden;
+        }
+    }
 
     // Profile image
     .profile-pic-container {
-        // border: 3px solid green;
         margin-top: 8px;
         height: 124px;
         display: flex;
@@ -12,37 +28,149 @@
         align-items: center;
 
         .clip {
-            padding-top: 10%;
+            // padding-top: 10%;
+            width: 100px;
+            clip-path: circle();
+        }
+    }
+    .editProfile-form {
+        .edit-input-text {
+            width: 100%;
+            border: none;
+            font-family: "Inter";
+            font-size: 1em;
+            font-weight: 100;
+            outline: none;
+            color: var(--main-text-color);
+
+            &::placeholder {
+                font-family: "Inter";
+                font-size: 1em;
+                font-weight: 100;
+                color: var(--secondary-text-color);
+                line-height: 25px;
+            }
+        }
+        .edit-name-about-wrapper {
+            margin-block: 32px 18px;
+
+            .edit-input-container {
+                margin-bottom: 20px;
+                padding: 1em;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+
+                .edit-input-icon {
+                    width: 14px;
+                }
+            }
+
+            .edit-textarea-container {
+                padding: 1em;
+                display: flex;
+                align-items: start;
+                gap: 10px;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+
+                img {
+                    padding-top: 4px;
+                }
+
+                textarea {
+                    border: none;
+                    font-family: "Inter";
+                    font-size: 1em;
+                    font-weight: 100;
+                    line-height: 25px;
+                    color: var(--main-text-color);
+
+                    &::placeholder {
+                        font-family: "Inter";
+                        font-size: 1rem;
+                        font-weight: 100;
+                        color: var(--secondary-text-color);
+                        line-height: 25px;
+                    }
+                }
+            }
+        }
+        .user-profile-formItem-container {
+            .edit-address-wrapper {
+                padding: 1em;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 14px;
+                border-radius: 8px;
+                box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+
+                .editProfile_input-group-adress-field {
+                    display: flex;
+                    align-items: center;
+                    padding: 1em;
+                    border-radius: 8px;
+
+                    .addevent_input-icon {
+                        margin-right: 16px;
+                    }
+
+                    .addevent_input {
+                        border: none;
+                        font-size: 1em;
+                        font-weight: 100;
+                        outline: none;
+
+                        &::placeholder {
+                            color: var(--icon-standard-color);
+                            font-weight: 100;
+                            opacity: 0.7;
+                        }
+                    }
+                }
+            }
+        }
+        .editProfile_input-group {
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            .addFile-profilePic {
+                margin-bottom: 8px;
+
+                .addevent_input-file-text {
+                    font-size: 1em;
+                    color: var(--icon-standard-color);
+                }
+            }
+        }
+    }
+}
+
+.user-profile-wrapper {
+    padding: 7%;
+    padding-bottom: 15vh;
+
+    // Profile image
+    .profile-pic-container {
+        margin-top: 8px;
+        height: 124px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .clip {
+            // padding-top: 10%;
             width: 100px;
             clip-path: circle();
         }
     }
 
-    // Follower - Following
-    .follow-container {
-        margin: 0 auto;
-        padding-top: 24px;
-        width: 200px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-
-        .follow-block {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .line {
-            width: 1px;
-            height: 32px;
-            background-color: var(--secondary-text-color);
-        }
-    }
-
     button {
-        margin: 1.7rem auto;
+        margin: 2.5rem auto;
     }
 
     .user-profile-item-container {
@@ -71,7 +199,7 @@
         .address-wrapper {
             padding-block: 8px;
             display: flex;
-            align-items: start;
+            align-items: center;
             gap: 24px;
 
             .location-pin-container {
@@ -99,9 +227,9 @@
         }
     }
 
-    .user-profile-item-container:last-of-type {
-        margin-bottom: 6rem;
-    }
+    // .user-profile-item-container:last-of-type {
+    //     margin-bottom: 6rem;
+    // }
 
     .text-light {
         font-weight: 100;

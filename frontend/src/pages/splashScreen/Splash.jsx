@@ -4,24 +4,30 @@ import { useEffect, useState } from "react";
 import logo from "../../assets/images/Logo.svg";
 
 const Splash = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const forwardToLogin = () => {
-    navigate("/login");
-  };
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            navigate("/login");
+        }, 2000);
+        return () => clearTimeout(timeout);
+    }, []);
 
-  return (
-    <div onClick={() => forwardToLogin()}>
-      <div className="splash__wrapper">
-        <div className="splash_logo">
-          <img src={logo} alt="" />
-          <p className="splash_logo-title">
-            vent<span className="splash_logo-title-span">Pilot</span>{" "}
-          </p>
+    return (
+        <div>
+            <div className="splash__wrapper">
+                <div className="splash_logo">
+                    <img src={logo} alt="" />
+                    <p className="splash_logo-title">
+                        vent
+                        <span className="splash_logo-title-span">
+                            Pilot
+                        </span>{" "}
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Splash;

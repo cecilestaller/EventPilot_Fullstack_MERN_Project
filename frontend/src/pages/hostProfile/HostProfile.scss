@@ -1,60 +1,115 @@
 // Host Profile styling
 .hostDetails-wrapper {
     padding-bottom: 15vh;
-    .eventDetail-header-wrap {
-        padding: 16px 24px;
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        color: var(--main-text-color);
-        .eventDetails-hl {
-            font-weight: 400;
-            width: 70%;
-            font-size: 1.5rem;
-            justify-self: flex-start;
-        }
-    }
-    .profile-pic-container {
-        margin-top: 8px;
-        height: 124px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
-        .clip {
-            width: 100px;
-            clip-path: circle();
+    .hostDetails-reviewHostForm-wrap {
+        .hostDetails-reviewHeader-wrap {
+            padding: 16px 24px;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--main-text-color);
+            .eventDetails-hl {
+                font-weight: 400;
+                width: 80%;
+                font-size: 1.35rem;
+                justify-self: flex-start;
+            }
+        }
+        .profile-Hostpic-container {
+            margin-top: 8px;
+            margin-bottom: 12px;
+            height: 124px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .clip {
+                width: 100px;
+                clip-path: circle();
+            }
+        }
+        .reviewHost-form {
+            text-align: center;
+            width: 90%;
+            margin: 0 auto;
+            .rating-div {
+                margin: 0px auto 12px auto;
+            }
+            .reviewHost-textarea {
+                width: 90%;
+                padding: 16px;
+                margin-bottom: 24px;
+                font-family: "Inter";
+                font-size: 1rem;
+                border: none;
+                border-radius: 24px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                &::placeholder {
+                    font-family: "Inter";
+                    font-size: 1rem;
+                }
+            }
         }
     }
-    button {
-        margin: 24px auto;
-    }
-    .hostProfile-button-wrapper {
-        display: flex;
-        justify-content: space-around;
-        font-family: "Inter";
-        margin-top: 36px;
-        margin-bottom: 24px;
-        .hostProfile-button {
-            border: none;
-            margin-block: 4px;
-            padding-bottom: 4px;
-            background-color: white;
+
+    .hostDetails-info-wrap {
+        .eventDetail-header-wrap {
+            padding: 16px 24px;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--main-text-color);
+            .eventDetails-hl {
+                font-weight: 400;
+                width: 70%;
+                font-size: 1.5rem;
+                justify-self: flex-start;
+            }
+        }
+        .profile-pic-container {
+            margin-top: 8px;
+            height: 124px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .clip {
+                width: 100px;
+                clip-path: circle();
+            }
+        }
+        button {
+            margin: 24px auto;
+        }
+        .hostProfile-button-wrapper {
+            display: flex;
+            justify-content: space-around;
             font-family: "Inter";
-            font-size: 1.1rem;
-            font-weight: 200;
-            letter-spacing: 0.16px;
-            color: #747688;
+            margin-top: 36px;
+            margin-bottom: 24px;
+            .hostProfile-button {
+                border: none;
+                margin-block: 4px;
+                padding-bottom: 4px;
+                background-color: white;
+                font-family: "Inter";
+                font-size: 1.1rem;
+                font-weight: 200;
+                letter-spacing: 0.16px;
+                color: #747688;
+            }
+            .active-button {
+                color: #5d3ede;
+                font-weight: 500;
+                border-bottom: 1px solid #5d3ede;
+                transition: 0.2s;
+            }
         }
-        .active-button {
-            color: #5d3ede;
-            font-weight: 500;
-            border-bottom: 1px solid #5d3ede;
-            transition: 0.2s;
+        .hostDetails-review-wrap {
+            margin: 24px 24px;
         }
-    }
-    .hostDetails-review-wrap {
-        margin: 24px 24px;
     }
 }

@@ -7,10 +7,6 @@
     gap: 5px;
     overflow-x: scroll;
     overflow: clip;
-    &:hover {
-        background-color: var(--button-color);
-
-    }
     .BtnCategoryIcon{
         width: 20px;
         filter: invert(100%)
@@ -18,4 +14,8 @@
     .BtnCategroyText {
         color: var(--button-text-color);
     }
+}
+
+.SearchButtonHighlight {
+    background-color: var(--main-focus-color);
 }

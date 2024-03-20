@@ -89,7 +89,9 @@
                 gap: 12px;
                 transition: 0.2s;
                 .eventDetails-hostPic {
-                    width: 15%;
+                    width: 48px;
+                    height: 48px;
+                    object-fit: cover;
                     border-radius: 8px;
                 }
                 .eventDetail-hostInfo-wrap {
@@ -112,7 +114,7 @@
                     padding: 6px;
                     margin: 0 0 0 auto;
                     font-family: "Inter";
-                    background-color: #b2a3ec97;
+                    background-color: #a28fecc7;
                     border: none;
                     border-radius: 4px;
                     color: white;
@@ -213,7 +215,9 @@
                 gap: 12px;
                 transition: 0.2s;
                 .eventDetails-hostPic {
-                    width: 15%;
+                    width: 48px;
+                    height: 48px;
+                    object-fit: cover;
                     border-radius: 8px;
                 }
                 .eventDetail-hostInfo-wrap {
@@ -236,7 +240,7 @@
                     padding: 6px;
                     margin: 0 0 0 auto;
                     font-family: "Inter";
-                    background-color: #b2a3ec97;
+                    background-color: #a28fecc7;
                     border: none;
                     border-radius: 4px;
                     color: white;

@@ -1,28 +1,27 @@
 .splash__wrapper {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(
-    to bottom,
-    var(--main-akcent-color),
-    rgba(0, 0, 0, 0.123),
-    var(--main-focus-color)
-  );
-
-  .splash_logo {
     display: flex;
+    height: 100vh;
+    justify-content: center;
     align-items: center;
-    gap: 2px;
+    background: rgb(135, 106, 253);
+    background: linear-gradient(
+        180deg,
+        rgba(135, 106, 253, 1) 23%,
+        rgba(68, 171, 212, 1) 100%
+    );
+    .splash_logo {
+        display: flex;
+        align-items: center;
+        gap: 2px;
 
-    .splash_logo-title {
-      font-size: 2.5em;
-      color: var(--main-akcent-color);
-      font-weight: 700;
+        .splash_logo-title {
+            font-size: 2.5em;
+            color: var(--main-akcent-color);
+            font-weight: 700;
 
-      .splash_logo-title-span {
-        color: var(--main-focus-color);
-      }
+            .splash_logo-title-span {
+                color: var(--main-focus-color);
+            }
+        }
     }
-  }
 }
