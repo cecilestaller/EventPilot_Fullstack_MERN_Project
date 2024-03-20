@@ -47,7 +47,25 @@
             .addevent_input-icon {
                 padding-right: 16px;
             }
+            textarea {
+                border: none;
+                font-family: "Inter";
+                font-size: 1em;
+                font-weight: 100;
+                line-height: 25px;
+                color: var(--main-text-color);
 
+                &::placeholder {
+                    font-family: "Inter";
+                    font-size: 1rem;
+                    font-weight: 300;
+                    color: var(--secondary-text-color);
+                    line-height: 25px;
+                }
+            }
+            input[type="datetime-local"] {
+                font-family: "Inter";
+            }
             .addevent_input-icon-top {
                 align-self: flex-start;
             }

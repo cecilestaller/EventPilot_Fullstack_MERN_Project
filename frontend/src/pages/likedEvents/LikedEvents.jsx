@@ -89,9 +89,6 @@ const LikedEvents = ({ authorization, userProfileInfo }) => {
         navigate("/search");
     }
 
-    console.log("userInfo: ", userProfileInfo);
-    console.log(likedEventsData);
-    console.log("registeredEvents: ", registeredEventsData);
     return (
         <>
             <section className="likedEvents-wrapper">
