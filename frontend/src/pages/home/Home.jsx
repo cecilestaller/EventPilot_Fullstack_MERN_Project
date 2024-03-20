@@ -12,10 +12,11 @@ import { useEffect, useState } from "react";
 import { useLocationFetchContext } from "../../context/locationFetchContext";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 import { useSearchTermContext } from "../../context/searchTermContext";
+import { backendUrl } from "../../api";
 
 const Home = ({ authorization, userProfileInfo }) => {
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
-  const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
+  const { setFetchLocationData } = useLocationFetchContext();
   const { setSearchTerm } = useSearchTermContext();
   const [getUserLocation, setGetUserLocation] = useState("");
   const [saveUserLocation, setSaveUserLocation] = useState("");
@@ -27,7 +28,7 @@ const Home = ({ authorization, userProfileInfo }) => {
   useEffect(() => {
     const getEventData = async () => {
       try {
-        const response = await fetch(`http://localhost:3333/api/v1/events`, {
+        const response = await fetch(`${backendUrl}/api/v1/events`, {
           headers: { authorization },
         });
         if (!response.ok) {
