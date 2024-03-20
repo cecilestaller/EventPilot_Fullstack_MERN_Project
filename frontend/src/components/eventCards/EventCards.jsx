@@ -12,6 +12,7 @@ import comedy from "../../assets/images/eventDefaultPics/loughComedy.jpg";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { backendUrl } from "../../api";
+import { useUserProfileInfoContext } from "../../context/userProfileInfoContext";
 
 const EventCards = ({
     unformatedDate,
@@ -25,7 +26,24 @@ const EventCards = ({
 }) => {
     const [eventIsFavorite, setEventIsFavorite] = useState(null);
     const [defaultPic, setDefaultPic] = useState();
+    const { userProfileData, setUserProfileData } = useUserProfileInfoContext();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        async function fetchUserData() {
+            try {
+                const users = await fetch(`${backendUrl}/api/v1/user`, {
+                    headers: { authorization },
+                });
+                const { result, success, error, message } = await users.json();
+                if (!success) throw new Error(error);
+                setUserProfileData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchUserData();
+    }, []);
 
     useEffect(() => {
         function check() {
@@ -44,14 +62,14 @@ const EventCards = ({
             } else if (category === "literature" || category === "others") {
                 setDefaultPic(komet);
             }
-            if (userProfileInfo?.userDetails?.userWishlist?.includes(eventId)) {
+            if (userProfileData?.userDetails?.userWishlist?.includes(eventId)) {
                 setEventIsFavorite(true);
             } else {
                 setEventIsFavorite(false);
             }
         }
         check();
-    }, [eventPicURL]);
+    }, [eventPicURL, userProfileData]);
 
     // -------- ADD Event to Wishlist FETCH ------------
     async function addEventToWishlist() {

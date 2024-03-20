@@ -26,10 +26,12 @@ import Nav from "../../components/nav/Nav";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { backendUrl } from "../../api";
+import { useUserProfileInfoContext } from "../../context/userProfileInfoContext";
 
 const EventDetails = ({ authorization, userProfileInfo }) => {
     const { eventId } = useParams();
     const navigate = useNavigate();
+    const { userProfileData, setUserProfileData } = useUserProfileInfoContext();
     const [userIsHost, setUserIsHost] = useState(false);
     const [eventDetails, setEventDetails] = useState({});
     const [eventIsFavorite, setEventIsFavorite] = useState(false);
@@ -53,6 +55,22 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
+
+    useEffect(() => {
+        async function fetchUserData() {
+            try {
+                const users = await fetch(`${backendUrl}/api/v1/user`, {
+                    headers: { authorization },
+                });
+                const { result, success, error, message } = await users.json();
+                if (!success) throw new Error(error);
+                setUserProfileData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchUserData();
+    }, []);
 
     useEffect(() => {
         async function fetchEventDetails() {
@@ -95,13 +113,13 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                     setEventDetails(result);
                     // check if user already registered || has event on wishlist
                     if (
-                        userProfileInfo?.userDetails?.userWishlist?.includes(
+                        userProfileData?.userDetails?.userWishlist?.includes(
                             eventId
                         )
                     ) {
                         setEventIsFavorite(true);
                     }
-                    if (userProfileInfo?.registeredEvents?.includes(eventId)) {
+                    if (userProfileData?.registeredEvents?.includes(eventId)) {
                         setUserRegistered(true);
                     }
                 }
@@ -117,7 +135,7 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
             }
         }
         fetchEventDetails();
-    }, []);
+    }, [userProfileData]);
 
     // -------- Format the Date ----------------
     const inputDate = new Date(eventDetails?.eventDetails?.eventDate);
