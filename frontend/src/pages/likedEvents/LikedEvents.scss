@@ -2,8 +2,9 @@
 .likedEvents-wrapper {
     padding-bottom: 15vh;
     .likedEvents-button-wrapper {
-        margin: 24px 36px;
-        text-align: center;
+        display: flex;
+        width:fit-content;
+        margin: 24px auto;
         background-color: rgba(93, 62, 222, 0.5);
         padding: 4px;
         border-radius: 10px;
