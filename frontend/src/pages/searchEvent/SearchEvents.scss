@@ -11,6 +11,7 @@
         align-items: center;
         gap: 10px;
         padding-bottom: 10px;
+        overflow:hidden ;
         .SearchlocationContainer {
             width: 175px;
             display: flex;
@@ -74,6 +75,8 @@
             display: flex;
             gap: 4px;
             align-items: center;
+            justify-content: center;
+            width: 100%;
             .searchEvent_input-icon {
                 filter: brightness(180%)
             }
@@ -84,9 +87,10 @@
                 padding: 3px;
                 border-radius: 8px;
                 font-family: "inter";
+                width: 120px;
             }
             .dateContainerSearchevents {
-                width: 105px;
+                min-width: 105px;
             }
         }
         .seachEventsIconContainer {
