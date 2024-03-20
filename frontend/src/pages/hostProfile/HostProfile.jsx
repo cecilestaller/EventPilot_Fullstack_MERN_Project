@@ -117,8 +117,11 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                                 onClick={() => setWriteReview(false)}
                                 className="backArrow"
                             />
-                            <p className="eventDetails-hl">
-                                Bewerte {hostDetails?.hostDetails?.userName}
+                            <p className="reviewHost-hl">
+                                Bewerte
+                                <span className="reviewHost-hl-span">
+                                    {hostDetails?.hostDetails?.userName}
+                                </span>
                             </p>
                         </div>
                         <div className="profile-Hostpic-container">
