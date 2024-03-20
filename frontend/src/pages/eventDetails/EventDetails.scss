@@ -65,7 +65,7 @@
                 color: var(--main-text-color);
                 font-size: 2.1rem;
                 font-weight: 100;
-                margin-bottom: 12px;
+                margin-bottom: 28px;
             }
             .eventDetails-eventInfosForHost {
                 padding-inline: 8px;
@@ -86,6 +86,7 @@
                 width: 100%;
                 align-items: center;
                 justify-content: flex-start;
+                margin-top: 28px;
                 gap: 12px;
                 transition: 0.2s;
                 .eventDetails-hostPic {
@@ -114,7 +115,7 @@
                     padding: 6px;
                     margin: 0 0 0 auto;
                     font-family: "Inter";
-                    background-color: #a28fecc7;
+                    background-color: #876afd;
                     border: none;
                     border-radius: 4px;
                     color: white;
@@ -204,7 +205,7 @@
                 color: var(--main-text-color);
                 font-size: 2.1rem;
                 font-weight: 100;
-                margin-bottom: 12px;
+                margin-bottom: 28px;
             }
 
             .eventDetail-hostInfoBox {
@@ -212,6 +213,7 @@
                 width: 100%;
                 align-items: center;
                 justify-content: flex-start;
+                margin-top: 28px;
                 gap: 12px;
                 transition: 0.2s;
                 .eventDetails-hostPic {
@@ -240,7 +242,7 @@
                     padding: 6px;
                     margin: 0 0 0 auto;
                     font-family: "Inter";
-                    background-color: #a28fecc7;
+                    background-color: #876afd;
                     border: none;
                     border-radius: 4px;
                     color: white;
