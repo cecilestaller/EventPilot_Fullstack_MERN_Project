@@ -16,7 +16,7 @@ import { useSearchTermContext } from "../../context/searchTermContext";
 const Home = ({ authorization, userProfileInfo }) => {
   const { fetchEventData, setFetchEventData } = useEventFetchContext();
   const { fetchLocationData, setFetchLocationData } = useLocationFetchContext();
-  const { searchTerm, setSearchTerm } = useSearchTermContext();
+  const { setSearchTerm } = useSearchTermContext();
   const [getUserLocation, setGetUserLocation] = useState("");
   const [saveUserLocation, setSaveUserLocation] = useState("");
   const [hideClassForDropdown, setHideClassForDropdown] = useState("hide");
