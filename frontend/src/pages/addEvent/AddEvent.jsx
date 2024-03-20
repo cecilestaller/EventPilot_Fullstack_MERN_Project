@@ -190,7 +190,7 @@ const AddEvent = ({ authorization }) => {
                     <span className="addevent_input-icon">
                         <img src={compasIcon} alt="" />
                     </span>
-                    <p>{category}</p>
+                    <p>{category ? category : "Kategorie"}</p>
                     <div className="addevent_input">
                         <div
                             className={`AddEventDropdownCategory ${dropdownHideState}`}
