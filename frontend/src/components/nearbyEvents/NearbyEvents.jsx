@@ -211,7 +211,7 @@ const navigateToDetails = (id) => {
                     </div>
                     <div className="LocationInfo">
                         <img className="LocationPinIcon" src={LocationIcon} alt="" />
-                        <p className="locationState">{filteredEvents[0]?.eventAddress.province}</p>
+                        <p className="locationState">{filteredEvents[0]?.eventAddress.city}</p>
                     </div>
                 </div>
             </article>
@@ -245,7 +245,7 @@ const navigateToDetails = (id) => {
                     </div>
                     <div className="LocationInfo">
                         <img className="LocationPinIcon" src={LocationIcon} alt="" />
-                        <p className="locationState">{filteredEvents[1]?.eventAddress.province}</p>
+                        <p className="locationState">{filteredEvents[1]?.eventAddress.city}</p>
                     </div>
                 </div>
             </article>
@@ -279,7 +279,7 @@ const navigateToDetails = (id) => {
                     </div>
                     <div className="LocationInfo">
                         <img className="LocationPinIcon" src={LocationIcon} alt="" />
-                        <p className="locationState">{filteredEvents[2]?.eventAddress.province}</p>
+                        <p className="locationState">{filteredEvents[2]?.eventAddress.city}</p>
                     </div>
                 </div>
             </article>

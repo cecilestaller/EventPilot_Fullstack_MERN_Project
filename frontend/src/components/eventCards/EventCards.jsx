@@ -134,7 +134,7 @@ const EventCards = ({
 
     return (
         <>
-            <article className="EventCardsContainer">
+            <article className="EventCardsContainer" key={(eventId)}>
                 <img
                     onClick={() => navigateToDetails()}
                     src={
