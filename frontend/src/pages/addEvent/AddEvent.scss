@@ -1,172 +1,155 @@
 .addevent__wrapper {
-  display: flex;
-  flex-direction: column;
-  padding-inline: 7%;
-  padding-top: 16px;
-  padding-bottom: 120px;
-  position: relative;
-
-  .addevent_header {
     display: flex;
-    justify-content: space-between;
-    animation: AddEventOpacity 0.3s linear;
-    animation-delay: 0.5s;
+    flex-direction: column;
+    padding-inline: 7%;
+    padding-top: 16px;
+    padding-bottom: 120px;
+    position: relative;
 
-    .addevent_header-titel {
-      font-size: 2em;
-      font-weight: 500;
-
-      .addevent_header-title-span {
-      }
-    }
-  }
-
-  .addevent_form {
-    border-radius: 8px;
-    margin-top: 32px;
-    margin-bottom: 20px;
-    animation: AddEventOpacity 0.3s linear;
-    animation-delay: 0.5s;
-
-    .addevent_heading {
-      margin-bottom: 30px;
-      font-size: 1.6em;
-      font-weight: 500;
-    }
-
-    .addevent_input-group {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      padding: 1em;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
-
-      .addevent_input-icon {
-        padding-right: 16px;
-      }
-
-      .addevent_input-icon-top {
-        align-self: flex-start;
-      }
-
-      .addevent_input-file-text {
-        font-size: 1em;
-        padding-left: 16px;
-      }
-
-      .addevent_input {
-        border: none;
-        font-size: 1em;
-        font-weight: 300;
-        outline: none;
-        width: 100%;
-        font-family: "inter";
-
-        &::placeholder {
-          font-weight: 100;
-        }
-        .AddEventDropdownCategory {
-          position: absolute;
-          top: 20%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 65%;
-          border: 5px solid var(--main-akcent-color);
-          border-radius: 15px;
-          box-shadow: 5px 5px 15px black;
-          display: flex;
-          flex-direction: column;
-          background-color: var(--main-bg-color);
-          .AddEventPTagDropdown {
-            padding: 8px;
-            font-size: 0.75em;
-              &:hover {
-                background-color: var(--main-akcent-color);
-                color: var(--button-text-color);
-              }
-          }
-        }
-      }
-    }
-
-    .addevent_input-group-adress {
-      margin-bottom: 20px;
-      padding-top: 8px;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
-
-      .addevent_input-group-adress-field {
+    .addevent_header {
         display: flex;
-        align-items: center;
-        padding: 1em;
+        justify-content: space-between;
+        animation: AddEventOpacity 0.3s linear;
+        animation-delay: 0.5s;
+
+        .addevent_header-titel {
+            font-size: 2em;
+            color: var(--main-akcent-color);
+            font-weight: 500;
+
+            .addevent_header-title-span {
+                color: var(--main-focus-color);
+            }
+        }
+    }
+
+    .addevent_form {
         border-radius: 8px;
+        margin-top: 32px;
+        margin-bottom: 20px;
+        animation: AddEventOpacity 0.3s linear;
+        animation-delay: 0.5s;
 
-        .addevent_input-icon {
-          margin-right: 16px;
+        .addevent_heading {
+            margin-bottom: 30px;
+            font-size: 1.6em;
+            font-weight: 500;
         }
 
-        .addevent_input {
-          border: none;
-          font-size: 1em;
-          font-weight: 100;
-          outline: none;
+        .addevent_input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
 
-          &::placeholder {
-            color: var(--icon-standard-color);
-            font-weight: 100;
-            opacity: 0.7;
-          }
+            .addevent_input-icon {
+                padding-right: 16px;
+            }
+
+            .addevent_input-icon-top {
+                align-self: flex-start;
+            }
+
+            .addevent_input-file-text {
+                font-size: 1em;
+                color: var(--icon-standard-color);
+                padding-left: 16px;
+            }
+
+            .addevent_input {
+                border: none;
+                font-size: 1em;
+                font-weight: 100;
+                outline: none;
+                width: 100%;
+
+                &::placeholder {
+                    color: var(--icon-standard-color);
+                    font-weight: 100;
+                    opacity: 0.7;
+                }
+            }
         }
-      }
-    }
-  }
 
-  .AddEventEntranceTransition {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--main-bg-color);
-    .AddEventEntranceTransitionEffectPurple {
-      position: absolute;
-      top: 88vh;
-      left: calc(50% - 22.5px);
-      width: 45px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background-color: var(--main-akcent-color);
-      animation: onLoad 0.8s linear;
+        .addevent_input-group-adress {
+            margin-bottom: 20px;
+            padding-top: 8px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+
+            .addevent_input-group-adress-field {
+                display: flex;
+                align-items: center;
+                padding: 1em;
+                border-radius: 8px;
+
+                .addevent_input-icon {
+                    margin-right: 16px;
+                }
+
+                .addevent_input {
+                    border: none;
+                    font-size: 1em;
+                    font-weight: 100;
+                    outline: none;
+
+                    &::placeholder {
+                        color: var(--icon-standard-color);
+                        font-weight: 100;
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
     }
-    .AddEventEntranceTransitionEffectWhite {
-      position: absolute;
-      top: 88vh;
-      left: calc(50% - 22.5px);
-      width: 45px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background-color: var(--main-bg-color);
-      animation: onLoad 0.4s linear;
-      animation-delay: 0.3s;
+
+    .AddEventEntranceTransition {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--main-bg-color);
+        .AddEventEntranceTransitionEffectPurple {
+            position: absolute;
+            top: 88vh;
+            left: calc(50% - 22.5px);
+            width: 45px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--main-akcent-color);
+            animation: onLoad 0.8s linear;
+        }
+        .AddEventEntranceTransitionEffectWhite {
+            position: absolute;
+            top: 88vh;
+            left: calc(50% - 22.5px);
+            width: 45px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: var(--main-bg-color);
+            animation: onLoad 0.4s linear;
+            animation-delay: 0.3s;
+        }
     }
-  }
 }
 
 @keyframes onLoad {
-  from {
-    scale: 1;
-  }
-  to {
-    scale: 50;
-  }
+    from {
+        scale: 1;
+    }
+    to {
+        scale: 50;
+    }
 }
 
 @keyframes AddEventOpacity {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

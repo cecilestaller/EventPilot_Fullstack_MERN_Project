@@ -26,40 +26,42 @@ const AddEvent = ({ authorization }) => {
     const [description, setDescription] = useState("");
     const [maxGuests, setMaxGuests] = useState("");
     const [hideEntranceAnimation, setHideEntranceAnimation] = useState("");
-    const [dropdownHideState, setDropdownHideState] = useState("hide")
+    const [dropdownHideState, setDropdownHideState] = useState("hide");
 
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         event.preventDefault();
 
-        const formData = new FormData();
-        formData.append("image", eventPicURL, eventPicURL.name);
-
-        fetch(backendUrl + "/api/v1/files/upload", {
-            method: "POST",
-            body: formData,
-            headers: { authorization },
-        })
-            .then((res) => res.json())
-            .then(({ success, result, error, message }) => {
-                if (success) return result.filename;
-                else {
-                    console.log({ message });
-                    throw error;
-                }
-            })
-            .then((uploadFilename) =>
-                fetch(backendUrl + `/api/v1/events/`, {
+        if (eventPicURL) {
+            // add Event WITH new Pic
+            const formData = new FormData();
+            formData.append("image", eventPicURL, eventPicURL.filename);
+            try {
+                // upload new Pic and save filename in variable
+                const fileResponse = await fetch(
+                    `${backendUrl}/api/v1/files/upload`,
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                );
+                const fileResult = await fileResponse.json();
+                const uploadedFilename = fileResult.result.filename;
+                // edit Event with new profilePic
+                const response = await fetch(`${backendUrl}/api/v1/events`, {
                     method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        authorization,
+                    },
                     body: JSON.stringify({
-                        eventPicURL: uploadFilename,
+                        eventPicURL: uploadedFilename,
                         title,
                         eventDate,
                         eventAddress: {
                             country,
                             city,
-                            zip,
                             street,
                             province,
                             locationInfo,
@@ -68,21 +70,55 @@ const AddEvent = ({ authorization }) => {
                         description,
                         maxGuests,
                     }),
+                });
+                const { success, result, error, message } =
+                    await response.json();
+                if (!success)
+                    setErrorMessage(
+                        error.message ||
+                            "Das Event konnte nicht bearbeitet werden"
+                    );
+                navigate(`/eventdetails/${result._id}`);
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            // NO Pic selected
+            try {
+                const response = await fetch(`${backendUrl}/api/v1/events`, {
+                    method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         authorization,
                     },
-                })
-            )
-            .then((res) => res.json())
-            .then(({ success, result, error, message }) => {
-                console.log({ success, result, error, message });
+                    body: JSON.stringify({
+                        title,
+                        eventDate,
+                        eventAddress: {
+                            country,
+                            city,
+                            street,
+                            province,
+                            locationInfo,
+                        },
+                        category,
+                        description,
+                        maxGuests,
+                    }),
+                });
+                const { success, result, error, message } =
+                    await response.json();
+                if (!success)
+                    setErrorMessage(
+                        error.message ||
+                            "Das Event konnte nicht bearbeitet werden"
+                    );
+                console.log(result);
                 navigate(`/eventdetails/${result._id}`);
-            })
-            .catch((error) => console.log(error));
-
-        // hier können wir dann zum angelegten event springen
-        // navigate(`/eventdetails/::id`)
+            } catch (error) {
+                console.log(error);
+            }
+        }
     };
 
     // =============== Entrance anmiation ====================
@@ -92,19 +128,18 @@ const AddEvent = ({ authorization }) => {
         }, 600);
     }, []);
 
-// ================= toggle hide state ===========================
+    // ================= toggle hide state ===========================
 
-const toggleHideState = () => {
-    if (dropdownHideState === "hide") {
-        setDropdownHideState("")
-    } else {
-        setDropdownHideState("hide")
-    }
-}
+    const toggleHideState = () => {
+        if (dropdownHideState === "hide") {
+            setDropdownHideState("");
+        } else {
+            setDropdownHideState("hide");
+        }
+    };
 
-
-console.log(eventPicURL);
-console.log(category);
+    console.log(eventPicURL);
+    console.log(category);
     console.log(dropdownHideState);
     return (
         <div className="addevent__wrapper">
@@ -148,20 +183,90 @@ console.log(category);
                     />
                 </div>
 
-                <div onClick={() => toggleHideState()} className="addevent_input-group">
+                <div
+                    onClick={() => toggleHideState()}
+                    className="addevent_input-group"
+                >
                     <span className="addevent_input-icon">
                         <img src={compasIcon} alt="" />
                     </span>
+                    <p>{category}</p>
                     <div className="addevent_input">
-                        <div className={`AddEventDropdownCategory ${dropdownHideState}`}>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("music")}} value="music">Musik</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("art")}} value="art">Kunst</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("sport")}} value="sport">Sport</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("food")}} value="food">Essen</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("movie")}} value="movie">Film</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("comedy")}} value="comedy">Komödie</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("literature")}} value="literature">Literatur</p>
-                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("others")}} value="others">Sonstige</p>
+                        <div
+                            className={`AddEventDropdownCategory ${dropdownHideState}`}
+                        >
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("music");
+                                }}
+                                value="music"
+                            >
+                                Musik
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("art");
+                                }}
+                                value="art"
+                            >
+                                Kunst
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("sport");
+                                }}
+                                value="sport"
+                            >
+                                Sport
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("food");
+                                }}
+                                value="food"
+                            >
+                                Essen
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("movie");
+                                }}
+                                value="movie"
+                            >
+                                Film
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("comedy");
+                                }}
+                                value="comedy"
+                            >
+                                Komödie
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("literature");
+                                }}
+                                value="literature"
+                            >
+                                Literatur
+                            </p>
+                            <p
+                                className={`AddEventPTagDropdown`}
+                                onClick={() => {
+                                    setCategory("others");
+                                }}
+                                value="others"
+                            >
+                                Sonstige
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -193,19 +298,6 @@ console.log(category);
                 </div>
 
                 <div className="addevent_input-group-adress">
-                    {/* <div className="addevent_input-group-adress-field">
-            <span className="addevent_input-icon">
-              <img src={mapIcon} alt="" />
-            </span>
-            <input
-              className="addevent_input"
-              type="text"
-              placeholder="Land"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-          </div> */}
-
                     <div className="addevent_input-group-adress-field">
                         <span className="addevent_input-icon">
                             <img src={mapIcon} alt="" />

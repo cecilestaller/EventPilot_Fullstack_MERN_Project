@@ -227,13 +227,14 @@
         }
     }
 
-    // .user-profile-item-container:last-of-type {
-    //     margin-bottom: 6rem;
-    // }
-
     .text-light {
         font-weight: 100;
         color: var(--secondary-text-color);
+        line-height: 25px;
+    }
+    .aboutMe {
+        font-weight: 300;
+        color: var(--main-text-color);
         line-height: 25px;
     }
 }

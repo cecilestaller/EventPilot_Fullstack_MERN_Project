@@ -24,10 +24,10 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessageAbout, setErrorMessageAbout] = useState(
-        "Der/ die Organisator:in hat noch keine Infos über sich geteilt"
+        "Organisator:in hat noch keine Infos über sich geteilt"
     );
     const [errorMessageReview, setErrorMessageReview] = useState(
-        "Der/ die Organisator:in wurde noch nicht bewertet"
+        "Organisator:in wurde noch nicht bewertet"
     );
     const navigate = useNavigate();
 
@@ -261,8 +261,8 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                                 <p
                                     style={{
                                         color: "#747688",
-                                        padding: "4px 12px 8px 12px",
-                                        fontWeight: "300",
+                                        padding: "4px 16px 8px 16px",
+                                        fontWeight: "400",
                                         textAlign: "center",
                                     }}
                                 >

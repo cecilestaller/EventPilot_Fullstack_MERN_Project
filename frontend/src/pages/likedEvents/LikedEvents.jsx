@@ -5,6 +5,7 @@ import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 import EventCards from "../../components/eventCards/EventCards";
 import { backendUrl } from "../../api";
 import { useNavigate } from "react-router-dom";
+// import { useUserProfileInfoContext } from "../../context/userProfileInfoContext";
 
 const LikedEvents = ({ authorization, userProfileInfo }) => {
     const [likedEvents, setLikedEvents] = useState(false);
@@ -13,6 +14,7 @@ const LikedEvents = ({ authorization, userProfileInfo }) => {
     const [registeredEventsData, setRegisteredEventsData] = useState([]);
     const [errorMessageLiked, setErrorMessageLiked] = useState("");
     const [errorMessageRegistered, setErrorMessageRegistered] = useState("");
+    // const { userProfileData, setUserProfileData } = useUserProfileInfoContext();
     const navigate = useNavigate();
 
     useEffect(() => {
