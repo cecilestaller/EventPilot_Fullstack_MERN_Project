@@ -92,7 +92,19 @@ const AddEvent = ({ authorization }) => {
         }, 600);
     }, []);
 
+// ================= toggle hide state ===========================
 
+const toggleHideState = () => {
+    if (dropdownHideState === "hide") {
+        setDropdownHideState("")
+    } else {
+        setDropdownHideState("hide")
+    }
+}
+
+
+console.log(eventPicURL);
+console.log(category);
     console.log(dropdownHideState);
     return (
         <div className="addevent__wrapper">
@@ -136,20 +148,20 @@ const AddEvent = ({ authorization }) => {
                     />
                 </div>
 
-                <div onClick={() => setDropdownHideState("")} className="addevent_input-group">
+                <div onClick={() => toggleHideState()} className="addevent_input-group">
                     <span className="addevent_input-icon">
                         <img src={compasIcon} alt="" />
                     </span>
                     <div className="addevent_input">
                         <div className={`AddEventDropdownCategory ${dropdownHideState}`}>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="music">Musik</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="art">Kunst</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="sport">Sport</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="food">Essen</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="movie">Film</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="comedy">Komödie</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="literature">Literatur</p>
-                            <p className={`AddEventPTagDropdown`} onClick={(e) => {setCategory(e.target.value); setDropdownHideState("hide");}} value="others">Sonstige</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("music")}} value="music">Musik</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("art")}} value="art">Kunst</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("sport")}} value="sport">Sport</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("food")}} value="food">Essen</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("movie")}} value="movie">Film</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("comedy")}} value="comedy">Komödie</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("literature")}} value="literature">Literatur</p>
+                            <p className={`AddEventPTagDropdown`} onClick={() => {setCategory("others")}} value="others">Sonstige</p>
                         </div>
                     </div>
                 </div>
