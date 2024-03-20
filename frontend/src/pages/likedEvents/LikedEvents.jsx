@@ -141,7 +141,7 @@ const LikedEvents = ({ authorization, userProfileInfo }) => {
                                 <EventCards
                                     Title={singleEvent?.title}
                                     unformatedDate={singleEvent?.eventDate}
-                                    State={singleEvent?.eventAddress?.province}
+                                    State={singleEvent?.eventAddress?.city}
                                     eventId={singleEvent?._id}
                                     key={singleEvent?._id}
                                     eventPicURL={singleEvent?.eventPicURL}
@@ -179,7 +179,7 @@ const LikedEvents = ({ authorization, userProfileInfo }) => {
                                 <EventCards
                                     Title={singleEvent?.title}
                                     unformatedDate={singleEvent?.eventDate}
-                                    State={singleEvent?.eventAddress?.province}
+                                    State={singleEvent?.eventAddress?.city}
                                     eventId={singleEvent?._id}
                                     key={singleEvent?._id}
                                     eventPicURL={singleEvent?.eventPicURL}

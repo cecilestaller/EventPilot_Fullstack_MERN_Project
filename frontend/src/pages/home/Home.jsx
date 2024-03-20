@@ -184,7 +184,7 @@ const Home = ({ authorization, userProfileInfo }) => {
             <EventCards 
               unformatedDate={randomEvent?.eventDate} 
               Title={randomEvent?.title} 
-              State={randomEvent?.eventAddress.province} 
+              State={randomEvent?.eventAddress.city} 
               eventId={randomEvent?._id} 
               category={randomEvent?.category} 
               eventPicURL={randomEvent?.eventPicURL} 

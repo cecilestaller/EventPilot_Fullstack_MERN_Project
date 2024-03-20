@@ -124,7 +124,7 @@ const SearchEvents = ({ authorization, userProfileInfo }) => {
                 <EventCards
                     unformatedDate={event?.eventDate} 
                     Title={event?.title} 
-                    State={event?.eventAddress.province} 
+                    State={event?.eventAddress.city} 
                     eventId={event?._id} 
                     category={event?.category} 
                     eventPicURL={event?.eventPicURL} 
