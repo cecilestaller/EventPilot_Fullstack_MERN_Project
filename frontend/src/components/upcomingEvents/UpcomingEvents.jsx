@@ -14,19 +14,37 @@ import food from "../../assets/images/eventDefaultPics/food.jpg";
 import komet from "../../assets/images/eventDefaultPics/komet.jpg";
 import comedy from "../../assets/images/eventDefaultPics/loughComedy.jpg";
 import { backendUrl } from "../../api";
+import { useUserProfileInfoContext } from "../../context/userProfileInfoContext";
 
 const UpcomingEvents = ({userProfileInfo, authorization}) => {
 
-    const { fetchEventData, setFetchEventData } = useEventFetchContext();
+    const { userProfileData, setUserProfileData } = useUserProfileInfoContext();
+    const { fetchEventData } = useEventFetchContext();
     const [filteredEvents, setFilteredEvents] = useState([])
     const [defaultPicEvent1, setDefaultPicEvent1] = useState("")
     const [defaultPicEvent2, setDefaultPicEvent2] = useState("")
     const [defaultPicEvent3, setDefaultPicEvent3] = useState("")
-    const [settingBookmak1, setSettingBookmark1] = useState(BookmarkEmpty)
-    const [settingBookmak2, setSettingBookmark2] = useState(BookmarkEmpty)
-    const [settingBookmak3, setSettingBookmark3] = useState(BookmarkEmpty)
+    const [eventIsFavorite1, setEventIsFavorite1] = useState(null);
+    const [eventIsFavorite2, setEventIsFavorite2] = useState(null);
+    const [eventIsFavorite3, setEventIsFavorite3] = useState(null);
     const navigate = useNavigate()
     const currentDate = new Date();
+
+    useEffect(() => {
+        async function fetchUserData() {
+            try {
+                const users = await fetch(`${backendUrl}/api/v1/user`, {
+                    headers: { authorization },
+                });
+                const { result, success, error, message } = await users.json();
+                if (!success) throw new Error(error);
+                setUserProfileData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchUserData();
+    }, []);
 
 // ============================= set default images of events ===========================================
     useEffect(() => {
@@ -50,6 +68,11 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
             } else if (filteredEvents[0]?.category === "literature" || "others") {
                 setDefaultPicEvent1(komet);
             }
+            if (userProfileData?.userDetails?.userWishlist?.includes(filteredEvents[0]?._id)) {
+                setEventIsFavorite1(true);
+            } else {
+                setEventIsFavorite1(false);
+            }
 
             if (filteredEvents[1]?.category === "comedy") {
                 setDefaultPicEvent2(comedy);
@@ -65,6 +88,11 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
                 setDefaultPicEvent2(movie);
             } else if (filteredEvents[1]?.category === "literature" || "others") {
                 setDefaultPicEvent2(komet);
+            }
+            if (userProfileData?.userDetails?.userWishlist?.includes(filteredEvents[1]?._id)) {
+                setEventIsFavorite2(true);
+            } else {
+                setEventIsFavorite2(false);
             }
 
             if (filteredEvents[2]?.category === "comedy") {
@@ -82,33 +110,12 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
             } else if (filteredEvents[2]?.category === "literature" || "others") {
                 setDefaultPicEvent3(komet);
             }
-        },[fetchEventData])
-
-    // ============= check wishlist of user ===========================
-
-    useEffect(() => {
-        const findEventInWishlist1 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[0]?._id);
-        const findEventInWishlist2 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[1]?._id);
-        const findEventInWishlist3 = userProfileInfo?.userDetails?.userWishlist.filter(event => event === filteredEvents[2]?._id);
-
-        if (findEventInWishlist1.length === 0) {
-            setSettingBookmark1(BookmarkEmpty)
-        } else {
-            setSettingBookmark1(BookmarkFull)
-        }
-
-        if (findEventInWishlist2.length === 0) {
-            setSettingBookmark2(BookmarkEmpty)
-        } else {
-            setSettingBookmark2(BookmarkFull)
-        }
-
-        if (findEventInWishlist3.length === 0) {
-            setSettingBookmark3(BookmarkEmpty)
-        } else {
-            setSettingBookmark3(BookmarkFull)
-        }
-},[userProfileInfo])
+            if (userProfileData?.userDetails?.userWishlist?.includes(filteredEvents[2]?._id)) {
+                setEventIsFavorite3(true);
+            } else {
+                setEventIsFavorite3(false);
+            }
+        },[fetchEventData, userProfileData])
 
     // -------- ADD Event to Wishlist FETCH ------------
     const addEventToWishlist =  async(eventId, num) => {
@@ -123,13 +130,13 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
             );
             const { success, result, error } = await response.json();
             if (num === 1) {
-                setSettingBookmark1(BookmarkFull)
+                setEventIsFavorite1(true)
             }
             if (num === 2) {
-                setSettingBookmark2(BookmarkFull)
+                setEventIsFavorite2(true)
             }
             if (num === 3) {
-                setSettingBookmark3(BookmarkFull)
+                setEventIsFavorite3(true)
             }
             // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
         } catch (error) {
@@ -150,14 +157,14 @@ const UpcomingEvents = ({userProfileInfo, authorization}) => {
             );
             const { success, result, error } = await response.json();
             if (num === 1) {
-                setSettingBookmark1(BookmarkEmpty)
+                setEventIsFavorite1(false)
             }
             if (num === 2) {
-                setSettingBookmark2(BookmarkEmpty)
+                setEventIsFavorite2(false)
             }
             if (num === 3) {
-                setSettingBookmark3(BookmarkEmpty)
-            }            // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
+                setEventIsFavorite3(false)
+            }         // window.location.reload(); // ! mit rein nehmen, wenn userProfileInfo direkt geupdated werden soll
         } catch (error) {
             console.log(error);
         }
@@ -172,7 +179,7 @@ const navigateToDetails = (id) => {
         <div className="UpcomingContainer">
             <article className="UpcomingSingleEventContainer" key={filteredEvents[0]?._id} >
                 <div  className="ImageAndIconContainer">
-                    {settingBookmak1 === BookmarkFull ? (
+                    {eventIsFavorite1 === true ? (
                         <img
                             src={BookmarkFull}
                             alt="fullBookmark"
@@ -206,7 +213,7 @@ const navigateToDetails = (id) => {
             </article>
             <article className="UpcomingSingleEventContainer" key={filteredEvents[1]?._id} >
                 <div className="ImageAndIconContainer">
-                {settingBookmak2 === BookmarkFull ? (
+                {eventIsFavorite2 === true ? (
                         <img
                             src={BookmarkFull}
                             alt="fullBookmark"
@@ -240,7 +247,7 @@ const navigateToDetails = (id) => {
             </article>
             <article className="UpcomingSingleEventContainer" key={filteredEvents[2]?._id} >
                 <div className="ImageAndIconContainer">
-                {settingBookmak3 === BookmarkFull ? (
+                {eventIsFavorite3 === true ? (
                         <img
                             src={BookmarkFull}
                             alt="fullBookmark"

@@ -31,13 +31,13 @@
                 height: 100vh;
                 top: -10px;
                 left: 0;
+                background-color: rgba(0, 0, 0, 0.514);
                 .dropdownAddressMenu {
                     position: absolute;
                     top: 44px;
                     left: 50%;
                     transform: translateX(-50%);
                     width: 65%;
-                    border: 5px solid var(--main-akcent-color);
                     border-radius: 15px;
                     box-shadow: 5px 5px 15px black;
                     display: flex;
