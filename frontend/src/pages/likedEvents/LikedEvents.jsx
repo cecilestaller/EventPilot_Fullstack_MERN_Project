@@ -121,11 +121,11 @@ const LikedEvents = ({ authorization, userProfileInfo }) => {
                             <>
                                 <p
                                     style={{
-                                        color: "red",
+                                        color: "grey",
                                         padding: "4px 12px 8px 12px",
                                         fontWeight: "500",
                                         textAlign: "center",
-                                        marginBottom: "55vh",
+                                        marginBottom: "50vh",
                                     }}
                                 >
                                     {errorMessageLiked}
@@ -159,11 +159,11 @@ const LikedEvents = ({ authorization, userProfileInfo }) => {
                             <>
                                 <p
                                     style={{
-                                        color: "red",
+                                        color: "grey",
                                         padding: "4px 12px 8px 12px",
                                         fontWeight: "500",
                                         textAlign: "center",
-                                        marginBottom: "55vh",
+                                        marginBottom: "50vh",
                                     }}
                                 >
                                     {errorMessageRegistered}

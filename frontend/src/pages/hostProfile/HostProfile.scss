@@ -23,7 +23,7 @@
             }
         }
         .profile-Hostpic-container {
-            margin-top: 8px;
+            margin-top: 16px;
             margin-bottom: 12px;
             height: 124px;
             display: flex;
@@ -31,7 +31,9 @@
             align-items: center;
 
             .clip {
-                width: 100px;
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
                 clip-path: circle();
             }
         }
@@ -75,15 +77,17 @@
                 font-size: 1.5rem;
             }
         }
-        .profile-pic-container {
-            margin-top: 8px;
+        .profile-Hostpic-container {
+            margin-top: 16px;
             height: 124px;
             display: flex;
             justify-content: center;
             align-items: center;
 
             .clip {
-                width: 100px;
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
                 clip-path: circle();
             }
         }
