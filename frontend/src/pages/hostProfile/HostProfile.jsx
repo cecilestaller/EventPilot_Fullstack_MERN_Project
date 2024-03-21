@@ -197,7 +197,7 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                                 {hostDetails?.hostDetails?.userName}
                             </p>
                         </div>
-                        <div className="profile-pic-container">
+                        <div className="profile-Hostpic-container">
                             <img
                                 className="clip"
                                 src={
@@ -264,9 +264,10 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                                 <p
                                     style={{
                                         color: "#747688",
-                                        padding: "4px 16px 8px 16px",
+                                        padding: "4px 20px 8px 20px",
                                         fontWeight: "400",
-                                        textAlign: "center",
+                                        textAlign: "left",
+                                        lineHeight: "1.5",
                                     }}
                                 >
                                     {hostDetails?.hostDetails?.bio}
