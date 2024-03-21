@@ -192,14 +192,14 @@ const AddEvent = ({ authorization }) => {
                         <option className="option" value="" disabled>
                             Kategorie
                         </option>
-                        <option value="music">Music</option>
-                        <option value="art">Art</option>
+                        <option value="music">Musik</option>
+                        <option value="art">Kunst</option>
                         <option value="sport">Sport</option>
-                        <option value="food">Food</option>
-                        <option value="movie">Movie</option>
-                        <option value="comedy">Comedy</option>
-                        <option value="literature">Literature</option>
-                        <option value="others">Others</option>
+                        <option value="food">Essen</option>
+                        <option value="movie">Filme</option>
+                        <option value="comedy">Komödie</option>
+                        <option value="literature">Literatur</option>
+                        <option value="others">Sonstige</option>
                     </select>
                 </div>
 
