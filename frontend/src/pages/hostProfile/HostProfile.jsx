@@ -118,7 +118,7 @@ const HostProfile = ({ authorization, userProfileInfo }) => {
                                 className="backArrow"
                             />
                             <p className="reviewHost-hl">
-                                Bewerte
+                                Bewerte &nbsp;
                                 <span className="reviewHost-hl-span">
                                     {hostDetails?.hostDetails?.userName}
                                 </span>
