@@ -279,34 +279,34 @@ const AddEvent = ({ authorization }) => {
                             onChange={(e) => setProvince(e.target.value)}
                         >
                             <option value="">Bundesland</option>
-                            <option value="baden-württemberg">
+                            <option value="Baden-Württemberg">
                                 Baden-Württemberg
                             </option>
-                            <option value="bayern">Bayern</option>
-                            <option value="berlin">Berlin</option>
-                            <option value="brandenburg">Brandenburg</option>
-                            <option value="bremen">Bremen</option>
-                            <option value="hamburg">Hamburg</option>
-                            <option value="hessen">Hessen</option>
-                            <option value="mecklenburg-vorpommern">
+                            <option value="Bayern">Bayern</option>
+                            <option value="Berlin">Berlin</option>
+                            <option value="Brandenburg">Brandenburg</option>
+                            <option value="Bremen">Bremen</option>
+                            <option value="Hamburg">Hamburg</option>
+                            <option value="Hessen">Hessen</option>
+                            <option value="Mecklenburg-Vorpommern">
                                 Mecklenburg-Vorpommern
                             </option>
-                            <option value="niedersachsen">Niedersachsen</option>
-                            <option value="nordrhein-westfalen">
+                            <option value="Niedersachsen">Niedersachsen</option>
+                            <option value="Nordrhein-Westfalen">
                                 Nordrhein-Westfalen
                             </option>
-                            <option value="rheinland-pfalz">
+                            <option value="Rheinland-Pfalz">
                                 Rheinland-Pfalz
                             </option>
-                            <option value="saarland">Saarland</option>
-                            <option value="sachsen">Sachsen</option>
-                            <option value="sachsen-anhalt">
+                            <option value="Saarland">Saarland</option>
+                            <option value="Sachsen">Sachsen</option>
+                            <option value="Sachsen-Anhalt">
                                 Sachsen-Anhalt
                             </option>
-                            <option value="schleswig-holstein">
+                            <option value="Schleswig-Holstein">
                                 Schleswig-Holstein
                             </option>
-                            <option value="thüringen">Thüringen</option>
+                            <option value="Thüringen">Thüringen</option>
                         </select>
                     </div>
                 </div>

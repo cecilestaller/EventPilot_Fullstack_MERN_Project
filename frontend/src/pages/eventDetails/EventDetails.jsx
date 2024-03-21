@@ -975,7 +975,14 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                                 Event Beschreibung
                             </h5>
                             <p>{eventDetails?.eventDetails?.description}</p>
-                            <p style={{ color: "green", padding: "12px" }}>
+                            <p
+                                style={{
+                                    color: "green",
+                                    padding: "12px",
+                                    fontWeight: "500",
+                                    textAlign: "center",
+                                }}
+                            >
                                 {successMessage}
                             </p>
                         </article>
