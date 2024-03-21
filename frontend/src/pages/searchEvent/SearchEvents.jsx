@@ -93,7 +93,7 @@ const SearchEvents = ({ authorization, userProfileInfo }) => {
                 </div>
                 <div className="SearchInputContainer">
                     <img className="searchEvent_input-icon" src={search}/>
-                    <input placeholder="Suche nach Eventname..." className="searchEvent_input" type="text" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                    <input placeholder="Eventname/Stadt" className="searchEvent_input" type="text" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
                     {/* datepicker */}
                     <p></p>
                     <p></p>
@@ -124,7 +124,7 @@ const SearchEvents = ({ authorization, userProfileInfo }) => {
                 <EventCards
                     unformatedDate={event?.eventDate} 
                     Title={event?.title} 
-                    State={event?.eventAddress.province} 
+                    State={event?.eventAddress.city} 
                     eventId={event?._id} 
                     category={event?.category} 
                     eventPicURL={event?.eventPicURL} 

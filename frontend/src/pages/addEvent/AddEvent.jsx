@@ -223,7 +223,7 @@ const AddEvent = ({ authorization }) => {
                     <input
                         className="addevent_input"
                         type="text"
-                        placeholder="Veranstaltungsort"
+                        placeholder="Name Veranstaltungsort"
                         value={locationInfo}
                         onChange={(e) => setLocationInfo(e.target.value)}
                     />
@@ -237,9 +237,22 @@ const AddEvent = ({ authorization }) => {
                         <input
                             className="addevent_input"
                             type="text"
-                            placeholder="Straße"
+                            placeholder="Straße und Nr."
                             value={street}
                             onChange={(e) => setStreet(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="addevent_input-group-adress-field">
+                        <span className="addevent_input-icon">
+                            <img src={mapIcon} alt="" />
+                        </span>
+                        <input
+                            className="addevent_input"
+                            type="text"
+                            placeholder="PLZ"
+                            value={zip}
+                            onChange={(e) => setZip(e.target.value)}
                         />
                     </div>
 
@@ -253,16 +266,6 @@ const AddEvent = ({ authorization }) => {
                             placeholder="Stadt"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}
-                        />
-                        <span className="addevent_input-icon">
-                            <img src={mapIcon} alt="" />
-                        </span>
-                        <input
-                            className="addevent_input"
-                            type="text"
-                            placeholder="PLZ"
-                            value={zip}
-                            onChange={(e) => setZip(e.target.value)}
                         />
                     </div>
 
