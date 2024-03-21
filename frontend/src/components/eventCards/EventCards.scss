@@ -11,7 +11,8 @@
     z-index: 0;
     .EventCardsPic {
         border-radius: 8px;
-        width: 35%;
+        min-width: 35%;
+        max-width: 35%;
     }
     .EventCardsDetails {
         position: relative;
