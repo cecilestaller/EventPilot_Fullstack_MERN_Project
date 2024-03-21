@@ -36,7 +36,7 @@ const SearchEvents = ({ authorization, userProfileInfo }) => {
 
     const filterSingleEvent = (event) => {
         const dateMatch = new Date(event.eventDate).getTime() >= new Date(eventDate).getTime()
-        const locationMatch = event.eventAddress.province === userLocation || userLocation === null
+        const locationMatch = event.eventAddress.province === userLocation || userLocation === null || userLocation === "Deutschland"
         const searchMatch = event.title.toLowerCase().includes(searchText.toLowerCase()) || event.eventAddress.city.toLowerCase().includes(searchText.toLowerCase()) || searchText === ""
         const categoryMatch = event.category === categoryFilter || categoryFilter === ""
         return dateMatch && locationMatch && searchMatch && categoryMatch
@@ -84,6 +84,7 @@ const SearchEvents = ({ authorization, userProfileInfo }) => {
                     <div onClick={() => hideStateSelectionAgain()} className={`SearchdropdownAddressMenuContainer ${hideClassForDropdown}`}>
                         <div className={`SearchdropdownAddressMenu`}>
                             <p onClick={() => changeLocationInfo(fetchLocationData)} className={`SearchHomeDropdownSelections SearchDeinStandortTag`}>Dein Standort: {fetchLocationData}</p>
+                            <p onClick={() => changeLocationInfo("Deutschland")} className={`SearchHomeDropdownSelections`}>Deutschland</p>
                             {Array.from(new Set(fetchEventData?.map(event => event.eventAddress.province))).map(province => (
                                 <p onClick={() => changeLocationInfo(province)} className={`SearchHomeDropdownSelections`} key={province}>{province}</p>
                                 ))}
