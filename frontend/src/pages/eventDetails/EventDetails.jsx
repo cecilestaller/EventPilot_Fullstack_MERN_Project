@@ -119,7 +119,11 @@ const EventDetails = ({ authorization, userProfileInfo }) => {
                     ) {
                         setEventIsFavorite(true);
                     }
-                    if (userProfileData?.registeredEvents?.includes(eventId)) {
+                    if (
+                        userProfileData?.userDetails?.registeredEvents?.includes(
+                            eventId
+                        )
+                    ) {
                         setUserRegistered(true);
                     }
                 }
