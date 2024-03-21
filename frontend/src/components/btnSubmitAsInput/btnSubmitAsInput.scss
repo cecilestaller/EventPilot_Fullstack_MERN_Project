@@ -1,0 +1,35 @@
+.BtnSubmitAsInputContainer {
+  display: none;
+  position: relative;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 15px 30px;
+  background-color: #6200ee;
+  // display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+  text-transform: uppercase;
+  width: 90%;
+  margin-inline: auto;
+  color: white;
+  font-size: 1em;
+  &:hover {
+    background-color: darken(#6200ee, 10%);
+    transform: translateY(-2px);
+  }
+  .BtnSubmitAsInput {
+    display: none;
+  }
+  .button-iconAsInput {
+    display: flex;
+    align-items: center;
+    
+    .btnsubmit-imgAsInput {
+      width: 20px;
+      height: auto;
+    }
+  }
+}
