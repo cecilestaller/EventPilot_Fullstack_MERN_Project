@@ -5,15 +5,19 @@ import { silentRefreshLoop } from "../../utils/tokens";
 import { backendUrl } from "../../api/index";
 import BtnSubmit from "../../components/btnSubmit/btnSubmit";
 import logo from "../../assets/images/Logo.svg";
+import hidePassword from "../../assets/images/hide_password.svg";
+import showPassword from "../../assets/images/eye.svg";
 import mailIcon from "../../assets/images/email_icon.svg";
 import passwordIcon from "../../assets/images/Lock.svg";
 import arrowBack from "../../assets/images/arrow_back.svg";
+import BtnSubmitAsInput from "../../components/btnSubmitAsInput/btnSubmitAsInput";
 
 const Login = ({ onLoginSuccess }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const [passwordVisibilityToggle, setPasswordVisibilityToggle] = useState("password")
 
     const navigate = useNavigate();
 
@@ -92,12 +96,19 @@ const Login = ({ onLoginSuccess }) => {
                             </span>
                             <input
                                 className="login_input"
-                                type="password"
+                                type={passwordVisibilityToggle}
                                 placeholder="Passwort"
                                 value={password}
                                 onChange={handleInputChange(setPassword)}
                             />
+                            <img 
+                                className="loginPasswordVisibilityToggle" 
+                                src={passwordVisibilityToggle === "password" ? hidePassword : showPassword } 
+                                onClick={() => setPasswordVisibilityToggle(passwordVisibilityToggle === "password" ? "text" : "password")} 
+                                alt="toggleVisibilityIcon" 
+                            />
                         </div>
+                        <BtnSubmitAsInput text="LOGIN" onClick={loginUser} /> 
                     </form>
                 </div>
                 <p className="login_success-message">{successMessage}</p>

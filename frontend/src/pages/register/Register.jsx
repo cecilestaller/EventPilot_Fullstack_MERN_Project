@@ -8,6 +8,9 @@ import nameIcon from "../../assets/images/Profile.svg";
 import mailIcon from "../../assets/images/email_icon.svg";
 import passwordIcon from "../../assets/images/Lock.svg";
 import arrowBack from "../../assets/images/arrow_back.svg";
+import hidePassword from "../../assets/images/hide_password.svg";
+import showPassword from "../../assets/images/eye.svg";
+import BtnSubmitAsInput from "../../components/btnSubmitAsInput/btnSubmitAsInput";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -17,6 +20,8 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisibilityToggle, setPasswordVisibilityToggle] = useState("password")
+  const [passwordVisibilityToggleWdh, setPasswordVisibilityToggleWdh] = useState("password")
 
   const navigate = useNavigate();
 
@@ -103,10 +108,16 @@ const Register = () => {
               </span>
               <input
                 className="register_input"
-                type="password"
+                type={passwordVisibilityToggle}
                 placeholder="Passwort"
                 value={password}
                 onChange={handleInputChange(setPassword)}
+              />
+              <img 
+                className="registerPasswordVisibilityToggle" 
+                src={passwordVisibilityToggle === "password" ? hidePassword : showPassword } 
+                onClick={() => setPasswordVisibilityToggle(passwordVisibilityToggle === "password" ? "text" : "password")} 
+                alt="toggleVisibilityIcon" 
               />
             </div>
             <div className="register_input-group">
@@ -115,12 +126,23 @@ const Register = () => {
               </span>
               <input
                 className="register_input"
-                type="password"
+                type={passwordVisibilityToggleWdh}
                 placeholder="Passwort wiederholen"
                 value={confirmPassword}
                 onChange={handleInputChange(setConfirmPassword)}
               />
+              <img 
+                className="registerPasswordVisibilityToggle" 
+                src={passwordVisibilityToggleWdh === "password" ? hidePassword : showPassword } 
+                onClick={() => setPasswordVisibilityToggleWdh(passwordVisibilityToggleWdh === "password" ? "text" : "password")} 
+                alt="toggleVisibilityIcon" 
+              />
             </div>
+            <BtnSubmitAsInput
+              text={isLoading ? "Lädt..." : "Account erstellen"}
+              onClick={registerUser}
+              disabled={isLoading}
+            />
           </form>
         </div>
         <p className="register_success-message">{successMessage}</p>
